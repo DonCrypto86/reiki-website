@@ -570,7 +570,7 @@ export const siteConfig = {
         },
         {
           label: "Hausbesuch",
-          price: "+ CHF 10.-",
+          price: "+ CHF 20.-",
           note: "zzgl. Fahrtkosten (siehe „Gut zu wissen“ unten)"
         },
         {
@@ -589,7 +589,7 @@ export const siteConfig = {
         },
         {
           label: "Hausbesuch",
-          price: "+ CHF 10.-",
+          price: "+ CHF 20.-",
           note: "zzgl. Fahrtkosten (siehe „Gut zu wissen“ unten)"
         }
       ] satisfies PriceItem[]

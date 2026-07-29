@@ -30,7 +30,7 @@ const animalGalleryImages = [
     alt: "Hand streichelt einen entspannten Hund, der auf dem Rücken liegt"
   },
   {
-    src: "/images/reiki-tier5.png",
+    src: "/images/tierstudio.png",
     alt: "Ruhiger Behandlungsraum mit Tierbetten und natürlichen Materialien im Reiki Studio in Gümmenen bei Bern"
   }
 ];
