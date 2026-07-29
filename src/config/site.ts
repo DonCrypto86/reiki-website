@@ -88,7 +88,7 @@ export const siteConfig = {
   url: "https://reiki-mensch-tier.ch",
 
   contact: {
-    email: "petra.inalbon1@gmail.com",
+    email: "info@reiki-mensch-tier.ch",
     phone: "+41763092206",
     phoneReadable: "076 309 22 06"
   },
