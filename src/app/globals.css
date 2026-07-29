@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Zentrale Farbpalette. Zusätzlich in tailwind.config.ts als Theme hinterlegt. */
+  --color-cream: #fbf4e0;
+  --color-beige: #dfbd9c;
+  --color-sage: #6e473d;
+  --color-forest: #1e180d;
+  --color-terracotta: #bd8274;
+  --color-ink: #1e180d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Schützt vor horizontalem Überlaufen auf schmalen Bildschirmen, falls ein
+     einzelnes, langes Wort (z. B. eine Adresse oder ein zusammengesetztes
+     Wort) nicht mehr in die verfügbare Breite passt. */
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    overflow-wrap: break-word;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif text-forest;
+  }
+
+  h1 {
+    @apply text-5xl font-semibold leading-[1.1] tracking-tight sm:text-6xl;
+  }
+
+  h2 {
+    @apply text-4xl font-semibold leading-tight tracking-tight sm:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl font-medium leading-snug sm:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl font-medium leading-snug;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  a {
+    @apply underline-offset-2;
+  }
+
+  /* Sichtbarer, konsistenter Fokuszustand für alle interaktiven Elemente. */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 3px solid var(--color-terracotta);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-forest focus:px-4 focus:py-3 focus:text-cream;
+  }
+}
+
+/* Reduzierte Bewegung für Personen, die das bevorzugen. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
