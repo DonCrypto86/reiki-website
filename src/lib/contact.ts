@@ -102,13 +102,19 @@ export async function sendContactMessage(
     });
 
     if (error) {
-      console.error("[Kontaktformular] Resend-Fehler beim Versand.");
+      // Absichtlich mit Details geloggt (nur serverseitig sichtbar, z. B. in
+      // den Vercel-Logs) – hilft bei der Fehlersuche, ohne dem Besucher der
+      // Website Interna preiszugeben.
+      console.error("[Kontaktformular] Resend-Fehler beim Versand:", error.name, error.message);
       return { success: false };
     }
 
     return { success: true };
-  } catch {
-    console.error("[Kontaktformular] Unerwarteter Fehler beim Versand über Resend.");
+  } catch (err) {
+    console.error(
+      "[Kontaktformular] Unerwarteter Fehler beim Versand über Resend:",
+      err instanceof Error ? err.message : err
+    );
     return { success: false };
   }
 }
