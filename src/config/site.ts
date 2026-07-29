@@ -85,7 +85,7 @@ export const siteConfig = {
    * Aus technischen Gründen (new URL() zur Build-Zeit) muss hier bereits eine
    * syntaktisch gültige URL stehen – keine eckigen Klammern verwenden.
    */
-  url: "https://www.ihre-domain-hier.de",
+  url: "https://reiki-mensch-tier.ch",
 
   contact: {
     email: "petra.inalbon1@gmail.com",
