@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#FBF4E0"/>
+  <svg x="3" y="3" width="58" height="58" viewBox="140 8 578 578">
+    <switch>
+      <g fill="none" stroke="#BD8274" stroke-width="6">
+        <g>
+          <ellipse cx="429.02" cy="297.24" rx="86.593" ry="85.793"/>
+          <ellipse cx="429.02" cy="383.04" rx="86.594" ry="85.793"/>
+          <ellipse cx="428.82" cy="125.44" rx="86.594" ry="85.794"/>
+          <ellipse cx="578.42" cy="297.37" rx="86.593" ry="85.793"/>
+          <ellipse cx="354.71" cy="254.75" rx="86.593" ry="85.793"/>
+          <ellipse cx="354.03" cy="340.54" rx="86.593" ry="85.791"/>
+          <ellipse cx="504.06" cy="253.4" rx="86.594" ry="85.794"/>
+          <ellipse cx="428.82" cy="468.54" rx="86.594" ry="85.793"/>
+          <ellipse cx="504.06" cy="339.2" rx="86.594" ry="85.791"/>
+          <ellipse cx="279.49" cy="297.37" rx="86.594" ry="85.793"/>
+          <ellipse cx="429.68" cy="211.03" rx="86.594" ry="85.792"/>
+          <ellipse cx="354.03" cy="168.95" rx="86.593" ry="85.793"/>
+          <ellipse cx="504.06" cy="167.61" rx="86.594" ry="85.793"/>
+          <ellipse cx="504.06" cy="424.99" rx="86.594" ry="85.793"/>
+          <ellipse cx="578.42" cy="211.58" rx="86.593" ry="85.793"/>
+          <ellipse cx="578.51" cy="383.21" rx="86.593" ry="85.793"/>
+          <ellipse cx="279.49" cy="383.16" rx="86.595" ry="85.791"/>
+          <ellipse cx="279.49" cy="211.58" rx="86.595" ry="85.793"/>
+        </g>
+        <circle cx="429" cy="297" r="257.96"/>
+      </g>
+    </switch>
+  </svg>
+</svg>
