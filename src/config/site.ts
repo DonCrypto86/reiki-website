@@ -570,7 +570,7 @@ export const siteConfig = {
         },
         {
           label: "Hausbesuch",
-          price: "+ CHF 20.-",
+          price: "+ CHF 10.-",
           note: "zzgl. Fahrtkosten (siehe „Gut zu wissen“ unten)"
         },
         {
@@ -589,7 +589,7 @@ export const siteConfig = {
         },
         {
           label: "Hausbesuch",
-          price: "+ CHF 20.-",
+          price: "+ CHF 10.-",
           note: "zzgl. Fahrtkosten (siehe „Gut zu wissen“ unten)"
         }
       ] satisfies PriceItem[]
@@ -615,7 +615,7 @@ export const siteConfig = {
         },
         {
           title: "Fahrtkosten",
-          text: "Bei Hausbesuchen kommen CHF 10.- Fahrkosten (bis 10 km) sowie CHF 1.- pro zusätzlichem Kilometer dazu. Bei Besuchen bei Heimbewohnerinnen/-bewohnern oder Firmenbesuchen werden die Fahrtkosten ab zwei aufeinanderfolgenden Sitzungen nur einmal berechnet."
+          text: "Bei Hausbesuchen kommen CHF 20.- Fahrkosten (bis 10 km) sowie CHF 1.- pro zusätzlichem Kilometer dazu. Bei Besuchen bei Heimbewohnerinnen/-bewohnern oder Firmenbesuchen werden die Fahrtkosten ab zwei aufeinanderfolgenden Sitzungen nur einmal berechnet."
         },
         {
           title: "Terminvereinbarung",
