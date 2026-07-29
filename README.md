@@ -140,26 +140,29 @@ durch reale, geprüfte Preise ersetzen. Der Hinweistext
 
 ## 9. Einrichtung des E-Mail-Versands
 
-Das Kontaktformular sendet aktuell **keine** echten E-Mails. Die gesamte
-Versandlogik ist in `src/lib/contact.ts` gekapselt (Funktion
-`sendContactMessage`). Im Entwicklungsmodus wird jede Anfrage strukturiert
-in der Server-Konsole ausgegeben; es findet **keine dauerhafte Speicherung**
-von Kontaktanfragen statt (keine Datenbank).
+Das Kontaktformular versendet E-Mails über [Resend](https://resend.com). Die
+gesamte Versandlogik ist in `src/lib/contact.ts` gekapselt (Funktion
+`sendContactMessage`). Im Entwicklungsmodus wird jede Anfrage zusätzlich
+strukturiert in der Server-Konsole ausgegeben; es findet **keine dauerhafte
+Speicherung** von Kontaktanfragen statt (keine Datenbank).
 
-So bindest du z. B. Resend oder Nodemailer an:
+Einrichtung:
 
-1. `.env.local.example` nach `.env.local` kopieren (wird von Git ignoriert)
-   und die benötigten Werte eintragen.
-2. Paket installieren, z. B. `npm install resend` oder `npm install
-   nodemailer`.
-3. In `src/lib/contact.ts` in der Funktion `sendContactMessage` den
-   auskommentierten Beispielcode (siehe Kommentare im Datei-Kopf) aktivieren
-   und an den gewählten Anbieter anpassen.
-4. Umgebungsvariable `CONTACT_EMAIL_PROVIDER` in Produktion setzen (z. B.
-   `resend` oder `smtp`) – ohne diese Variable meldet das Formular in
-   Produktion bewusst einen Fehler, um keinen falschen Erfolg vorzutäuschen.
-5. Zugangsdaten ausschließlich über Umgebungsvariablen einlesen, niemals in
-   den Quellcode oder nach Git committen.
+1. Kostenlosen Account auf [resend.com](https://resend.com) erstellen.
+2. Im Resend-Dashboard unter "API Keys" einen neuen Key erstellen.
+3. `.env.local.example` nach `.env.local` kopieren (wird von Git ignoriert)
+   und `RESEND_API_KEY` mit dem erstellten Key befüllen.
+4. Dieselbe Variable (`RESEND_API_KEY`) zusätzlich in den
+   Vercel-Projekteinstellungen unter "Settings" → "Environment Variables"
+   setzen, damit der Versand auch auf der Live-Website funktioniert.
+5. Optional, für eine eigene Absenderadresse statt der Resend-Testadresse
+   `onboarding@resend.dev`: die Domain im Resend-Dashboard unter "Domains"
+   hinzufügen und verifizieren (dafür weitere DNS-Einträge beim
+   Domain-Anbieter ergänzen), danach `CONTACT_FROM_EMAIL` setzen, z. B.
+   `Reiki Studio <kontakt@reiki-mensch-tier.ch>`.
+
+Ohne gesetzten `RESEND_API_KEY` meldet das Formular in Produktion bewusst
+einen Fehler, um keinen falschen Erfolg vorzutäuschen.
 
 Die API-Route liegt unter `src/app/api/kontakt/route.ts`, die Validierung
 (client- und serverseitig identisch) unter `src/lib/validation.ts`.

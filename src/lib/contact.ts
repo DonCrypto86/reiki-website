@@ -1,42 +1,24 @@
+import { Resend } from "resend";
+import { siteConfig } from "@/config/site";
 import type { ContactFormValues } from "@/types";
 
 /**
- * Abstraktionsschicht für den Versand von Kontaktanfragen.
+ * Abstraktionsschicht für den Versand von Kontaktanfragen per E-Mail über
+ * Resend (https://resend.com). Kontaktanfragen werden nirgends dauerhaft
+ * gespeichert, sondern direkt per E-Mail weitergeleitet.
  *
- * Es ist bewusst noch KEIN konkreter E-Mail-Anbieter angebunden. Im
- * Entwicklungsmodus wird die Anfrage strukturiert in der Server-Konsole
- * ausgegeben. Kontaktanfragen werden nirgends dauerhaft gespeichert.
+ * Benötigte Umgebungsvariablen (lokal in .env.local, in Produktion in den
+ * Vercel-Projekteinstellungen unter "Environment Variables"):
+ * - CONTACT_EMAIL_PROVIDER=resend
+ * - RESEND_API_KEY=<API-Key aus dem Resend-Dashboard>
+ * - CONTACT_FROM_EMAIL (optional) – Absenderadresse, z. B.
+ *   "Reiki Studio <kontakt@reiki-mensch-tier.ch>". Setzt eine bei Resend
+ *   verifizierte Domain voraus. Ohne verifizierte Domain wird automatisch
+ *   die Resend-Test-Absenderadresse "onboarding@resend.dev" verwendet
+ *   (funktioniert sofort, wirkt aber weniger professionell im Posteingang).
  *
- * So bindest du später z. B. Resend oder Nodemailer an:
- *
- * --- Beispiel mit Resend ---
- * import { Resend } from "resend";
- * const resend = new Resend(process.env.RESEND_API_KEY);
- * await resend.emails.send({
- *   from: "Website <kontakt@ihre-domain.de>",
- *   to: siteConfig.contact.email,
- *   replyTo: values.email,
- *   subject: `Neue Anfrage über die Website (${values.subject})`,
- *   text: buildPlainTextMessage(values),
- * });
- *
- * --- Beispiel mit Nodemailer (z. B. via SMTP) ---
- * import nodemailer from "nodemailer";
- * const transporter = nodemailer.createTransport({
- *   host: process.env.SMTP_HOST,
- *   port: Number(process.env.SMTP_PORT),
- *   auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
- * });
- * await transporter.sendMail({
- *   from: process.env.SMTP_FROM,
- *   to: siteConfig.contact.email,
- *   replyTo: values.email,
- *   subject: `Neue Anfrage über die Website (${values.subject})`,
- *   text: buildPlainTextMessage(values),
- * });
- *
- * In beiden Fällen: API-Keys/Zugangsdaten ausschließlich über Umgebungsvariablen
- * (.env.local, niemals einchecken) einlesen und in README dokumentieren.
+ * Im Entwicklungsmodus (npm run dev) wird zusätzlich immer eine strukturierte
+ * Vorschau der Anfrage in der Server-Konsole ausgegeben.
  */
 
 function buildPlainTextMessage(values: ContactFormValues): string {
@@ -74,36 +56,59 @@ function buildPlainTextMessage(values: ContactFormValues): string {
 }
 
 /**
- * Versendet eine Kontaktanfrage. Wirft bewusst keine Rohdaten in Logs, die
- * über das für die lokale Entwicklung sinnvolle Maß hinausgehen.
+ * Versendet eine Kontaktanfrage per E-Mail über Resend. Wirft bewusst keine
+ * Rohdaten in Logs, die über das für die lokale Entwicklung sinnvolle Maß
+ * hinausgehen.
  */
 export async function sendContactMessage(
   values: ContactFormValues
 ): Promise<{ success: boolean }> {
   const isDev = process.env.NODE_ENV !== "production";
+  const subjectLabel =
+    values.subject === "tier" ? "Tier" : values.subject === "gutschein" ? "Gutschein verschenken" : "Mensch";
 
   if (isDev) {
     // Strukturierte Ausgabe ausschließlich für die lokale Entwicklung.
-    // In Produktion sollte hier stattdessen ein echter E-Mail-Versand erfolgen.
     console.info("[Kontaktformular] Neue Anfrage (nur Entwicklungsmodus):");
     console.info(buildPlainTextMessage(values));
   }
 
-  // TODO: Hier echten E-Mail-Versand einbinden (siehe Beispiele oben),
-  // sobald ein E-Mail-Anbieter ausgewählt wurde. Bis dahin gilt jede Anfrage
-  // im Entwicklungsmodus als "erfolgreich versendet".
+  const apiKey = process.env.RESEND_API_KEY;
 
-  if (!isDev) {
-    // Verhindert, dass in einer produktiven Umgebung ohne konfigurierten
-    // E-Mail-Versand fälschlich eine Erfolgsmeldung angezeigt wird.
-    const emailServiceConfigured = Boolean(process.env.CONTACT_EMAIL_PROVIDER);
-    if (!emailServiceConfigured) {
-      console.error(
-        "[Kontaktformular] Kein E-Mail-Anbieter konfiguriert (CONTACT_EMAIL_PROVIDER fehlt)."
-      );
-      return { success: false };
+  if (!apiKey) {
+    if (isDev) {
+      // Ohne API-Key gilt im Entwicklungsmodus jede Anfrage als
+      // "erfolgreich versendet", damit lokal weiterentwickelt werden kann,
+      // ohne einen echten Resend-Zugang zu benötigen.
+      return { success: true };
     }
+
+    console.error(
+      "[Kontaktformular] Kein E-Mail-Anbieter konfiguriert (RESEND_API_KEY fehlt)."
+    );
+    return { success: false };
   }
 
-  return { success: true };
+  try {
+    const resend = new Resend(apiKey);
+    const fromAddress = process.env.CONTACT_FROM_EMAIL || "Reiki Studio Website <onboarding@resend.dev>";
+
+    const { error } = await resend.emails.send({
+      from: fromAddress,
+      to: siteConfig.contact.email,
+      replyTo: values.email,
+      subject: `Neue Anfrage über die Website (${subjectLabel})`,
+      text: buildPlainTextMessage(values)
+    });
+
+    if (error) {
+      console.error("[Kontaktformular] Resend-Fehler beim Versand.");
+      return { success: false };
+    }
+
+    return { success: true };
+  } catch {
+    console.error("[Kontaktformular] Unerwarteter Fehler beim Versand über Resend.");
+    return { success: false };
+  }
 }
