@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 import SkipLink from "@/components/layout/SkipLink";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
