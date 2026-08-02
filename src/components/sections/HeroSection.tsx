@@ -30,8 +30,8 @@ export default function HeroSection() {
           label="Ruhiges Porträt der Reiki-Anbieterin oder Detailaufnahme des Behandlungsraums"
           alt={`Eingang zum ${siteConfig.practiceName} in ${siteConfig.address.city} mit Pflanzen und Holzelementen`}
           src="/images/reiki-studio3.png"
-          aspectClassName="aspect-[4/3]"
-          className="w-full max-w-md mx-auto lg:mx-0"
+          aspectClassName="aspect-[1149/1369]"
+          className="w-full max-w-sm mx-auto lg:mx-0"
           priority
         />
       </Container>
