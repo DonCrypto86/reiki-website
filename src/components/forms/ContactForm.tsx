@@ -211,7 +211,7 @@ export default function ContactForm() {
             id="service"
             name="service"
             type="text"
-            placeholder="z. B. Reiki-Anwendung, ca. 60 Minuten"
+            placeholder="z. B. Reiki-Anwendung, ca. 40 Minuten"
             value={values.service}
             onChange={(event) => updateField("service", event.target.value)}
             className={inputStyles}

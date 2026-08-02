@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { buildMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
 import Container from "@/components/ui/Container";
@@ -80,6 +81,24 @@ export default function PricingPage() {
           <p className="mt-4 text-ink-light">{pricing.voucher.text}</p>
           <p className="mt-3 text-sm text-ink-light">{pricing.voucher.note}</p>
           <p className="mt-1 text-sm font-medium text-forest">{pricing.voucher.priceNote}</p>
+
+          <div className="mt-8 flex items-center justify-center gap-6">
+            <Image
+              src="/images/gutschein1.jpeg"
+              alt="Beispiel eines Reiki-Gutscheins von Reiki Studio Petra In-Albon"
+              width={140}
+              height={112}
+              className="relative h-auto w-28 cursor-zoom-in rounded-lg shadow-soft ring-1 ring-beige-dark/60 transition-transform duration-300 ease-out hover:z-20 hover:scale-150 sm:w-32"
+            />
+            <Image
+              src="/images/gutschein2.jpeg"
+              alt="Beispiel eines Reiki-Gutscheins von Reiki Studio Petra In-Albon, Ansicht 2"
+              width={140}
+              height={144}
+              className="relative h-auto w-28 cursor-zoom-in rounded-lg shadow-soft ring-1 ring-beige-dark/60 transition-transform duration-300 ease-out hover:z-20 hover:scale-150 sm:w-32"
+            />
+          </div>
+
           <div className="mt-6">
             <PrimaryButton href={pricing.voucher.cta.href}>
               {pricing.voucher.cta.label}
