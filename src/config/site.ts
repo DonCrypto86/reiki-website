@@ -441,7 +441,7 @@ export const siteConfig = {
     },
     clothing: {
       heading: "Was ziehe ich am besten an?",
-      text: "Bequeme, bequem sitzende Kleidung ist ideal. Sie bleiben während der gesamten Anwendung vollständig bekleidet."
+      text: "Bequeme, locker sitzende Kleidung ist ideal. Sie bleiben während der gesamten Anwendung vollständig bekleidet."
     },
     duration: {
       heading: "Wie lange dauert eine Sitzung?",
