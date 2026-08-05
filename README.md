@@ -221,3 +221,44 @@ Formular-/E-Mail-Dienstleister und weitere Drittanbieter angepasst werden.
   Platzhalter bzw. Beispieltexte (siehe Checkliste oben).
 - Der E-Mail-Versand ist bewusst nur als Abstraktion vorbereitet, aber noch
   nicht an einen konkreten Anbieter angebunden.
+
+## 14. Erfahrungsberichte-Verwaltung für Petra
+
+Unter `/erfahrungen-verwalten` gibt es ein passwortgeschütztes, nicht
+öffentlich verlinktes Admin-Tool, mit dem Petra selbst neue
+Erfahrungsberichte hinzufügen kann, ohne dass dafür Code geändert und neu
+bereitgestellt werden muss. Neue Berichte werden zunächst als Entwurf
+gespeichert und sind erst nach Klick auf "Veröffentlichen" auf der Website
+sichtbar (Startseite und `/erfahrungen`).
+
+Technischer Aufbau:
+
+- Die Daten liegen in einem kleinen Redis-Datenspeicher (Upstash for Redis,
+  über die Vercel-Marketplace-Integration), nicht mehr in
+  `siteConfig.testimonials`. Diese feste Liste dient nur noch als
+  Ausgangsbestand, solange kein Datenspeicher eingerichtet ist.
+- Der Zugriffsschutz erfolgt über `src/middleware.ts` und ein gemeinsames
+  Passwort (kein individuelles Nutzerkonto, da nur Petra Zugriff braucht).
+
+Einrichtung (einmalig):
+
+1. Im Vercel-Projekt unter "Storage" eine neue Datenbank vom Typ
+   **"Upstash for Redis"** (bzw. "KV") anlegen und mit diesem Projekt
+   verbinden. Vercel setzt dabei automatisch die Umgebungsvariablen
+   `KV_REST_API_URL` und `KV_REST_API_TOKEN`.
+2. Zusätzlich in den Vercel-Projekteinstellungen unter "Environment
+   Variables" ergänzen:
+   - `ADMIN_PASSWORD` – das Passwort, mit dem sich Petra anmeldet (frei
+     wählbar, am besten nicht das gleiche wie bei E-Mail-Konten).
+   - `ADMIN_SESSION_SECRET` – eine beliebige lange Zufallszeichenfolge, z. B.
+     mit `openssl rand -hex 32` erzeugt. Einmal setzen und danach nicht mehr
+     ändern (sonst werden alle angemeldeten Sitzungen ungültig).
+3. Redeploy auslösen, damit die neuen Umgebungsvariablen aktiv werden.
+4. Petra die Adresse `https://reiki-mensch-tier.ch/erfahrungen-verwalten`
+   sowie das gewählte Passwort mitteilen. Die Seite ist bewusst nirgends
+   verlinkt (auch nicht für Suchmaschinen, siehe `robots.ts`) – am besten als
+   Lesezeichen speichern.
+
+Die zugehörigen Dateien: `src/lib/testimonialsStore.ts` (Datenzugriff),
+`src/lib/adminAuth.ts` (Login-Logik), `src/app/api/admin/*` (API-Routen),
+`src/app/erfahrungen-verwalten/*` (Login- und Verwaltungsseite).

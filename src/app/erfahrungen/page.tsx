@@ -5,6 +5,7 @@ import Container from "@/components/ui/Container";
 import TestimonialCard from "@/components/ui/TestimonialCard";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import LegalNotice from "@/components/ui/LegalNotice";
+import { getPublishedTestimonials } from "@/lib/testimonialsStore";
 
 export const metadata: Metadata = buildMetadata({
   title: "Erfahrungen – Reiki in Gümmenen im Raum Bern",
@@ -18,8 +19,9 @@ const breadcrumbJsonLd = buildBreadcrumbJsonLd([
   { name: "Erfahrungen", path: "/erfahrungen" }
 ]);
 
-export default function ReviewsPage() {
-  const { reviewsPage, testimonials } = siteConfig;
+export default async function ReviewsPage() {
+  const { reviewsPage } = siteConfig;
+  const testimonials = await getPublishedTestimonials();
 
   return (
     <section className="py-14 sm:py-20">
