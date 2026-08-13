@@ -453,7 +453,7 @@ export const siteConfig = {
     },
     homeVisit: {
       heading: "Praxis oder Hausbesuch",
-      text: "Anwendungen finden im Studio statt. Auf Wunsch sind auch Hausbesuche möglich, etwa wenn Ihnen die gewohnte Umgebung wichtiger ist. Details und Fahrtkosten finden Sie auf der Seite Ablauf und Preise."
+      text: "Anwendungen finden im Studio statt. Auf Wunsch sind auch Hausbesuche möglich, etwa wenn Ihnen die gewohnte Umgebung wichtiger ist. Details und Fahrkosten finden Sie auf der Seite Ablauf und Preise."
     },
     /**
      * Bewusst zurückhaltend formuliert: Herkunft/Konzept sachlich
@@ -530,7 +530,7 @@ export const siteConfig = {
     },
     homeVisits: {
       heading: "Hausbesuche",
-      text: "Hausbesuche sind grundsätzlich möglich, damit sich Ihr Tier in seiner gewohnten Umgebung befindet. Details und Fahrtkosten finden Sie auf der Seite Ablauf und Preise."
+      text: "Hausbesuche sind grundsätzlich möglich, damit sich Ihr Tier in seiner gewohnten Umgebung befindet. Details und Fahrkosten finden Sie auf der Seite Ablauf und Preise."
     },
     ownerPresence: {
       heading: "Anwesenheit der Halterin oder des Halters",
@@ -571,7 +571,7 @@ export const siteConfig = {
         {
           label: "Hausbesuch",
           price: "+ CHF 10.-",
-          note: "zzgl. Fahrtkosten (siehe „Gut zu wissen“ unten)"
+          note: "zzgl. Fahrkosten (siehe „Gut zu wissen“ unten)"
         },
         {
           label: "Fernbehandlung",
@@ -590,7 +590,7 @@ export const siteConfig = {
         {
           label: "Hausbesuch",
           price: "+ CHF 10.-",
-          note: "zzgl. Fahrtkosten (siehe „Gut zu wissen“ unten)"
+          note: "zzgl. Fahrkosten (siehe „Gut zu wissen“ unten)"
         }
       ] satisfies PriceItem[]
     },
@@ -614,8 +614,8 @@ export const siteConfig = {
           text: "Absagen sind bis 24 Stunden vor dem Termin kostenlos möglich."
         },
         {
-          title: "Fahrtkosten",
-          text: "Bei Hausbesuchen kommen CHF 20.- Fahrkosten (bis 10 km) sowie CHF 1.- pro zusätzlichem Kilometer dazu. Bei Besuchen bei Heimbewohnerinnen/-bewohnern oder Firmenbesuchen werden die Fahrtkosten ab zwei aufeinanderfolgenden Sitzungen nur einmal berechnet."
+          title: "Fahrkosten",
+          text: "Bei Hausbesuchen kommen CHF 20.- Fahrkosten (bis 10 km) sowie CHF 1.- pro zusätzlichem Kilometer dazu. Bei Besuchen bei Heimbewohnerinnen/-bewohnern oder Firmenbesuchen werden die Fahrkosten ab zwei aufeinanderfolgenden Sitzungen nur einmal berechnet."
         },
         {
           title: "Terminvereinbarung",
@@ -660,6 +660,11 @@ export const siteConfig = {
         date: "2026-07-04",
         title: "Studioeröffnung & Einweihungsfeier",
         text: "Am 4. Juli 2026 feiern wir die Eröffnung und Einweihung des Reiki Studios in Gümmenen. Herzlich willkommen!"
+      },
+      {
+        date: "2026-09-22",
+        title: "Reiki-Behandlung für Mitarbeitende im Betagtenzentrum Laupen",
+        text: "Am 22. September und 1. Oktober 2026 biete ich Reiki-Behandlungen für die Mitarbeitenden des Betagtenzentrums Laupen an."
       }
     ] satisfies NewsPost[]
   },
@@ -723,7 +728,7 @@ export const siteConfig = {
     {
       question: "Sind Hausbesuche möglich?",
       answer:
-        "Ja, sowohl für Menschen als auch für Tiere sind Hausbesuche möglich. Details und mögliche Fahrtkosten besprechen wir vorab."
+        "Ja, sowohl für Menschen als auch für Tiere sind Hausbesuche möglich. Details und mögliche Fahrkosten besprechen wir vorab."
     },
     {
       question: "Wie kann ich einen Termin absagen?",
