@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel, Montserrat } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import SkipLink from "@/components/layout/SkipLink";
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
