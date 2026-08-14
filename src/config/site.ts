@@ -591,6 +591,10 @@ export const siteConfig = {
           label: "Hausbesuch",
           price: "+ CHF 10.-",
           note: "zzgl. Fahrkosten (siehe „Gut zu wissen“ unten)"
+        },
+        {
+          label: "Fernbehandlung",
+          price: "CHF 30.-"
         }
       ] satisfies PriceItem[]
     },
