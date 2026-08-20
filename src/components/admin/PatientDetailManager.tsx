@@ -207,6 +207,11 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
     a.date.localeCompare(b.date)
   );
 
+  const today = todayIso();
+  const nextAppointment = sortedAppointments.find(
+    (appointment) => !appointment.completed && appointment.date >= today
+  );
+
   return (
     <div className="flex flex-col gap-10">
       <div>
@@ -365,62 +370,18 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
                 {formatAddress(patient.street, patient.postalCode, patient.city) || "–"}
               </dd>
             </div>
+            <div className="sm:col-span-2">
+              <dt className="text-sm font-medium text-ink-light">Nächster Termin</dt>
+              <dd className="mt-0.5 text-ink">
+                {nextAppointment
+                  ? `${formatDate(nextAppointment.date)}${
+                      nextAppointment.time ? `, ${nextAppointment.time} Uhr` : ""
+                    }`
+                  : "–"}
+              </dd>
+            </div>
           </dl>
         )}
-      </section>
-
-      <section>
-        <h2 className="text-lg">Tiere ({patient.pets.length})</h2>
-        <div className="mt-4 flex flex-col gap-2">
-          {patient.pets.map((pet) => (
-            <div
-              key={pet.id}
-              className="flex items-center justify-between gap-3 rounded-lg bg-white px-4 py-3 ring-1 ring-beige-dark/40"
-            >
-              <span className="text-ink">
-                {pet.name}
-                {pet.species ? <span className="text-ink-light"> · {pet.species}</span> : null}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleRemovePet(pet.id)}
-                className="text-ink-light hover:text-terracotta-dark"
-                aria-label={`${pet.name} entfernen`}
-              >
-                <Trash2 className="h-4 w-4" aria-hidden="true" />
-              </button>
-            </div>
-          ))}
-        </div>
-        <form onSubmit={handleAddPet} className="mt-4 flex flex-wrap items-end gap-3">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="pet-name" className={labelStyles}>
-              Name des Tieres
-            </label>
-            <input
-              id="pet-name"
-              value={petName}
-              onChange={(event) => setPetName(event.target.value)}
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="pet-species" className={labelStyles}>
-              Tierart
-            </label>
-            <input
-              id="pet-species"
-              value={petSpecies}
-              onChange={(event) => setPetSpecies(event.target.value)}
-              placeholder="z. B. Hund"
-              className={inputStyles}
-            />
-          </div>
-          <SecondaryButton type="submit" disabled={isSaving || !petName.trim()}>
-            <Plus className="h-4 w-4" aria-hidden="true" />
-            Tier hinzufügen
-          </SecondaryButton>
-        </form>
       </section>
       </div>
 
@@ -620,6 +581,60 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
           <SecondaryButton type="submit" disabled={isSaving || !appointmentDate}>
             <Plus className="h-4 w-4" aria-hidden="true" />
             Termin hinzufügen
+          </SecondaryButton>
+        </form>
+      </section>
+
+      <section>
+        <h2 className="text-lg">Tiere ({patient.pets.length})</h2>
+        <div className="mt-4 flex flex-col gap-2">
+          {patient.pets.map((pet) => (
+            <div
+              key={pet.id}
+              className="flex items-center justify-between gap-3 rounded-lg bg-white px-4 py-3 ring-1 ring-beige-dark/40"
+            >
+              <span className="text-ink">
+                {pet.name}
+                {pet.species ? <span className="text-ink-light"> · {pet.species}</span> : null}
+              </span>
+              <button
+                type="button"
+                onClick={() => handleRemovePet(pet.id)}
+                className="text-ink-light hover:text-terracotta-dark"
+                aria-label={`${pet.name} entfernen`}
+              >
+                <Trash2 className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </div>
+          ))}
+        </div>
+        <form onSubmit={handleAddPet} className="mt-4 flex flex-wrap items-end gap-3">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="pet-name" className={labelStyles}>
+              Name des Tieres
+            </label>
+            <input
+              id="pet-name"
+              value={petName}
+              onChange={(event) => setPetName(event.target.value)}
+              className={inputStyles}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="pet-species" className={labelStyles}>
+              Tierart
+            </label>
+            <input
+              id="pet-species"
+              value={petSpecies}
+              onChange={(event) => setPetSpecies(event.target.value)}
+              placeholder="z. B. Hund"
+              className={inputStyles}
+            />
+          </div>
+          <SecondaryButton type="submit" disabled={isSaving || !petName.trim()}>
+            <Plus className="h-4 w-4" aria-hidden="true" />
+            Tier hinzufügen
           </SecondaryButton>
         </form>
       </section>
