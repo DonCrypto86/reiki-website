@@ -207,11 +207,6 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
     a.date.localeCompare(b.date)
   );
 
-  const today = todayIso();
-  const nextAppointment = sortedAppointments.find(
-    (appointment) => !appointment.completed && appointment.date >= today
-  );
-
   return (
     <div className="flex flex-col gap-10">
       <div>
@@ -370,18 +365,102 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
                 {formatAddress(patient.street, patient.postalCode, patient.city) || "–"}
               </dd>
             </div>
-            <div className="sm:col-span-2">
-              <dt className="text-sm font-medium text-ink-light">Nächster Termin</dt>
-              <dd className="mt-0.5 text-ink">
-                {nextAppointment
-                  ? `${formatDate(nextAppointment.date)}${
-                      nextAppointment.time ? `, ${nextAppointment.time} Uhr` : ""
-                    }`
-                  : "–"}
-              </dd>
-            </div>
           </dl>
         )}
+      </section>
+
+      <section>
+        <h2 className="text-lg">Termine ({patient.appointments.length})</h2>
+        <div className="mt-4 flex flex-col gap-2">
+          {sortedAppointments.map((appointment) => (
+            <div
+              key={appointment.id}
+              className={`flex flex-wrap items-center justify-between gap-3 rounded-lg px-4 py-3 ring-1 ${
+                appointment.completed
+                  ? "bg-beige/60 ring-beige-dark/40"
+                  : "bg-white ring-beige-dark/40"
+              }`}
+            >
+              <div className={appointment.completed ? "text-ink-light line-through" : "text-ink"}>
+                <span className="font-medium">
+                  {formatDate(appointment.date)}
+                  {appointment.time ? `, ${appointment.time} Uhr` : ""}
+                </span>
+                {appointment.note ? <span> – {appointment.note}</span> : null}
+              </div>
+              <div className="flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleToggleAppointment(appointment.id)}
+                  className="text-ink-light hover:text-forest"
+                  aria-label={
+                    appointment.completed ? "Als offen markieren" : "Als erledigt markieren"
+                  }
+                  title={appointment.completed ? "Als offen markieren" : "Als erledigt markieren"}
+                >
+                  {appointment.completed ? (
+                    <Undo2 className="h-4 w-4" aria-hidden="true" />
+                  ) : (
+                    <Check className="h-4 w-4" aria-hidden="true" />
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveAppointment(appointment.id)}
+                  className="text-ink-light hover:text-terracotta-dark"
+                  aria-label="Termin löschen"
+                >
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <form onSubmit={handleAddAppointment} className="mt-4 flex flex-col gap-3">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="appointment-date" className={labelStyles}>
+              Datum
+            </label>
+            <input
+              id="appointment-date"
+              type="date"
+              required
+              value={appointmentDate}
+              onChange={(event) => setAppointmentDate(event.target.value)}
+              className={inputStyles}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="appointment-time" className={labelStyles}>
+              Uhrzeit (optional)
+            </label>
+            <input
+              id="appointment-time"
+              type="time"
+              value={appointmentTime}
+              onChange={(event) => setAppointmentTime(event.target.value)}
+              className={inputStyles}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="appointment-note" className={labelStyles}>
+              Notiz (optional)
+            </label>
+            <input
+              id="appointment-note"
+              value={appointmentNote}
+              onChange={(event) => setAppointmentNote(event.target.value)}
+              placeholder="z. B. Nachfolgebehandlung"
+              className={inputStyles}
+            />
+          </div>
+          <div>
+            <SecondaryButton type="submit" disabled={isSaving || !appointmentDate}>
+              <Plus className="h-4 w-4" aria-hidden="true" />
+              Termin hinzufügen
+            </SecondaryButton>
+          </div>
+        </form>
       </section>
       </div>
 
@@ -492,98 +571,6 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
       </section>
       </div>
       </div>
-
-      <section>
-        <h2 className="text-lg">Termine ({patient.appointments.length})</h2>
-        <div className="mt-4 flex flex-col gap-2">
-          {sortedAppointments.map((appointment) => (
-            <div
-              key={appointment.id}
-              className={`flex flex-wrap items-center justify-between gap-3 rounded-lg px-4 py-3 ring-1 ${
-                appointment.completed
-                  ? "bg-beige/60 ring-beige-dark/40"
-                  : "bg-white ring-beige-dark/40"
-              }`}
-            >
-              <div className={appointment.completed ? "text-ink-light line-through" : "text-ink"}>
-                <span className="font-medium">
-                  {formatDate(appointment.date)}
-                  {appointment.time ? `, ${appointment.time} Uhr` : ""}
-                </span>
-                {appointment.note ? <span> – {appointment.note}</span> : null}
-              </div>
-              <div className="flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => handleToggleAppointment(appointment.id)}
-                  className="text-ink-light hover:text-forest"
-                  aria-label={
-                    appointment.completed ? "Als offen markieren" : "Als erledigt markieren"
-                  }
-                  title={appointment.completed ? "Als offen markieren" : "Als erledigt markieren"}
-                >
-                  {appointment.completed ? (
-                    <Undo2 className="h-4 w-4" aria-hidden="true" />
-                  ) : (
-                    <Check className="h-4 w-4" aria-hidden="true" />
-                  )}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => handleRemoveAppointment(appointment.id)}
-                  className="text-ink-light hover:text-terracotta-dark"
-                  aria-label="Termin löschen"
-                >
-                  <Trash2 className="h-4 w-4" aria-hidden="true" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <form onSubmit={handleAddAppointment} className="mt-4 flex flex-wrap items-end gap-3">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="appointment-date" className={labelStyles}>
-              Datum
-            </label>
-            <input
-              id="appointment-date"
-              type="date"
-              required
-              value={appointmentDate}
-              onChange={(event) => setAppointmentDate(event.target.value)}
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="appointment-time" className={labelStyles}>
-              Uhrzeit (optional)
-            </label>
-            <input
-              id="appointment-time"
-              type="time"
-              value={appointmentTime}
-              onChange={(event) => setAppointmentTime(event.target.value)}
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="appointment-note" className={labelStyles}>
-              Notiz (optional)
-            </label>
-            <input
-              id="appointment-note"
-              value={appointmentNote}
-              onChange={(event) => setAppointmentNote(event.target.value)}
-              placeholder="z. B. Nachfolgebehandlung"
-              className={inputStyles}
-            />
-          </div>
-          <SecondaryButton type="submit" disabled={isSaving || !appointmentDate}>
-            <Plus className="h-4 w-4" aria-hidden="true" />
-            Termin hinzufügen
-          </SecondaryButton>
-        </form>
-      </section>
 
       <section>
         <h2 className="text-lg">Tiere ({patient.pets.length})</h2>
