@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/erfahrungen-verwalten", "/api/"]
+      disallow: ["/erfahrungen-verwalten", "/patienten-verwalten", "/api/"]
     },
     sitemap: `${siteConfig.url}/sitemap.xml`
   };

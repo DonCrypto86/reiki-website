@@ -262,3 +262,38 @@ Einrichtung (einmalig):
 Die zugehörigen Dateien: `src/lib/testimonialsStore.ts` (Datenzugriff),
 `src/lib/adminAuth.ts` (Login-Logik), `src/app/api/admin/*` (API-Routen),
 `src/app/erfahrungen-verwalten/*` (Login- und Verwaltungsseite).
+
+## 15. Patienten-Verwaltung (CRM) für Petra
+
+Unter `/patienten-verwalten` gibt es ein zweites, unabhängiges
+passwortgeschütztes Tool für Petra: eine einfache Patientenkartei mit
+Kontaktdaten, zugehörigen Tieren (für Reiki für Tiere), einem
+Behandlungsverlauf (Notizen mit Datum) und Terminen. Kommende Termine
+werden auf der Übersichtsseite gesammelt angezeigt.
+
+**Wichtig:** Hier können unter Umständen besonders schützenswerte
+Personendaten (Gesundheitsdaten) hinterlegt werden. Das Tool ist technisch
+sauber abgesichert (eigenes Passwort, nicht öffentlich verlinkt, von
+Suchmaschinen ausgeschlossen), ersetzt aber keine rechtliche Prüfung, was
+Petra dokumentieren darf bzw. muss – dazu im Zweifel kurz rechtlich
+beraten lassen.
+
+Nutzt denselben Datenspeicher wie die Erfahrungsberichte-Verwaltung
+(Upstash for Redis, siehe Abschnitt 14), aber ein eigenes Passwort und
+einen eigenen Sitzungs-Cookie, damit ein kompromittiertes Passwort nicht
+automatisch Zugriff auf das jeweils andere Tool gewährt.
+
+Einrichtung (einmalig, sofern Abschnitt 14 bereits eingerichtet ist):
+
+1. In den Vercel-Projekteinstellungen unter "Environment Variables"
+   ergänzen: `PATIENTS_ADMIN_PASSWORD` – ein eigenes, möglichst starkes
+   Passwort, verschieden von `ADMIN_PASSWORD`.
+2. Redeploy auslösen.
+3. Petra die Adresse `https://reiki-mensch-tier.ch/patienten-verwalten`
+   sowie das Passwort mitteilen. Auch diese Seite ist nirgends verlinkt –
+   am besten als eigenes Lesezeichen speichern.
+
+Die zugehörigen Dateien: `src/lib/patientsStore.ts` (Datenzugriff),
+`src/lib/kv.ts` (gemeinsamer Datenspeicher-Zugriff), `src/app/api/patienten*`
+(API-Routen), `src/app/patienten-verwalten/*` (Login- und
+Verwaltungsseiten).

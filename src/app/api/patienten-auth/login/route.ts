@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
   const password = typeof body.password === "string" ? body.password : "";
 
-  if (!verifyPassword("testimonials", password)) {
+  if (!verifyPassword("patients", password)) {
     return NextResponse.json(
       { success: false, message: "Passwort ist nicht korrekt." },
       { status: 401 }
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 
   let sessionValue: string;
   try {
-    sessionValue = await createSessionCookieValue("testimonials");
+    sessionValue = await createSessionCookieValue("patients");
   } catch {
     return NextResponse.json(
       {
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   }
 
   const response = NextResponse.json({ success: true });
-  response.cookies.set(getSessionCookieName("testimonials"), sessionValue, {
+  response.cookies.set(getSessionCookieName("patients"), sessionValue, {
     httpOnly: true,
     secure: true,
     sameSite: "lax",

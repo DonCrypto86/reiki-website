@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 
 export async function POST() {
   const response = NextResponse.json({ success: true });
-  response.cookies.set(getSessionCookieName("testimonials"), "", {
+  response.cookies.set(getSessionCookieName("patients"), "", {
     httpOnly: true,
     secure: true,
     sameSite: "lax",
