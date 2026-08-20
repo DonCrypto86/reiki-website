@@ -10,7 +10,15 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  let body: { name?: string; birthDate?: string; phone?: string; email?: string; address?: string };
+  let body: {
+    name?: string;
+    birthDate?: string;
+    phone?: string;
+    email?: string;
+    street?: string;
+    postalCode?: string;
+    city?: string;
+  };
 
   try {
     body = await request.json();
@@ -33,7 +41,9 @@ export async function POST(request: Request) {
       birthDate: typeof body.birthDate === "string" ? body.birthDate : "",
       phone: typeof body.phone === "string" ? body.phone : "",
       email: typeof body.email === "string" ? body.email : "",
-      address: typeof body.address === "string" ? body.address : ""
+      street: typeof body.street === "string" ? body.street : "",
+      postalCode: typeof body.postalCode === "string" ? body.postalCode : "",
+      city: typeof body.city === "string" ? body.city : ""
     });
     return NextResponse.json({ success: true, patient });
   } catch (error) {

@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Loader2, Trash2, Plus, Check, Undo2 } from "lucide-react";
+import { ArrowLeft, Loader2, Trash2, Plus, Check, Undo2, Pencil } from "lucide-react";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SecondaryButton from "@/components/ui/SecondaryButton";
 import type { Appointment, Patient, Pet, SessionNote } from "@/lib/patientsStore";
@@ -25,18 +25,45 @@ function todayIso(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
+function formatAddress(street: string, postalCode: string, city: string): string {
+  const line2 = [postalCode, city].filter(Boolean).join(" ");
+  return [street, line2].filter(Boolean).join(", ");
+}
+
+type ContactFields = {
+  name: string;
+  birthDate: string;
+  phone: string;
+  email: string;
+  street: string;
+  postalCode: string;
+  city: string;
+};
+
+function contactFieldsFromPatient(patient: Patient): ContactFields {
+  return {
+    name: patient.name,
+    birthDate: patient.birthDate,
+    phone: patient.phone,
+    email: patient.email,
+    street: patient.street,
+    postalCode: patient.postalCode,
+    city: patient.city
+  };
+}
+
 export default function PatientDetailManager({ initialPatient }: PatientDetailManagerProps) {
   const router = useRouter();
   const [patient, setPatient] = useState<Patient>(initialPatient);
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const [contact, setContact] = useState({
-    name: initialPatient.name,
-    birthDate: initialPatient.birthDate,
-    phone: initialPatient.phone,
-    email: initialPatient.email,
-    address: initialPatient.address
+  const [isEditingContact, setIsEditingContact] = useState(false);
+  const [contact, setContact] = useState<ContactFields>(contactFieldsFromPatient(initialPatient));
+
+  const [clinical, setClinical] = useState({
+    complaints: initialPatient.complaints,
+    treatmentOutcome: initialPatient.treatmentOutcome
   });
 
   const [petName, setPetName] = useState("");
@@ -75,9 +102,26 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
     }
   }
 
+  function handleStartEditContact() {
+    setContact(contactFieldsFromPatient(patient));
+    setIsEditingContact(true);
+  }
+
+  function handleCancelEditContact() {
+    setIsEditingContact(false);
+  }
+
   async function handleSaveContact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    await persist(contact);
+    const ok = await persist(contact);
+    if (ok) {
+      setIsEditingContact(false);
+    }
+  }
+
+  async function handleSaveClinical(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await persist(clinical);
   }
 
   async function handleAddPet(event: FormEvent<HTMLFormElement>) {
@@ -181,83 +225,148 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
       <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
       <div className="flex flex-col gap-10">
       <section className="rounded-xl2 bg-cream-light p-6 shadow-soft ring-1 ring-beige-dark/60 sm:p-8">
-        <h2 className="text-lg">Kontaktdaten</h2>
-        <form onSubmit={handleSaveContact} className="mt-4 grid gap-4 sm:grid-cols-2">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="contact-name" className={labelStyles}>
-              Name
-            </label>
-            <input
-              id="contact-name"
-              required
-              value={contact.name}
-              onChange={(event) => setContact((prev) => ({ ...prev, name: event.target.value }))}
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="contact-birthdate" className={labelStyles}>
-              Geburtsdatum
-            </label>
-            <input
-              id="contact-birthdate"
-              type="date"
-              value={contact.birthDate}
-              onChange={(event) =>
-                setContact((prev) => ({ ...prev, birthDate: event.target.value }))
-              }
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="contact-phone" className={labelStyles}>
-              Telefon
-            </label>
-            <input
-              id="contact-phone"
-              value={contact.phone}
-              onChange={(event) => setContact((prev) => ({ ...prev, phone: event.target.value }))}
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="contact-email" className={labelStyles}>
-              E-Mail
-            </label>
-            <input
-              id="contact-email"
-              type="email"
-              value={contact.email}
-              onChange={(event) => setContact((prev) => ({ ...prev, email: event.target.value }))}
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="contact-address" className={labelStyles}>
-              Adresse
-            </label>
-            <input
-              id="contact-address"
-              value={contact.address}
-              onChange={(event) =>
-                setContact((prev) => ({ ...prev, address: event.target.value }))
-              }
-              className={inputStyles}
-            />
-          </div>
-          <div className="sm:col-span-2">
-            <PrimaryButton type="submit" disabled={isSaving}>
-              {isSaving ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                  Wird gespeichert…
-                </>
-              ) : (
-                "Kontaktdaten speichern"
-              )}
-            </PrimaryButton>
-          </div>
-        </form>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-lg">Kontaktdaten</h2>
+          {!isEditingContact ? (
+            <SecondaryButton type="button" onClick={handleStartEditContact} className="px-4 py-2 text-xs">
+              <Pencil className="h-3.5 w-3.5" aria-hidden="true" />
+              Daten bearbeiten
+            </SecondaryButton>
+          ) : null}
+        </div>
+
+        {isEditingContact ? (
+          <form onSubmit={handleSaveContact} className="mt-4 grid gap-4 sm:grid-cols-2">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-name" className={labelStyles}>
+                Name
+              </label>
+              <input
+                id="contact-name"
+                required
+                value={contact.name}
+                onChange={(event) => setContact((prev) => ({ ...prev, name: event.target.value }))}
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-birthdate" className={labelStyles}>
+                Geburtsdatum
+              </label>
+              <input
+                id="contact-birthdate"
+                type="date"
+                value={contact.birthDate}
+                onChange={(event) =>
+                  setContact((prev) => ({ ...prev, birthDate: event.target.value }))
+                }
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-phone" className={labelStyles}>
+                Telefon
+              </label>
+              <input
+                id="contact-phone"
+                value={contact.phone}
+                onChange={(event) => setContact((prev) => ({ ...prev, phone: event.target.value }))}
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-email" className={labelStyles}>
+                E-Mail
+              </label>
+              <input
+                id="contact-email"
+                type="email"
+                value={contact.email}
+                onChange={(event) => setContact((prev) => ({ ...prev, email: event.target.value }))}
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5 sm:col-span-2">
+              <label htmlFor="contact-street" className={labelStyles}>
+                Strasse
+              </label>
+              <input
+                id="contact-street"
+                value={contact.street}
+                onChange={(event) =>
+                  setContact((prev) => ({ ...prev, street: event.target.value }))
+                }
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-postalcode" className={labelStyles}>
+                PLZ
+              </label>
+              <input
+                id="contact-postalcode"
+                value={contact.postalCode}
+                onChange={(event) =>
+                  setContact((prev) => ({ ...prev, postalCode: event.target.value }))
+                }
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-city" className={labelStyles}>
+                Ort
+              </label>
+              <input
+                id="contact-city"
+                value={contact.city}
+                onChange={(event) => setContact((prev) => ({ ...prev, city: event.target.value }))}
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-wrap gap-3 sm:col-span-2">
+              <PrimaryButton type="submit" disabled={isSaving}>
+                {isSaving ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                    Wird gespeichert…
+                  </>
+                ) : (
+                  "Speichern"
+                )}
+              </PrimaryButton>
+              <SecondaryButton type="button" onClick={handleCancelEditContact} disabled={isSaving}>
+                Abbrechen
+              </SecondaryButton>
+            </div>
+          </form>
+        ) : (
+          <dl className="mt-4 grid gap-4 sm:grid-cols-2">
+            <div>
+              <dt className="text-sm font-medium text-ink-light">Name</dt>
+              <dd className="mt-0.5 text-ink">{patient.name || "–"}</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-ink-light">Geburtsdatum</dt>
+              <dd className="mt-0.5 text-ink">
+                {patient.birthDate ? formatDate(patient.birthDate) : "–"}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-ink-light">Telefon</dt>
+              <dd className="mt-0.5 text-ink">{patient.phone || "–"}</dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-ink-light">E-Mail</dt>
+              <dd className="mt-0.5 text-ink">{patient.email || "–"}</dd>
+            </div>
+            <div className="sm:col-span-2">
+              <dt className="text-sm font-medium text-ink-light">Adresse</dt>
+              <dd className="mt-0.5 text-ink">
+                {formatAddress(patient.street, patient.postalCode, patient.city) || "–"}
+              </dd>
+            </div>
+          </dl>
+        )}
       </section>
 
       <section>
@@ -315,6 +424,7 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
       </section>
       </div>
 
+      <div className="flex flex-col gap-10">
       <section>
         <h2 className="text-lg">Behandlungsverlauf ({patient.notes.length})</h2>
         <div className="mt-4 flex flex-col gap-3">
@@ -371,6 +481,55 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
           </div>
         </form>
       </section>
+
+      <section className="rounded-xl2 bg-cream-light p-6 shadow-soft ring-1 ring-beige-dark/60 sm:p-8">
+        <h2 className="text-lg">Beschwerden &amp; Behandlungserfolg</h2>
+        <form onSubmit={handleSaveClinical} className="mt-4 flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="complaints" className={labelStyles}>
+              Beschwerden
+            </label>
+            <textarea
+              id="complaints"
+              rows={3}
+              value={clinical.complaints}
+              onChange={(event) =>
+                setClinical((prev) => ({ ...prev, complaints: event.target.value }))
+              }
+              placeholder="z. B. Rückenschmerzen, Schlafprobleme, Stress"
+              className={inputStyles}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="treatment-outcome" className={labelStyles}>
+              Behandlungserfolg
+            </label>
+            <textarea
+              id="treatment-outcome"
+              rows={3}
+              value={clinical.treatmentOutcome}
+              onChange={(event) =>
+                setClinical((prev) => ({ ...prev, treatmentOutcome: event.target.value }))
+              }
+              placeholder="z. B. spürbare Entspannung nach 3 Sitzungen"
+              className={inputStyles}
+            />
+          </div>
+          <div>
+            <SecondaryButton type="submit" disabled={isSaving}>
+              {isSaving ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  Wird gespeichert…
+                </>
+              ) : (
+                "Speichern"
+              )}
+            </SecondaryButton>
+          </div>
+        </form>
+      </section>
+      </div>
       </div>
 
       <section>

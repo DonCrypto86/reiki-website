@@ -38,7 +38,11 @@ export type Patient = {
   birthDate: string; // ISO-Datum YYYY-MM-DD, optional (leerer String, wenn unbekannt)
   phone: string;
   email: string;
-  address: string;
+  street: string;
+  postalCode: string;
+  city: string;
+  complaints: string; // Beschwerden
+  treatmentOutcome: string; // Behandlungserfolg
   pets: Pet[];
   notes: SessionNote[];
   appointments: Appointment[];
@@ -51,7 +55,9 @@ export type PatientInput = {
   birthDate?: string;
   phone?: string;
   email?: string;
-  address?: string;
+  street?: string;
+  postalCode?: string;
+  city?: string;
 };
 
 const STORAGE_KEY = "reiki:patients";
@@ -83,7 +89,11 @@ export async function createPatient(input: PatientInput): Promise<Patient> {
     birthDate: input.birthDate?.trim() ?? "",
     phone: input.phone?.trim() ?? "",
     email: input.email?.trim() ?? "",
-    address: input.address?.trim() ?? "",
+    street: input.street?.trim() ?? "",
+    postalCode: input.postalCode?.trim() ?? "",
+    city: input.city?.trim() ?? "",
+    complaints: "",
+    treatmentOutcome: "",
     pets: [],
     notes: [],
     appointments: [],

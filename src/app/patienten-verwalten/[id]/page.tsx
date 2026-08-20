@@ -12,7 +12,7 @@ export default async function PatientDetailPage({ params }: { params: { id: stri
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:py-14">
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:py-14">
       <PatientDetailManager initialPatient={patient} />
     </div>
   );

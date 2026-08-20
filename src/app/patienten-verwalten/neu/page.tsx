@@ -17,7 +17,9 @@ export default function NewPatientPage() {
   const [birthDate, setBirthDate] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [address, setAddress] = useState("");
+  const [street, setStreet] = useState("");
+  const [postalCode, setPostalCode] = useState("");
+  const [city, setCity] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -30,7 +32,7 @@ export default function NewPatientPage() {
       const response = await fetch("/api/patienten", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, birthDate, phone, email, address })
+        body: JSON.stringify({ name, birthDate, phone, email, street, postalCode, city })
       });
       const data = (await response.json()) as { success: boolean; message?: string; patient?: Patient };
 
@@ -103,15 +105,39 @@ export default function NewPatientPage() {
           />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="address" className={labelStyles}>
-            Adresse
+          <label htmlFor="street" className={labelStyles}>
+            Strasse
           </label>
           <input
-            id="address"
-            value={address}
-            onChange={(event) => setAddress(event.target.value)}
+            id="street"
+            value={street}
+            onChange={(event) => setStreet(event.target.value)}
             className={inputStyles}
           />
+        </div>
+        <div className="flex gap-4">
+          <div className="flex w-32 flex-col gap-1.5">
+            <label htmlFor="postalCode" className={labelStyles}>
+              PLZ
+            </label>
+            <input
+              id="postalCode"
+              value={postalCode}
+              onChange={(event) => setPostalCode(event.target.value)}
+              className={inputStyles}
+            />
+          </div>
+          <div className="flex flex-1 flex-col gap-1.5">
+            <label htmlFor="city" className={labelStyles}>
+              Ort
+            </label>
+            <input
+              id="city"
+              value={city}
+              onChange={(event) => setCity(event.target.value)}
+              className={inputStyles}
+            />
+          </div>
         </div>
 
         {error ? (
