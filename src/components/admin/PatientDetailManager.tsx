@@ -386,6 +386,54 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
       </div>
 
       <div className="flex flex-col gap-10">
+      <section className="rounded-xl2 bg-cream-light p-6 shadow-soft ring-1 ring-beige-dark/60 sm:p-8">
+        <h2 className="text-lg">Beschwerden &amp; Behandlungserfolg</h2>
+        <form onSubmit={handleSaveClinical} className="mt-4 flex flex-col gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="complaints" className={labelStyles}>
+              Beschwerden
+            </label>
+            <textarea
+              id="complaints"
+              rows={3}
+              value={clinical.complaints}
+              onChange={(event) =>
+                setClinical((prev) => ({ ...prev, complaints: event.target.value }))
+              }
+              placeholder="z. B. Rückenschmerzen, Schlafprobleme, Stress"
+              className={inputStyles}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="treatment-outcome" className={labelStyles}>
+              Behandlungserfolg
+            </label>
+            <textarea
+              id="treatment-outcome"
+              rows={3}
+              value={clinical.treatmentOutcome}
+              onChange={(event) =>
+                setClinical((prev) => ({ ...prev, treatmentOutcome: event.target.value }))
+              }
+              placeholder="z. B. spürbare Entspannung nach 3 Sitzungen"
+              className={inputStyles}
+            />
+          </div>
+          <div>
+            <SecondaryButton type="submit" disabled={isSaving}>
+              {isSaving ? (
+                <>
+                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                  Wird gespeichert…
+                </>
+              ) : (
+                "Speichern"
+              )}
+            </SecondaryButton>
+          </div>
+        </form>
+      </section>
+
       <section>
         <h2 className="text-lg">Behandlungsverlauf ({patient.notes.length})</h2>
         <div className="mt-4 flex flex-col gap-3">
@@ -438,54 +486,6 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
             <SecondaryButton type="submit" disabled={isSaving || !noteText.trim()}>
               <Plus className="h-4 w-4" aria-hidden="true" />
               Notiz hinzufügen
-            </SecondaryButton>
-          </div>
-        </form>
-      </section>
-
-      <section className="rounded-xl2 bg-cream-light p-6 shadow-soft ring-1 ring-beige-dark/60 sm:p-8">
-        <h2 className="text-lg">Beschwerden &amp; Behandlungserfolg</h2>
-        <form onSubmit={handleSaveClinical} className="mt-4 flex flex-col gap-4">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="complaints" className={labelStyles}>
-              Beschwerden
-            </label>
-            <textarea
-              id="complaints"
-              rows={3}
-              value={clinical.complaints}
-              onChange={(event) =>
-                setClinical((prev) => ({ ...prev, complaints: event.target.value }))
-              }
-              placeholder="z. B. Rückenschmerzen, Schlafprobleme, Stress"
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="treatment-outcome" className={labelStyles}>
-              Behandlungserfolg
-            </label>
-            <textarea
-              id="treatment-outcome"
-              rows={3}
-              value={clinical.treatmentOutcome}
-              onChange={(event) =>
-                setClinical((prev) => ({ ...prev, treatmentOutcome: event.target.value }))
-              }
-              placeholder="z. B. spürbare Entspannung nach 3 Sitzungen"
-              className={inputStyles}
-            />
-          </div>
-          <div>
-            <SecondaryButton type="submit" disabled={isSaving}>
-              {isSaving ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                  Wird gespeichert…
-                </>
-              ) : (
-                "Speichern"
-              )}
             </SecondaryButton>
           </div>
         </form>
