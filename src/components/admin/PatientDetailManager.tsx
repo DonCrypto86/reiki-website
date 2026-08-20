@@ -61,6 +61,10 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   const [isEditingContact, setIsEditingContact] = useState(false);
   const [contact, setContact] = useState<ContactFields>(contactFieldsFromPatient(initialPatient));
 
+  const initialHasClinicalContent = Boolean(
+    initialPatient.complaints.trim() || initialPatient.treatmentOutcome.trim()
+  );
+  const [isEditingClinical, setIsEditingClinical] = useState(!initialHasClinicalContent);
   const [clinical, setClinical] = useState({
     complaints: initialPatient.complaints,
     treatmentOutcome: initialPatient.treatmentOutcome
@@ -119,9 +123,24 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
     }
   }
 
+  function handleStartEditClinical() {
+    setClinical({
+      complaints: patient.complaints,
+      treatmentOutcome: patient.treatmentOutcome
+    });
+    setIsEditingClinical(true);
+  }
+
+  function handleCancelEditClinical() {
+    setIsEditingClinical(false);
+  }
+
   async function handleSaveClinical(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    await persist(clinical);
+    const ok = await persist(clinical);
+    if (ok) {
+      setIsEditingClinical(false);
+    }
   }
 
   async function handleAddPet(event: FormEvent<HTMLFormElement>) {
@@ -466,51 +485,86 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
 
       <div className="flex flex-col gap-10">
       <section className="rounded-xl2 bg-cream-light p-6 shadow-soft ring-1 ring-beige-dark/60 sm:p-8">
-        <h2 className="text-lg">Beschwerden &amp; Behandlungserfolg</h2>
-        <form onSubmit={handleSaveClinical} className="mt-4 flex flex-col gap-4">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="complaints" className={labelStyles}>
-              Beschwerden
-            </label>
-            <textarea
-              id="complaints"
-              rows={3}
-              value={clinical.complaints}
-              onChange={(event) =>
-                setClinical((prev) => ({ ...prev, complaints: event.target.value }))
-              }
-              placeholder="z. B. Rückenschmerzen, Schlafprobleme, Stress"
-              className={inputStyles}
-            />
-          </div>
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="treatment-outcome" className={labelStyles}>
-              Behandlungserfolg
-            </label>
-            <textarea
-              id="treatment-outcome"
-              rows={3}
-              value={clinical.treatmentOutcome}
-              onChange={(event) =>
-                setClinical((prev) => ({ ...prev, treatmentOutcome: event.target.value }))
-              }
-              placeholder="z. B. spürbare Entspannung nach 3 Sitzungen"
-              className={inputStyles}
-            />
-          </div>
-          <div>
-            <SecondaryButton type="submit" disabled={isSaving}>
-              {isSaving ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                  Wird gespeichert…
-                </>
-              ) : (
-                "Speichern"
-              )}
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-lg">Beschwerden &amp; Behandlungserfolg</h2>
+          {!isEditingClinical ? (
+            <SecondaryButton
+              type="button"
+              onClick={handleStartEditClinical}
+              className="px-4 py-2 text-xs"
+            >
+              <Pencil className="h-3.5 w-3.5" aria-hidden="true" />
+              Bearbeiten
             </SecondaryButton>
-          </div>
-        </form>
+          ) : null}
+        </div>
+
+        {isEditingClinical ? (
+          <form onSubmit={handleSaveClinical} className="mt-4 flex flex-col gap-4">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="complaints" className={labelStyles}>
+                Beschwerden
+              </label>
+              <textarea
+                id="complaints"
+                rows={3}
+                value={clinical.complaints}
+                onChange={(event) =>
+                  setClinical((prev) => ({ ...prev, complaints: event.target.value }))
+                }
+                placeholder="z. B. Rückenschmerzen, Schlafprobleme, Stress"
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="treatment-outcome" className={labelStyles}>
+                Behandlungserfolg
+              </label>
+              <textarea
+                id="treatment-outcome"
+                rows={3}
+                value={clinical.treatmentOutcome}
+                onChange={(event) =>
+                  setClinical((prev) => ({ ...prev, treatmentOutcome: event.target.value }))
+                }
+                placeholder="z. B. spürbare Entspannung nach 3 Sitzungen"
+                className={inputStyles}
+              />
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <SecondaryButton type="submit" disabled={isSaving}>
+                {isSaving ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                    Wird gespeichert…
+                  </>
+                ) : (
+                  "Speichern"
+                )}
+              </SecondaryButton>
+              {patient.complaints.trim() || patient.treatmentOutcome.trim() ? (
+                <SecondaryButton type="button" onClick={handleCancelEditClinical} disabled={isSaving}>
+                  Abbrechen
+                </SecondaryButton>
+              ) : null}
+            </div>
+          </form>
+        ) : (
+          <dl className="mt-4 flex flex-col gap-4">
+            <div>
+              <dt className="text-sm font-medium text-ink-light">Beschwerden</dt>
+              <dd className="mt-0.5 whitespace-pre-wrap text-ink">
+                {patient.complaints || "–"}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-sm font-medium text-ink-light">Behandlungserfolg</dt>
+              <dd className="mt-0.5 whitespace-pre-wrap text-ink">
+                {patient.treatmentOutcome || "–"}
+              </dd>
+            </div>
+          </dl>
+        )}
       </section>
 
       <section>
