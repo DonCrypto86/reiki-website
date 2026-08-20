@@ -33,6 +33,7 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
 
   const [contact, setContact] = useState({
     name: initialPatient.name,
+    birthDate: initialPatient.birthDate,
     phone: initialPatient.phone,
     email: initialPatient.email,
     address: initialPatient.address
@@ -177,6 +178,8 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
         ) : null}
       </div>
 
+      <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+      <div className="flex flex-col gap-10">
       <section className="rounded-xl2 bg-cream-light p-6 shadow-soft ring-1 ring-beige-dark/60 sm:p-8">
         <h2 className="text-lg">Kontaktdaten</h2>
         <form onSubmit={handleSaveContact} className="mt-4 grid gap-4 sm:grid-cols-2">
@@ -189,6 +192,20 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
               required
               value={contact.name}
               onChange={(event) => setContact((prev) => ({ ...prev, name: event.target.value }))}
+              className={inputStyles}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="contact-birthdate" className={labelStyles}>
+              Geburtsdatum
+            </label>
+            <input
+              id="contact-birthdate"
+              type="date"
+              value={contact.birthDate}
+              onChange={(event) =>
+                setContact((prev) => ({ ...prev, birthDate: event.target.value }))
+              }
               className={inputStyles}
             />
           </div>
@@ -296,6 +313,7 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
           </SecondaryButton>
         </form>
       </section>
+      </div>
 
       <section>
         <h2 className="text-lg">Behandlungsverlauf ({patient.notes.length})</h2>
@@ -353,6 +371,7 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
           </div>
         </form>
       </section>
+      </div>
 
       <section>
         <h2 className="text-lg">Termine ({patient.appointments.length})</h2>

@@ -10,7 +10,7 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
-  let body: { name?: string; phone?: string; email?: string; address?: string };
+  let body: { name?: string; birthDate?: string; phone?: string; email?: string; address?: string };
 
   try {
     body = await request.json();
@@ -30,6 +30,7 @@ export async function POST(request: Request) {
   try {
     const patient = await createPatient({
       name,
+      birthDate: typeof body.birthDate === "string" ? body.birthDate : "",
       phone: typeof body.phone === "string" ? body.phone : "",
       email: typeof body.email === "string" ? body.email : "",
       address: typeof body.address === "string" ? body.address : ""

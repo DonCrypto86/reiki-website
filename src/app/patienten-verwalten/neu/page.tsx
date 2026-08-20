@@ -14,6 +14,7 @@ const labelStyles = "text-sm font-medium text-ink";
 export default function NewPatientPage() {
   const router = useRouter();
   const [name, setName] = useState("");
+  const [birthDate, setBirthDate] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
@@ -29,7 +30,7 @@ export default function NewPatientPage() {
       const response = await fetch("/api/patienten", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, email, address })
+        body: JSON.stringify({ name, birthDate, phone, email, address })
       });
       const data = (await response.json()) as { success: boolean; message?: string; patient?: Patient };
 
@@ -63,6 +64,18 @@ export default function NewPatientPage() {
             required
             value={name}
             onChange={(event) => setName(event.target.value)}
+            className={inputStyles}
+          />
+        </div>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="birthDate" className={labelStyles}>
+            Geburtsdatum
+          </label>
+          <input
+            id="birthDate"
+            type="date"
+            value={birthDate}
+            onChange={(event) => setBirthDate(event.target.value)}
             className={inputStyles}
           />
         </div>

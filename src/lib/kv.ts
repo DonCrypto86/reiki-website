@@ -18,13 +18,16 @@ export function isKvConfigured(): boolean {
   return getKvConfig() !== null;
 }
 
-export async function kvGetJson<T>(key: string, revalidateSeconds = 30): Promise<T | null> {
+export async function kvGetJson<T>(key: string): Promise<T | null> {
   const config = getKvConfig();
   if (!config) return null;
 
+  // Immer frisch lesen (kein Caching): Petra soll nach dem Anlegen/Ändern
+  // eines Eintrags sofort den aktuellen Stand sehen, nicht eine bis zu
+  // 30 Sekunden alte, zwischengespeicherte Antwort.
   const response = await fetch(`${config.url}/get/${key}`, {
     headers: { Authorization: `Bearer ${config.token}` },
-    next: { revalidate: revalidateSeconds }
+    cache: "no-store"
   });
 
   if (!response.ok) {

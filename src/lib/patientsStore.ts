@@ -35,6 +35,7 @@ export type Appointment = {
 export type Patient = {
   id: string;
   name: string;
+  birthDate: string; // ISO-Datum YYYY-MM-DD, optional (leerer String, wenn unbekannt)
   phone: string;
   email: string;
   address: string;
@@ -47,6 +48,7 @@ export type Patient = {
 
 export type PatientInput = {
   name: string;
+  birthDate?: string;
   phone?: string;
   email?: string;
   address?: string;
@@ -78,6 +80,7 @@ export async function createPatient(input: PatientInput): Promise<Patient> {
   const patient: Patient = {
     id: randomUUID(),
     name: input.name.trim(),
+    birthDate: input.birthDate?.trim() ?? "",
     phone: input.phone?.trim() ?? "",
     email: input.email?.trim() ?? "",
     address: input.address?.trim() ?? "",
