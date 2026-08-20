@@ -297,3 +297,41 @@ Die zugehörigen Dateien: `src/lib/patientsStore.ts` (Datenzugriff),
 `src/lib/kv.ts` (gemeinsamer Datenspeicher-Zugriff), `src/app/api/patienten*`
 (API-Routen), `src/app/patienten-verwalten/*` (Login- und
 Verwaltungsseiten).
+
+## 16. Automatische Erinnerungsmails (Termine & Geburtstage)
+
+Einmal täglich prüft die Website automatisch, ob am nächsten Tag Termine
+anstehen oder jemand Geburtstag hat, und verschickt bei Bedarf eine
+E-Mail an Petra mit einer Übersicht. Gibt es weder Termine noch Geburtstage
+am Folgetag, wird keine E-Mail verschickt.
+
+Technisch läuft das über einen "Vercel Cron Job": Vercel ruft dazu einmal
+täglich automatisch die Adresse `/api/cron/reminders` auf (Uhrzeit in
+`vercel.json` hinterlegt, standardmässig um 5 Uhr UTC, also je nach
+Sommer-/Winterzeit ca. 6–7 Uhr Schweizer Zeit). Es ist keine externe
+App oder ein Handy-Kalender nötig, alles läuft direkt auf Vercel.
+
+Einrichtung (einmalig):
+
+1. In den Vercel-Projekteinstellungen unter "Environment Variables"
+   ergänzen: `CRON_SECRET` – eine beliebige lange Zufallszeichenfolge
+   (z. B. mit `openssl rand -hex 32` erzeugen). Damit kann die Erinnerungs-
+   Route nicht von aussen missbraucht werden.
+2. Optional: `PATIENTS_REMINDER_EMAIL` setzen, falls die Erinnerungen an
+   eine andere Adresse als die allgemeine Kontaktadresse der Praxis gehen
+   sollen.
+3. Redeploy auslösen, damit Vercel den Cron Job aus `vercel.json`
+   registriert (in den Projekteinstellungen unter "Cron Jobs" sichtbar).
+
+Setzt denselben E-Mail-Versand wie das Kontaktformular voraus
+(`RESEND_API_KEY`, siehe Abschnitt 9) – ist der bereits eingerichtet, ist
+hier nichts weiter nötig.
+
+Möchte Petra stattdessen z. B. 2 Tage im Voraus erinnert werden, lässt
+sich das in `src/lib/reminders.ts` anpassen (dort steht `addDays(..., 1)`
+für "morgen").
+
+Die zugehörigen Dateien: `src/lib/reminders.ts` (Berechnung, welche
+Termine/Geburtstage morgen anstehen), `src/lib/reminderMail.ts`
+(E-Mail-Inhalt und Versand über Resend), `src/app/api/cron/reminders/route.ts`
+(vom Cron Job aufgerufene Route), `vercel.json` (Zeitplan).
