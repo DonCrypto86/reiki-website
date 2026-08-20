@@ -335,3 +335,80 @@ Die zugehörigen Dateien: `src/lib/reminders.ts` (Berechnung, welche
 Termine/Geburtstage morgen anstehen), `src/lib/reminderMail.ts`
 (E-Mail-Inhalt und Versand über Resend), `src/app/api/cron/reminders/route.ts`
 (vom Cron Job aufgerufene Route), `vercel.json` (Zeitplan).
+
+## 17. Android-App für die Patienten-Verwaltung (Play Store)
+
+Die Patienten-Verwaltung lässt sich als echte, installierbare Android-App
+anbieten – ohne den Web-Code neu zu schreiben. Technisch wird dazu die
+bereits laufende Seite `/patienten-verwalten` in eine "Trusted Web
+Activity" (TWA) verpackt: eine dünne Android-App-Hülle, die die Live-Website
+ohne Adressleiste im Vollbild anzeigt und sich normal über den Play Store
+installieren lässt.
+
+Vorbereitet ist bereits:
+
+- Eine App-Beschreibung mit Icon: `public/manifest-patienten.json`
+  (Name, Farben, Icons unter `public/patienten-app-icons/`).
+- Verlinkung dieses Manifests in `src/app/patienten-verwalten/layout.tsx`,
+  wodurch sich das Tool zusätzlich schon jetzt direkt über Chrome auf dem
+  Android-Homescreen installieren lässt ("Zum Startbildschirm hinzufügen"),
+  auch ganz ohne Play Store.
+- Eine Platzhalterdatei `public/.well-known/assetlinks.json`, die für die
+  "adressleisten-freie" Vollbildansicht mit echten Werten befüllt werden
+  muss (nächster Schritt).
+
+So geht es weiter, ganz ohne Programmierkenntnisse (dauert ca. 20–30
+Minuten):
+
+1. **Google-Play-Konto anlegen** (falls noch nicht vorhanden): unter
+   https://play.google.com/console registrieren. Einmalige Gebühr von
+   25 USD, ein bestehendes Google-Konto reicht.
+2. **App-Paket (.aab) erzeugen** – zwei gleichwertige Wege, das Ergebnis
+   ist dasselbe:
+
+   **Weg A – mit dem vorhandenen Android Studio auf dem Mac (mehr
+   Kontrolle, empfohlen, wenn Android Studio schon installiert ist):**
+   ```
+   npm install -g @bubblewrap/cli
+   bubblewrap init --manifest=https://reiki-mensch-tier.ch/manifest-patienten.json
+   ```
+   Bubblewrap fragt dabei nach dem Package Name (z. B.
+   `ch.reikimenschtier.patienten.twa`, frei wählbar) und findet JDK sowie
+   Android SDK von Android Studio meist automatisch (Android SDK i. d. R.
+   unter `~/Library/Android/sdk`, JDK im Android-Studio-Programmordner).
+   Danach:
+   ```
+   bubblewrap build
+   ```
+   Das erzeugt eine signierte `.aab`-Datei sowie – wichtig – gibt am Ende
+   direkt den "SHA-256 Fingerprint" und Package Name für den nächsten
+   Schritt aus (auch später jederzeit erneut abrufbar mit
+   `bubblewrap fingerprint`).
+
+   **Weg B – ganz ohne Installation über https://www.pwabuilder.com:**
+   URL `https://reiki-mensch-tier.ch/patienten-verwalten/login` eingeben,
+   "Package for stores" → "Android" auswählen; erzeugt ebenfalls eine
+   fertige, signierte `.aab`-Datei sowie Package Name und SHA-256-
+   Fingerprint zum Herunterladen.
+3. Mir (im Chat) den Package Name und den SHA-256-Fingerprint schicken
+   (oder die generierte `assetlinks.json` schicken) – ich trage die Werte
+   dann in `public/.well-known/assetlinks.json` ein und du pushst das
+   Update. Erst danach öffnet sich die App ohne Adressleiste, also wirklich
+   wie eine "echte" App.
+4. In der Play Console einen neuen App-Eintrag anlegen, die `.aab`-Datei
+   hochladen und den Store-Eintrag ausfüllen (Name, kurze Beschreibung,
+   mindestens 2 Screenshots – z. B. eigene Bildschirmfotos der
+   Patienten-Verwaltung –, Link zur Datenschutzerklärung:
+   `https://reiki-mensch-tier.ch/datenschutz`, Inhalts-Einstufung und
+   Zielgruppe ausfüllen).
+5. **Empfehlung:** Da es sich um ein internes Werkzeug nur für Petra
+   handelt, die App nicht öffentlich bewerben, sondern als "nicht
+   gelistet" veröffentlichen oder auf den Track "Interner Test"
+   beschränken. Petra dann direkt per Einladungslink (den die Play
+   Console erzeugt) zur Installation einladen, statt die App über die
+   Play-Store-Suche auffindbar zu machen.
+
+Wichtig zu wissen: Die App zeigt weiterhin live die Website an – es gibt
+keinen eigenständigen "Offline-Modus", eine Internetverbindung ist wie im
+Browser nötig. Das Login-Passwort bleibt der einzige Zugriffsschutz, auch
+innerhalb der App.

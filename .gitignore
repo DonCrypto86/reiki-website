@@ -24,3 +24,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# temporäre Zwischendateien bei der Icon-Erzeugung (können auf diesem
+# Rechner nicht gelöscht werden, sollen aber nicht mit committet werden)
+public/patienten-app-icons/_*.png

@@ -1,0 +1,32 @@
+{
+  "name": "Patientenverwaltung – Reiki Studio Petra In-Albon",
+  "short_name": "Patienten",
+  "description": "Interne Patientenverwaltung (Kontakte, Tiere, Behandlungsverlauf, Termine) für Reiki Studio Petra In-Albon.",
+  "start_url": "/patienten-verwalten/login",
+  "scope": "/patienten-verwalten/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF4E0",
+  "theme_color": "#BD8274",
+  "lang": "de-CH",
+  "icons": [
+    {
+      "src": "/patienten-app-icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/patienten-app-icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/patienten-app-icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

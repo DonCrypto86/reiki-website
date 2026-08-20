@@ -6,6 +6,15 @@ export const metadata: Metadata = {
   robots: {
     index: false,
     follow: false
+  },
+  // Ermöglicht das Installieren als App auf dem Homescreen (Android/Chrome)
+  // bzw. das Verpacken als eigenständige Android-App via TWA/PWABuilder.
+  // Siehe README, Abschnitt "Android-App für die Patienten-Verwaltung".
+  manifest: "/manifest-patienten.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Patienten"
   }
 };
 
