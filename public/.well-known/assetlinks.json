@@ -3,8 +3,10 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "PLATZHALTER_PACKAGE_NAME",
-      "sha256_cert_fingerprints": ["PLATZHALTER_SHA256_FINGERPRINT"]
+      "package_name": "ch.reiki_mensch_tier.twa",
+      "sha256_cert_fingerprints": [
+        "C8:A9:29:87:4A:3B:B8:5A:33:DA:C6:BC:01:C8:14:7E:3F:63:5A:3F:55:C5:7C:6E:A4:0C:5F:1C:D9:C7:98:38"
+      ]
     }
   }
 ]
