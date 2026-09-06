@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { buildMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
+import { getLandingPagesByCategory, landingPagePath } from "@/config/landingPages";
 import Container from "@/components/ui/Container";
 import ImageSlider from "@/components/ui/ImageSlider";
 import LegalNotice from "@/components/ui/LegalNotice";
+import SecondaryButton from "@/components/ui/SecondaryButton";
 import CallToActionSection from "@/components/sections/CallToActionSection";
 
 export const metadata: Metadata = buildMetadata({
@@ -37,6 +39,7 @@ const animalGalleryImages = [
 
 export default function ReikiForAnimalsPage() {
   const { animalsPage } = siteConfig;
+  const tierarten = getLandingPagesByCategory("tier");
 
   const infoBlocks = [
     animalsPage.species,
@@ -110,6 +113,24 @@ export default function ReikiForAnimalsPage() {
       <section className="bg-beige py-14 sm:py-20">
         <Container className="max-w-3xl">
           <LegalNotice>{animalsPage.disclaimer}</LegalNotice>
+        </Container>
+      </section>
+
+      <section className="py-14 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="text-xl">Speziell für Ihr Tier</h2>
+          <p className="mt-3 text-ink-light">
+            Ausführlichere Informationen je Tierart finden Sie hier:
+          </p>
+          <ul className="mt-4 flex flex-wrap gap-3">
+            {tierarten.map((tier) => (
+              <li key={tier.slug}>
+                <SecondaryButton href={landingPagePath(tier)} className="px-5 py-2 text-xs">
+                  {tier.h1}
+                </SecondaryButton>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 

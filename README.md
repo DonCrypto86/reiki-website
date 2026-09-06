@@ -412,3 +412,48 @@ Wichtig zu wissen: Die App zeigt weiterhin live die Website an – es gibt
 keinen eigenständigen "Offline-Modus", eine Internetverbindung ist wie im
 Browser nötig. Das Login-Passwort bleibt der einzige Zugriffsschutz, auch
 innerhalb der App.
+
+## 18. SEO-Landingpages (Orte, Themen, Tierarten)
+
+Zusätzlich zu den Hauptseiten gibt es gezielte Landingpages für die
+organische Suche, alle aus einer einzigen Datenquelle gespeist:
+`src/config/landingPages.ts`. Drei Kategorien, jeweils als "Cluster"-Seiten
+unter einer bestehenden oder neuen Übersichtsseite ("Pillar"):
+
+- **Orte** unter `/reiki-in/[ort]` (z. B. `/reiki-in/bern`), Übersicht unter
+  `/reiki-in`. Zielt auf Suchanfragen wie "Reiki Bern". Da das Studio
+  weiterhin ausschliesslich in Gümmenen steht, wird bei diesen Seiten
+  bewusst nur mit Hausbesuchen bzw. Fernbehandlung geworben, nicht mit
+  einem (nicht vorhandenen) Standort vor Ort – wichtig für Google-Konformität
+  bei sogenannten "Service-Area"-Angeboten.
+- **Themen bei Menschen** unter `/reiki-fuer-menschen/[thema]` (z. B.
+  `/reiki-fuer-menschen/stress`), verlinkt von der bestehenden Seite
+  "Reiki für Menschen". Zielt auf Suchanfragen wie "Reiki bei Stress".
+- **Tierarten** unter `/reiki-fuer-tiere/[tier]` (z. B.
+  `/reiki-fuer-tiere/hunde`), verlinkt von der bestehenden Seite
+  "Reiki für Tiere". Zielt auf Suchanfragen wie "Reiki für Hunde".
+
+Je eine Seite pro Ort/Thema/Tierart deckt zusätzlich die
+schweizweite Fernbehandlung ab (`/reiki-fuer-menschen/fernbehandlung-schweiz`
+und `/reiki-fuer-tiere/fernbehandlung-schweiz`), da eine Fernbehandlung
+ortsunabhängig ehrlich beworben werden kann – anders als ein persönlicher
+Termin, der realistischerweise nur in der Region um Gümmenen stattfindet.
+
+**Neue Seite hinzufügen:** Einfach einen neuen Eintrag in
+`src/config/landingPages.ts` ergänzen (Kategorie, Slug, Texte, Links) – die
+Route, die Metadaten (Titel/Beschreibung), die Sitemap
+(`src/app/sitemap.ts`) und die interne Verlinkung ziehen sich automatisch
+aus derselben Datenquelle nach. Es muss keine neue Datei angelegt werden.
+
+**Wichtig für Texte:** Bewusst zurückhaltend formuliert, ohne
+Heilversprechen oder medizinische/tierärztliche Wirkaussagen (gleiche
+Sorgfalt wie bei den bestehenden Seiten "Reiki für Menschen"/"Reiki für
+Tiere") – bei neuen Einträgen bitte an diesem Ton orientieren.
+
+**Realistische Erwartungen:** Diese Seiten verbessern die inhaltliche
+Abdeckung deutlich, sind aber nur ein Baustein. Für "Platz 1" bei
+Suchanfragen wie "Reiki Bern" spielt insbesondere ein vollständig
+ausgefülltes und aktiv gepflegtes **Google-Unternehmensprofil** (Google
+Maps/Google Business Profile) eine sehr grosse Rolle – oft grösser als
+zusätzliche Unterseiten. Falls noch nicht vorhanden, ist das der
+naheliegende nächste Schritt.

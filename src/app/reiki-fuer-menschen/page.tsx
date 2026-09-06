@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { buildMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
+import { getLandingPagesByCategory, landingPagePath } from "@/config/landingPages";
 import Container from "@/components/ui/Container";
 import ImageSlider from "@/components/ui/ImageSlider";
 import LegalNotice from "@/components/ui/LegalNotice";
+import SecondaryButton from "@/components/ui/SecondaryButton";
 import CallToActionSection from "@/components/sections/CallToActionSection";
 
 export const metadata: Metadata = buildMetadata({
@@ -32,6 +34,7 @@ const humanGalleryImages = [
 
 export default function ReikiForHumansPage() {
   const { humansPage } = siteConfig;
+  const themen = getLandingPagesByCategory("mensch-thema");
 
   const infoBlocks = [
     humansPage.procedure,
@@ -111,6 +114,24 @@ export default function ReikiForHumansPage() {
           </div>
           <LegalNotice className="mt-6">{humansPage.kundaliniReiki.safetyNote}</LegalNotice>
           <LegalNotice className="mt-4">{humansPage.disclaimer}</LegalNotice>
+        </Container>
+      </section>
+
+      <section className="bg-beige py-14 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="text-xl">Reiki bei bestimmten Themen</h2>
+          <p className="mt-3 text-ink-light">
+            Ausführlichere Informationen zu einzelnen Anliegen finden Sie hier:
+          </p>
+          <ul className="mt-4 flex flex-wrap gap-3">
+            {themen.map((thema) => (
+              <li key={thema.slug}>
+                <SecondaryButton href={landingPagePath(thema)} className="px-5 py-2 text-xs">
+                  {thema.h1}
+                </SecondaryButton>
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 

@@ -163,6 +163,7 @@ export const siteConfig = {
   footerNav: [
     { label: "Aktuelles", href: "/aktuelles" },
     { label: "Häufige Fragen", href: "/faq" },
+    { label: "Reiki in Ihrer Region", href: "/reiki-in" },
     { label: "Impressum", href: "/impressum" },
     { label: "Datenschutz", href: "/datenschutz" }
   ] satisfies NavItem[],
