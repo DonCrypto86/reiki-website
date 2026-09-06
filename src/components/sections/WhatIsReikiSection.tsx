@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import Container from "@/components/ui/Container";
 import LegalNotice from "@/components/ui/LegalNotice";
@@ -19,6 +20,11 @@ export default function WhatIsReikiSection() {
           ))}
         </div>
         <LegalNotice className="mt-6">{whatIsReiki.disclaimer}</LegalNotice>
+        <p className="mt-6">
+          <Link href="/reiki-behandlung" className="underline underline-offset-4">
+            Mehr zum Ablauf einer Reiki-Behandlung
+          </Link>
+        </p>
       </Container>
     </section>
   );

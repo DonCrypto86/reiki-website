@@ -7,9 +7,9 @@ import ServiceCard from "@/components/ui/ServiceCard";
 import CallToActionSection from "@/components/sections/CallToActionSection";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Reiki in Ihrer Region – Bern, Laupen, Murten, Kerzers, Mühleberg",
+  title: "Reiki in der Nähe – Bern, Köniz, Fribourg und weitere Orte",
   description:
-    "Reiki für Menschen und Tiere in der Region um Gümmenen: Übersicht der Orte, in denen Hausbesuche möglich sind.",
+    "Reiki in der Nähe gesucht? Übersicht der Orte rund um Gümmenen im Raum Bern, in denen Hausbesuche für Menschen und Tiere möglich sind.",
   path: "/reiki-in"
 });
 
@@ -31,11 +31,11 @@ export default function ReikiInOrtIndexPage() {
 
       <section className="bg-cream-light py-14 sm:py-20">
         <Container className="max-w-3xl">
-          <h1>Reiki in Ihrer Region</h1>
+          <h1>Reiki in Ihrer Region – schnell in der Nähe finden</h1>
           <p className="mt-4 text-ink-light">
-            Mein Reiki Studio liegt in Gümmenen im Raum Bern. Für Menschen und Tiere in den
-            umliegenden Orten sind neben Anwendungen im Studio auch Hausbesuche möglich. Wählen Sie
-            Ihren Ort für weitere Details.
+            Sie suchen Reiki in der Nähe? Mein Reiki Studio liegt in Gümmenen im Raum Bern. Für
+            Menschen und Tiere in den umliegenden Orten sind neben Anwendungen im Studio auch
+            Hausbesuche möglich. Wählen Sie Ihren Ort für weitere Details.
           </p>
         </Container>
       </section>

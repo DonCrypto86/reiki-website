@@ -272,7 +272,7 @@ export default function ContactForm() {
               id="animalSpecies"
               name="animalSpecies"
               type="text"
-              placeholder="z. B. Hund, Katze, Pferd"
+              placeholder="z. B. Hund, Katze"
               value={values.animalSpecies}
               onChange={(event) => updateField("animalSpecies", event.target.value)}
               className={inputStyles}

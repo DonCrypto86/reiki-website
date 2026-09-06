@@ -519,7 +519,7 @@ export const siteConfig = {
     },
     species: {
       heading: "Welche Tiere können begleitet werden?",
-      text: "Grundsätzlich können viele Tierarten begleitet werden, etwa Hunde, Katzen, Kleintiere und Pferde. Bei Unsicherheit sprechen Sie mich gerne im Vorgespräch darauf an."
+      text: "Begleitet werden aktuell Hunde und Katzen. Bei Unsicherheit sprechen Sie mich gerne im Vorgespräch darauf an."
     },
     consent: {
       heading: "Freiwilligkeit steht an erster Stelle",

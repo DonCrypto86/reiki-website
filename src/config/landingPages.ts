@@ -187,7 +187,7 @@ export const landingPages: LandingPage[] = [
       },
       {
         heading: "Reiki für Tiere in Kerzers",
-        text: "Für Tiere aus Kerzers und Umgebung – ob Hund, Katze, Kleintier oder Pferd – richtet sich eine Anwendung ganz nach dem, was Ihr Tier zulassen möchte, bei Bedarf direkt bei Ihnen zu Hause."
+        text: "Für Hunde und Katzen aus Kerzers und Umgebung richtet sich eine Anwendung ganz nach dem, was Ihr Tier zulassen möchte, bei Bedarf direkt bei Ihnen zu Hause."
       },
       {
         heading: "Anfahrt und Hausbesuche",
@@ -199,7 +199,7 @@ export const landingPages: LandingPage[] = [
     relatedPaths: [
       { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
       { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
-      { label: "Reiki für Pferde", href: "/reiki-fuer-tiere/pferde" },
+      { label: "Reiki für Hunde", href: "/reiki-fuer-tiere/hunde" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
@@ -232,6 +232,134 @@ export const landingPages: LandingPage[] = [
       { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
       { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki in Bern", href: "/reiki-in/bern" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "fribourg",
+    category: "ort",
+    metaTitle: "Reiki in Fribourg – Hausbesuche für Menschen & Tiere",
+    metaDescription:
+      "Reiki-Anwendungen für Menschen und Tiere in Fribourg: Studio in Gümmenen an der Kantonsgrenze oder Hausbesuch direkt in Fribourg.",
+    h1: "Reiki in Fribourg",
+    intro:
+      "Gümmenen liegt an der Grenze der Kantone Bern und Freiburg – Fribourg ist von hier aus gut erreichbar. Für Menschen und Tiere aus Fribourg biete ich Anwendungen im Studio sowie Hausbesuche an.",
+    sections: [
+      {
+        heading: "Reiki für Menschen in Fribourg",
+        text: "Eine Reiki-Anwendung kann zur Entspannung beitragen und Körper und Geist neue Kraft schenken – als bewusste Auszeit im Alltag oder als ergänzende Begleitung in einer stressreicheren Lebensphase."
+      },
+      {
+        heading: "Reiki für Hunde und Katzen in Fribourg",
+        text: "Für Hunde und Katzen aus Fribourg und Umgebung richtet sich eine Anwendung ganz nach dem, was Ihr Tier zulassen möchte – im Studio oder bei Ihnen zu Hause."
+      },
+      {
+        heading: "Anfahrt und Hausbesuche",
+        text: "Fribourg ist von Gümmenen aus in angenehmer Fahrdistanz erreichbar. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Köniz", href: "/reiki-in/koeniz" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "koeniz",
+    category: "ort",
+    metaTitle: "Reiki in Köniz – Hausbesuche für Menschen & Tiere",
+    metaDescription:
+      "Reiki-Anwendungen für Menschen und Tiere in Köniz: Studio in Gümmenen oder Hausbesuch direkt in Köniz.",
+    h1: "Reiki in Köniz",
+    intro:
+      "Köniz grenzt an die Stadt Bern und liegt in guter Fahrdistanz zu meinem Studio in Gümmenen. Für Menschen und Tiere aus Köniz biete ich Anwendungen im Studio sowie Hausbesuche an.",
+    sections: [
+      {
+        heading: "Reiki für Menschen in Köniz",
+        text: "Reiki kann zur Entspannung beitragen und wird von vielen als wohltuend empfunden – ob als bewusste Auszeit im Alltag oder als ergänzende Begleitung in einer bewegten Lebensphase."
+      },
+      {
+        heading: "Reiki für Hunde und Katzen in Köniz",
+        text: "Für Hunde und Katzen aus Köniz und Umgebung biete ich Anwendungen an, die sich ganz nach dem Tempo Ihres Tieres richten – bei Ihnen zu Hause oder im Studio."
+      },
+      {
+        heading: "Anfahrt und Hausbesuche",
+        text: "Köniz ist von Gümmenen aus gut erreichbar. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Bern", href: "/reiki-in/bern" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "neuenegg",
+    category: "ort",
+    metaTitle: "Reiki in Neuenegg – Hausbesuche für Menschen & Tiere",
+    metaDescription:
+      "Reiki-Anwendungen für Menschen und Tiere in Neuenegg: Mein Studio in Gümmenen liegt gleich nebenan, Hausbesuche in Neuenegg sind ebenfalls möglich.",
+    h1: "Reiki in Neuenegg",
+    intro:
+      "Neuenegg liegt in unmittelbarer Nachbarschaft zu Gümmenen. Für Menschen und Tiere aus Neuenegg sind sowohl Anwendungen in meinem Studio als auch Hausbesuche eine unkomplizierte Option.",
+    sections: [
+      {
+        heading: "Reiki für Menschen in Neuenegg",
+        text: "Von Neuenegg aus erreichen Sie mein Studio in Gümmenen in wenigen Minuten. Ein Hausbesuch in Neuenegg ist ebenso möglich, wenn Ihnen die gewohnte Umgebung wichtiger ist."
+      },
+      {
+        heading: "Reiki für Hunde und Katzen in Neuenegg",
+        text: "Für Hunde und Katzen aus Neuenegg biete ich Anwendungen an, die sich ganz nach dem Tempo Ihres Tieres richten – bei Ihnen zu Hause oder im Studio."
+      },
+      {
+        heading: "Anfahrt und Hausbesuche",
+        text: "Aufgrund der Nähe zu Neuenegg ist die Anfahrt kurz. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Laupen", href: "/reiki-in/laupen" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "belp",
+    category: "ort",
+    metaTitle: "Reiki in Belp – Hausbesuche für Menschen & Tiere",
+    metaDescription:
+      "Reiki-Anwendungen für Menschen und Tiere in Belp: Studio in Gümmenen oder Hausbesuch direkt in Belp.",
+    h1: "Reiki in Belp",
+    intro:
+      "Belp liegt südöstlich von Bern und ist von meinem Studio in Gümmenen aus gut erreichbar. Für Menschen und Tiere aus Belp biete ich Anwendungen im Studio sowie Hausbesuche an.",
+    sections: [
+      {
+        heading: "Reiki für Menschen in Belp",
+        text: "Reiki kann zur Entspannung beitragen und Körper und Geist neue Kraft schenken – ganz gleich, ob Sie Reiki bereits kennen oder zum ersten Mal ausprobieren möchten."
+      },
+      {
+        heading: "Reiki für Hunde und Katzen in Belp",
+        text: "Für Hunde und Katzen aus Belp und Umgebung richtet sich eine Anwendung ganz nach dem, was Ihr Tier zulassen möchte, bei Bedarf direkt bei Ihnen zu Hause."
+      },
+      {
+        heading: "Anfahrt und Hausbesuche",
+        text: "Belp ist von Gümmenen aus in angenehmer Fahrdistanz erreichbar. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Köniz", href: "/reiki-in/koeniz" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
@@ -394,6 +522,274 @@ export const landingPages: LandingPage[] = [
     ]
   },
   {
+    slug: "kinder",
+    category: "mensch-thema",
+    metaTitle: "Reiki für Kinder – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki für Kinder in Gümmenen im Raum Bern: sanft, spielerisch erklärt und ganz freiwillig. Jetzt mehr erfahren.",
+    h1: "Reiki für Kinder",
+    intro:
+      "Auch Kinder können von einer ruhigen, achtsamen Auszeit profitieren – etwa bei innerer Unruhe, in aufregenden Lebensphasen oder einfach als besondere gemeinsame Zeit. Eine Anwendung wird kindgerecht erklärt und findet ganz freiwillig statt.",
+    benefits: [
+      "kann zur Entspannung beitragen",
+      "gibt neue Energie",
+      "unterstützt das allgemeine Wohlbefinden",
+      "wird von vielen als schlaffördernd empfunden"
+    ],
+    sections: [
+      {
+        heading: "Wie läuft eine Anwendung bei Kindern ab?",
+        text: "Vor der Anwendung wird kindgerecht erklärt, was passiert. Ihr Kind bleibt vollständig bekleidet und entscheidet jederzeit selbst mit, wie viel es zulassen möchte. Ein Elternteil ist herzlich willkommen, dabei zu bleiben."
+      },
+      {
+        heading: "Für welches Alter geeignet?",
+        text: "Grundsätzlich für Kinder jeden Alters geeignet – von der Bereitschaft des Kindes hängt ab, wie die Anwendung im Detail gestaltet wird. Bei Unsicherheit sprechen Sie mich gerne im Vorgespräch darauf an."
+      },
+      {
+        heading: "Ablauf und Vorgespräch",
+        text: "Im kurzen Vorgespräch mit den Eltern klären wir Anlass und Erwartungen. Details zum allgemeinen Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki bei innerer Unruhe", href: "/reiki-fuer-menschen/innere-unruhe" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "genesungsphase",
+    category: "mensch-thema",
+    metaTitle: "Reiki als Begleitung während einer Genesungsphase – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki kann eine Genesungsphase sanft begleiten und zur Entspannung beitragen. Ergänzend zur ärztlichen Behandlung – jetzt unverbindlich anfragen.",
+    h1: "Reiki als Begleitung während einer Genesungsphase",
+    intro:
+      "Nach einer Operation, einer Erkrankung oder in einer längeren Erholungszeit wünschen sich viele Menschen zusätzlich zur medizinischen Behandlung etwas, das ihnen Ruhe und neue Kraft gibt. Reiki kann eine Genesungsphase als ergänzende, entspannungsfördernde Begleitung unterstützen.",
+    benefits: [
+      "kann zur Entspannung beitragen",
+      "unterstützt das allgemeine Wohlbefinden",
+      "gibt neue Energie",
+      "kann zum Lösen von Verspannungen beitragen"
+    ],
+    sections: [
+      {
+        heading: "Wie kann Reiki in einer Genesungsphase unterstützen?",
+        text: "Eine Anwendung findet in ruhiger Atmosphäre statt und lässt Raum, um zur Ruhe zu kommen. Viele Menschen empfinden dies in einer Erholungsphase als wohltuende Unterbrechung des Alltags mit seinen Anforderungen."
+      },
+      {
+        heading: "Ergänzend, nicht ersetzend",
+        text: "Reiki versteht sich ausdrücklich als Ergänzung zur ärztlichen Behandlung und ersetzt diese nicht. Bitte besprechen Sie bei akuten Beschwerden oder während einer laufenden Behandlung vorab mit Ihrer Ärztin oder Ihrem Arzt, ob eine Anwendung für Sie passend ist."
+      },
+      {
+        heading: "Ablauf und Vorgespräch",
+        text: "Im Vorgespräch nehmen wir uns Zeit für Ihre aktuelle Situation, damit die Anwendung darauf abgestimmt werden kann. Details zum allgemeinen Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer:
+      "Reiki kann zur Entspannung beitragen und wird von vielen Menschen als wohltuend empfunden. Es ersetzt jedoch keine ärztliche Behandlung, Diagnose oder Therapie und ist ausschliesslich als ergänzendes Angebot zu verstehen.",
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki bei chronischer Erschöpfung", href: "/reiki-fuer-menschen/chronische-erschoepfung" },
+      { label: "Reiki für pflegende Angehörige", href: "/reiki-fuer-menschen/pflegende-angehoerige" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "pflegende-angehoerige",
+    category: "mensch-thema",
+    metaTitle: "Reiki für pflegende Angehörige – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki kann pflegenden Angehörigen eine bewusste Auszeit vom Alltag schenken. Entspannungsfördernd und ganz ohne schlechtes Gewissen. Jetzt anfragen.",
+    h1: "Reiki für pflegende Angehörige",
+    intro:
+      "Wer einen kranken oder pflegebedürftigen Menschen im Umfeld begleitet, stellt die eigenen Bedürfnisse oft zurück. Reiki kann pflegenden Angehörigen eine bewusste Auszeit bieten, in der einmal nicht sie für andere, sondern jemand für sie da ist.",
+    benefits: [
+      "kann zur Entspannung beitragen",
+      "kann Stress reduzieren helfen",
+      "gibt neue Energie",
+      "unterstützt das allgemeine Wohlbefinden"
+    ],
+    sections: [
+      {
+        heading: "Warum eine Auszeit gerade jetzt wichtig ist",
+        text: "Dauerhafte Belastung durch Pflege und Sorge um einen nahestehenden Menschen zehrt an den eigenen Kraftreserven. Eine Reiki-Anwendung kann ein bewusster Moment sein, um für sich selbst zu sorgen – ohne schlechtes Gewissen."
+      },
+      {
+        heading: "Was Sie erwartet",
+        text: "Während der Anwendung liegen oder sitzen Sie bequem und bekleidet. Es gibt keine Erwartungen oder Vorgaben – einzig der Moment der Ruhe steht im Vordergrund."
+      },
+      {
+        heading: "Ablauf und Vorgespräch",
+        text: "Im kurzen Vorgespräch ist auch Raum, um kurz über Ihre aktuelle Situation zu sprechen, wenn Sie das möchten. Details zum allgemeinen Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki bei chronischer Erschöpfung", href: "/reiki-fuer-menschen/chronische-erschoepfung" },
+      { label: "Reiki bei Stress", href: "/reiki-fuer-menschen/stress" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "chronische-erschoepfung",
+    category: "mensch-thema",
+    metaTitle: "Reiki bei chronischer Erschöpfung – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki kann bei chronischer Erschöpfung als ergänzender Ausgleich dienen und neue Energie schenken. Jetzt mehr erfahren und unverbindlich anfragen.",
+    h1: "Reiki bei chronischer Erschöpfung",
+    intro:
+      "Anhaltende Müdigkeit und das Gefühl, dauerhaft am Limit zu sein, können den Alltag stark einschränken. Reiki kann als ergänzender Ausgleich dienen und einen Raum schaffen, in dem Körper und Geist zur Ruhe kommen dürfen.",
+    benefits: [
+      "gibt neue Energie",
+      "kann zur Entspannung beitragen",
+      "unterstützt das allgemeine Wohlbefinden",
+      "kann Stress reduzieren helfen"
+    ],
+    sections: [
+      {
+        heading: "Wie kann Reiki bei chronischer Erschöpfung unterstützen?",
+        text: "Eine Anwendung bietet bewusste Zeit zum Auftanken, ohne Leistungsanspruch. Viele Menschen berichten, sich danach ausgeglichener und ruhiger zu fühlen."
+      },
+      {
+        heading: "Wichtiger Hinweis",
+        text: "Bei anhaltender oder unklarer Erschöpfung empfehlen wir eine ärztliche Abklärung, um mögliche Ursachen zu erkennen. Reiki versteht sich als ergänzendes Angebot und ersetzt keine medizinische Diagnose oder Behandlung."
+      },
+      {
+        heading: "Ablauf und Vorgespräch",
+        text: "Im Vorgespräch besprechen wir Ihre aktuelle Situation, damit die Anwendung darauf abgestimmt werden kann. Details zum allgemeinen Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer:
+      "Reiki kann zur Entspannung beitragen und wird von vielen Menschen als wohltuend empfunden. Es ersetzt jedoch keine ärztliche Abklärung oder Behandlung und ist als ergänzendes Angebot zu verstehen.",
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki bei Stress", href: "/reiki-fuer-menschen/stress" },
+      { label: "Reiki für pflegende Angehörige", href: "/reiki-fuer-menschen/pflegende-angehoerige" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "lebensveraenderungen",
+    category: "mensch-thema",
+    metaTitle: "Reiki in Zeiten der Veränderung – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki kann in Zeiten der Veränderung – etwa bei Umzug, Trennung oder beruflichem Wandel – eine ruhige, entspannungsfördernde Begleitung bieten.",
+    h1: "Reiki in Zeiten der Veränderung",
+    intro:
+      "Ob Umzug, beruflicher Wechsel, Trennung oder ein neuer Lebensabschnitt: Veränderungen bringen oft viele Gedanken und Gefühle mit sich. Reiki kann in solchen Phasen eine ruhige, entspannungsfördernde Begleitung bieten.",
+    benefits: [
+      "kann zur Entspannung beitragen",
+      "kann Stress reduzieren helfen",
+      "unterstützt das allgemeine Wohlbefinden",
+      "gibt neue Energie"
+    ],
+    sections: [
+      {
+        heading: "Wie kann Reiki in Veränderungsphasen unterstützen?",
+        text: "Eine Anwendung schafft bewussten Raum, um innezuhalten, während im Aussen vieles in Bewegung ist. Es gibt keine Erwartung daran, was Sie dabei spüren oder erleben sollten."
+      },
+      {
+        heading: "Für wen eignet sich das?",
+        text: "Das Angebot richtet sich an alle, die sich in einer Übergangsphase befinden und sich Unterstützung beim Zurechtfinden wünschen – unabhängig davon, ob es sich um eine belastende oder eine grundsätzlich positive Veränderung handelt."
+      },
+      {
+        heading: "Ablauf einer Anwendung",
+        text: "Zu Beginn nehmen wir uns Zeit für ein kurzes Gespräch. Details zum weiteren Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki bei innerer Unruhe", href: "/reiki-fuer-menschen/innere-unruhe" },
+      { label: "Reiki bei Stress", href: "/reiki-fuer-menschen/stress" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "trauerbegleitung",
+    category: "mensch-thema",
+    metaTitle: "Reiki als Begleitung in Zeiten der Trauer – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki kann in Zeiten der Trauer einen ruhigen Raum zum Innehalten bieten. Sanft, ohne Erwartungen und in Ihrem eigenen Tempo.",
+    h1: "Reiki als Begleitung in Zeiten der Trauer",
+    intro:
+      "Der Verlust eines nahestehenden Menschen oder Tieres kann sich auf ganz unterschiedliche Weise zeigen. Reiki ersetzt keine Trauerbegleitung oder Therapie, kann aber einen ruhigen Raum bieten, in dem Sie einfach sein dürfen, wie es Ihnen gerade geht.",
+    benefits: [
+      "kann zur Entspannung beitragen",
+      "unterstützt das allgemeine Wohlbefinden",
+      "gibt neue Energie"
+    ],
+    sections: [
+      {
+        heading: "Was Sie erwartet",
+        text: "Eine Anwendung findet ganz ohne Erwartungen statt. Es gibt keinen Zeitplan für Trauer und keine Vorgabe, wie Sie sich während oder nach einer Sitzung fühlen sollten."
+      },
+      {
+        heading: "Ergänzend zu professioneller Unterstützung",
+        text: "Bei intensiver oder anhaltender Trauer kann eine Trauerbegleitung oder psychologische Unterstützung sinnvoll und wichtig sein. Reiki versteht sich als ergänzendes, nicht als ersetzendes Angebot."
+      },
+      {
+        heading: "Ablauf und Vorgespräch",
+        text: "Im Vorgespräch ist Raum, kurz zu erzählen, was Sie beschäftigt – wenn Sie das möchten. Details zum allgemeinen Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer:
+      "Reiki kann zur Entspannung beitragen und einen ruhigen Raum zum Innehalten bieten. Es ersetzt jedoch keine Trauerbegleitung, Psychotherapie oder ärztliche Behandlung.",
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki in Zeiten der Veränderung", href: "/reiki-fuer-menschen/lebensveraenderungen" },
+      { label: "Reiki bei innerer Unruhe", href: "/reiki-fuer-menschen/innere-unruhe" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "burnout-vorbeugung",
+    category: "mensch-thema",
+    metaTitle: "Reiki zur Burnout-Vorbeugung – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki kann als bewusster Ausgleich zu beruflicher Dauerbelastung dienen und so vorbeugend zur Entspannung beitragen. Jetzt mehr erfahren.",
+    h1: "Reiki zur Burnout-Vorbeugung",
+    intro:
+      "Dauerhafter beruflicher Druck und fehlende Erholungspausen zählen zu den häufigsten Ursachen für Erschöpfung. Reiki kann als bewusster Ausgleich im Alltag dienen und dabei helfen, vorbeugend auf die eigenen Kraftreserven zu achten.",
+    benefits: [
+      "kann Stress reduzieren helfen",
+      "kann zur Entspannung beitragen",
+      "gibt neue Energie",
+      "unterstützt das allgemeine Wohlbefinden"
+    ],
+    sections: [
+      {
+        heading: "Vorbeugen statt nur reagieren",
+        text: "Regelmässige bewusste Pausen können helfen, dauerhafter Überlastung entgegenzuwirken. Eine Reiki-Anwendung bietet eine solche Pause, ohne dass etwas geleistet werden muss."
+      },
+      {
+        heading: "Wichtiger Hinweis",
+        text: "Bei bereits bestehenden Anzeichen eines Burnouts oder anderen psychischen Belastungen ist fachliche Unterstützung durch Ärztin, Arzt oder Psychotherapie wichtig. Reiki versteht sich ausschliesslich als ergänzendes, vorbeugendes Angebot."
+      },
+      {
+        heading: "Ablauf einer Anwendung",
+        text: "Im Vorgespräch besprechen wir kurz Ihre aktuelle Situation. Details zum weiteren Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer:
+      "Reiki kann als vorbeugender, entspannungsfördernder Ausgleich dienen. Es ersetzt keine ärztliche oder psychotherapeutische Behandlung und ist nicht zur Behandlung eines bestehenden Burnouts oder anderer psychischer Erkrankungen gedacht.",
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki bei Stress", href: "/reiki-fuer-menschen/stress" },
+      { label: "Reiki bei chronischer Erschöpfung", href: "/reiki-fuer-menschen/chronische-erschoepfung" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
     slug: "fernbehandlung-schweiz",
     category: "mensch-thema",
     metaTitle: "Reiki-Fernbehandlung Schweiz – Reiki Studio Petra In-Albon",
@@ -507,81 +903,7 @@ export const landingPages: LandingPage[] = [
     relatedPaths: [
       { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki für Hunde", href: "/reiki-fuer-tiere/hunde" },
-      { label: "Reiki für Kleintiere", href: "/reiki-fuer-tiere/kleintiere" },
-      { label: "Ablauf und Preise", href: "/ablauf-preise" }
-    ]
-  },
-  {
-    slug: "pferde",
-    category: "tier",
-    metaTitle: "Reiki für Pferde – Reiki Studio Petra In-Albon",
-    metaDescription:
-      "Reiki für Pferde im Raum Bern: achtsame Anwendungen direkt im Stall, ganz im Tempo Ihres Pferdes.",
-    h1: "Reiki für Pferde",
-    intro:
-      "Bei Pferden findet eine Reiki-Anwendung praktisch immer dort statt, wo das Pferd zu Hause ist – im Stall oder auf der Weide. So bleibt Ihr Pferd in vertrauter Umgebung, was vielen Pferden zusätzliche Sicherheit gibt.",
-    benefits: [
-      "kann zu mehr Gelassenheit beitragen",
-      "wird von vielen Tieren als angenehm empfunden",
-      "kann das Wohlbefinden fördern",
-      "gibt neue Energie"
-    ],
-    sections: [
-      {
-        heading: "Wie läuft eine Anwendung bei Pferden ab?",
-        text: "Zu Beginn nehmen wir uns Zeit, damit Ihr Pferd mich in Ruhe kennenlernen kann. Die Hände werden sanft aufgelegt oder mit etwas Abstand gehalten – ganz danach, was Ihr Pferd in dem Moment zulassen möchte."
-      },
-      {
-        heading: "Typische Anlässe bei Pferden",
-        text: "Häufige Anlässe sind Unterstützung in stressigen Situationen (z. B. Stallwechsel oder Transport), Begleitung während der Erholungsphase nach Verletzungen oder Operationen sowie eine ruhige Auszeit für sensible oder ältere Pferde."
-      },
-      {
-        heading: "Vor-Ort-Termine im Stall",
-        text: "Anwendungen bei Pferden finden grundsätzlich vor Ort im Stall statt (Hausbesuch). Details und Fahrkosten finden Sie auf der Seite Ablauf und Preise."
-      }
-    ],
-    disclaimer: animalDisclaimer,
-    cta: defaultAnimalCta,
-    relatedPaths: [
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
-      { label: "Reiki in Kerzers", href: "/reiki-in/kerzers" },
-      { label: "Reiki in Murten", href: "/reiki-in/murten" },
-      { label: "Ablauf und Preise", href: "/ablauf-preise" }
-    ]
-  },
-  {
-    slug: "kleintiere",
-    category: "tier",
-    metaTitle: "Reiki für Kleintiere – Reiki Studio Petra In-Albon",
-    metaDescription:
-      "Reiki für Kleintiere wie Kaninchen und Meerschweinchen in Gümmenen und Umgebung: besonders behutsam und mit viel Abstand, wenn gewünscht.",
-    h1: "Reiki für Kleintiere",
-    intro:
-      "Kaninchen, Meerschweinchen und andere Kleintiere reagieren oft besonders sensibel auf neue Situationen. Eine Reiki-Anwendung berücksichtigt das mit einer ruhigen, zurückhaltenden Herangehensweise.",
-    benefits: [
-      "kann zu mehr Gelassenheit beitragen",
-      "wird von vielen Tieren als angenehm empfunden",
-      "kann zur Beruhigung beitragen"
-    ],
-    sections: [
-      {
-        heading: "Wie läuft eine Anwendung bei Kleintieren ab?",
-        text: "Bei Kleintieren wird besonders viel Rücksicht auf Distanzbedürfnisse genommen. Häufig findet die Anwendung mit etwas Abstand im selben Raum statt, ganz ohne Zwang zu direktem Kontakt."
-      },
-      {
-        heading: "Typische Anlässe bei Kleintieren",
-        text: "Häufige Anlässe sind die Eingewöhnung in ein neues Zuhause, Veränderungen im Gehege oder in der Gruppenzusammensetzung sowie Unterstützung bei sichtlich verängstigten oder gestressten Tieren."
-      },
-      {
-        heading: "Immer als Hausbesuch",
-        text: "Anwendungen bei Kleintieren finden aus Rücksicht auf das Tier grundsätzlich bei Ihnen zu Hause statt. Details und Fahrkosten finden Sie auf der Seite Ablauf und Preise."
-      }
-    ],
-    disclaimer: animalDisclaimer,
-    cta: defaultAnimalCta,
-    relatedPaths: [
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
-      { label: "Reiki für Katzen", href: "/reiki-fuer-tiere/katzen" },
+      { label: "Reiki-Fernbehandlung für Tiere Schweiz", href: "/reiki-fuer-tiere/fernbehandlung-schweiz" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
