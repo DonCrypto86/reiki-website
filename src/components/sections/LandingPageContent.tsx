@@ -51,12 +51,25 @@ export default function LandingPageContent({ entry, breadcrumb }: LandingPageCon
 
       <section className="py-14 sm:py-20">
         <Container className="grid max-w-5xl gap-8 sm:grid-cols-2">
-          {entry.sections.map((block) => (
-            <div key={block.heading} className="rounded-xl2 bg-beige p-6">
-              <h2 className="text-xl">{block.heading}</h2>
-              <p className="mt-3 text-ink-light">{block.text}</p>
-            </div>
-          ))}
+          {entry.sections.map((block, index) => {
+            // Bei einer ungeraden Anzahl Sections würde das letzte Element
+            // sonst allein in der linken Spalte hängen. Stattdessen wird es
+            // über beide Spalten hinweg zentriert dargestellt.
+            const isLastOfOddCount =
+              entry.sections.length % 2 !== 0 && index === entry.sections.length - 1;
+
+            return (
+              <div
+                key={block.heading}
+                className={`rounded-xl2 bg-beige p-6 ${
+                  isLastOfOddCount ? "sm:col-span-2 sm:mx-auto sm:max-w-[calc(50%-1rem)]" : ""
+                }`}
+              >
+                <h2 className="text-xl">{block.heading}</h2>
+                <p className="mt-3 text-ink-light">{block.text}</p>
+              </div>
+            );
+          })}
         </Container>
       </section>
 
