@@ -919,26 +919,31 @@ export const landingPages: LandingPage[] = [
       "Reiki für Hunde in Gümmenen und Umgebung (u. a. Bern): achtsam, freiwillig und im Tempo Ihres Hundes. Auch Hausbesuche möglich.",
     h1: "Reiki für Hunde",
     intro:
-      "Ob verunsicherter Rettungshund, älterer Hund oder aufgeweckter Junghund – jeder Hund reagiert unterschiedlich auf neue Situationen. Eine Reiki-Anwendung richtet sich ganz nach dem, was Ihr Hund zulassen möchte.",
+      "Ob quirliger Junghund, gelassener Familienliebling, verunsicherter Rettungshund aus dem Tierschutz, ein Senior mit ruhigeren Bedürfnissen oder ein grosser, kräftiger Hund neben einem zierlichen Kleinen – jeder Hund bringt seinen eigenen Charakter, seine eigene Geschichte und sein eigenes Tempo mit. Genau darauf nehme ich bei einer Reiki-Anwendung Rücksicht: Es gibt kein starres Schema, sondern nur das, was Ihr Hund im Moment zulassen möchte.",
     benefits: [
       "kann zu mehr Gelassenheit beitragen",
-      "wird von vielen Tieren als angenehm empfunden",
+      "wird von vielen Hunden als angenehm empfunden",
       "kann zur Beruhigung beitragen",
-      "kann bei ängstlichem Verhalten unterstützend wirken",
+      "kann bei ängstlichem oder unsicherem Verhalten unterstützend wirken",
+      "kann eine ruhige Auszeit für lebhafte oder sensible Hunde bieten",
       "gibt neue Energie"
     ],
     sections: [
       {
+        heading: "Für jeden Hund das passende Tempo",
+        text: "Kleine und grosse Hunde, ruhige und temperamentvolle, ängstliche und selbstbewusste: Jeder Hund reagiert anders auf neue Situationen und fremde Personen. Ein zurückhaltender Hund darf sich Zeit lassen und den Raum zunächst aus sicherer Distanz erkunden, ein zutraulicher Familienliebling sucht vielleicht sofort die Nähe. Beides ist willkommen – es gibt keinen Druck und keine Erwartung, wie schnell sich Ihr Hund öffnet."
+      },
+      {
         heading: "Wie läuft eine Anwendung bei Hunden ab?",
-        text: "Manche Hunde suchen von sich aus die Nähe und legen sich neben oder auf die Hände, andere bleiben lieber in etwas Abstand. Beides wird respektiert – es gibt keinen festen Ablaufplan."
+        text: "Manche Hunde suchen von sich aus die Nähe und legen sich neben oder auf die Hände, andere bleiben lieber in etwas Abstand oder beobachten zunächst aus der Ferne. Beides wird respektiert – es gibt keinen festen Ablaufplan und keinen Zwang zur Berührung."
       },
       {
         heading: "Typische Anlässe bei Hunden",
-        text: "Häufige Anlässe sind die Eingewöhnung nach der Anschaffung oder aus dem Tierschutz, Unterstützung bei ängstlichem Verhalten (z. B. an Silvester oder bei Gewitter), Begleitung während der Erholungsphase nach einer Operation oder einfach eine ruhige Auszeit für aktive Hunde."
+        text: "Häufige Anlässe sind die Eingewöhnung nach der Anschaffung oder aus dem Tierschutz, spürbare Verunsicherung oder ängstliches Verhalten – etwa bei Silvesterkrachern, dem Feuerwerk am 1. August, Gewitter oder in anderen ungewohnten Situationen –, Begleitung während der Erholungsphase nach einer Operation, die Bedürfnisse älterer, ruhebedürftiger Hunde oder einfach eine bewusste Auszeit für aktive, lebhafte Vierbeiner."
       },
       {
         heading: "Praxis oder Hausbesuch",
-        text: "Eine Anwendung kann im Studio in Gümmenen oder als Hausbesuch stattfinden, damit sich Ihr Hund in vertrauter Umgebung befindet. Details finden Sie auf der Seite Ablauf und Preise."
+        text: "Eine Anwendung kann im Studio in Gümmenen oder als Hausbesuch stattfinden, damit sich Ihr Hund in vertrauter Umgebung befindet – besonders empfehlenswert bei sehr ängstlichen oder unsicheren Hunden. Details finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: animalDisclaimer,
@@ -958,25 +963,30 @@ export const landingPages: LandingPage[] = [
       "Reiki für Katzen in Gümmenen und Umgebung: sanft, freiwillig und ganz im Tempo Ihrer Katze. Auch Hausbesuche möglich.",
     h1: "Reiki für Katzen",
     intro:
-      "Katzen entscheiden meist ganz genau selbst, wann und wie viel Nähe sie zulassen möchten. Eine Reiki-Anwendung nimmt darauf Rücksicht und lässt Ihrer Katze jederzeit die Möglichkeit, sich zurückzuziehen.",
+      "Ob zurückhaltende Wohnungskatze, selbstbewusster Freigänger, verschmuster Schmusetiger, scheue Katze aus dem Tierschutz oder ruhebedürftige Seniorin – Katzen sind ausgesprochene Persönlichkeiten und entscheiden meist ganz genau selbst, wann und wie viel Nähe sie zulassen möchten. Eine Reiki-Anwendung nimmt darauf Rücksicht und lässt Ihrer Katze jederzeit die Möglichkeit, sich zurückzuziehen, statt etwas von ihr zu verlangen.",
     benefits: [
       "kann zu mehr Gelassenheit beitragen",
-      "wird von vielen Tieren als angenehm empfunden",
+      "wird von vielen Katzen als angenehm empfunden",
       "kann zur Beruhigung beitragen",
+      "kann bei scheuem oder ängstlichem Verhalten unterstützend wirken",
       "aktiviert die körpereigenen Selbstheilungskräfte"
     ],
     sections: [
+      {
+        heading: "Für jede Katzenpersönlichkeit der passende Rahmen",
+        text: "Manche Katzen suchen von Anfang an aktiv die Nähe und schmiegen sich an die Hände, andere beobachten lieber erst aus sicherer Distanz vom Kratzbaum oder aus einer Ecke des Raums. Zurückhaltende, scheue oder aus dem Tierschutz stammende Katzen dürfen sich so viel Zeit lassen, wie sie brauchen – es gibt keinen Zeitdruck und keine Erwartung an direkten Kontakt."
+      },
       {
         heading: "Wie läuft eine Anwendung bei Katzen ab?",
         text: "Da Katzen sensibel auf neue Umgebungen reagieren können, findet eine Anwendung häufig als Hausbesuch statt. Eine Anwendung mit etwas Abstand im selben Raum ist ebenfalls möglich, wenn direkter Kontakt (noch) nicht gewünscht wird."
       },
       {
         heading: "Typische Anlässe bei Katzen",
-        text: "Häufige Anlässe sind die Eingewöhnung in ein neues Zuhause, Veränderungen im gewohnten Umfeld (z. B. Umzug oder neue Mitbewohner), Unterstützung älterer Katzen oder eine Begleitung während der Erholungsphase nach einer Behandlung."
+        text: "Häufige Anlässe sind die Eingewöhnung in ein neues Zuhause, Veränderungen im gewohnten Umfeld (z. B. Umzug oder neue Mitbewohner), Verunsicherung durch laute Geräusche wie Silvesterkracher oder das Feuerwerk am 1. August, die Bedürfnisse älterer, ruhebedürftiger Katzen oder eine Begleitung während der Erholungsphase nach einer Behandlung."
       },
       {
         heading: "Praxis oder Hausbesuch",
-        text: "Für Katzen empfiehlt sich meist ein Hausbesuch in gewohnter Umgebung. Details und Fahrkosten finden Sie auf der Seite Ablauf und Preise."
+        text: "Für Katzen empfiehlt sich meist ein Hausbesuch in gewohnter Umgebung, da der vertraute Rückzugsort gerade für scheue Tiere wichtig ist. Details und Fahrkosten finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: animalDisclaimer,
