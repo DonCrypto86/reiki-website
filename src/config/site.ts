@@ -85,7 +85,12 @@ export const siteConfig = {
    * Aus technischen Gründen (new URL() zur Build-Zeit) muss hier bereits eine
    * syntaktisch gültige URL stehen – keine eckigen Klammern verwenden.
    */
-  url: "https://reiki-mensch-tier.ch",
+  // www ist die tatsächliche Ziel-Domain (Vercel leitet die nackte Domain
+  // reiki-mensch-tier.ch per Redirect auf www weiter). Canonical-URLs,
+  // Sitemap und robots.txt müssen direkt auf www zeigen, sonst schlägt u. a.
+  // das Einlesen der Sitemap in der Google Search Console fehl, weil der
+  // Sitemap-Crawler die zusätzliche Weiterleitung nicht zuverlässig verfolgt.
+  url: "https://www.reiki-mensch-tier.ch",
 
   contact: {
     email: "info@reiki-mensch-tier.ch",

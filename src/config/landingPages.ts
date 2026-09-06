@@ -76,64 +76,105 @@ export const landingPages: LandingPage[] = [
   // eigener Praxisstandort in diesen Orten – das Studio bleibt Gümmenen).
   // ---------------------------------------------------------------------
   {
-    slug: "bern",
+    slug: "guemmenen",
     category: "ort",
-    metaTitle: "Reiki in Bern – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki Studio in Gümmenen – Petra In-Albon (Kanton Bern)",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Bern: Hausbesuche ab Gümmenen, nur wenige Fahrminuten von der Stadt Bern entfernt. Jetzt unverbindlich anfragen.",
-    h1: "Reiki in Bern",
+      "Reiki Studio in 3205 Gümmenen, Aufeldweg 11: ruhige Praxis im Kanton Bern, gut mit Zug und Auto erreichbar. Für Menschen und Tiere.",
+    h1: "Reiki Studio in Gümmenen",
     intro:
-      "Mein Reiki Studio liegt in Gümmenen, nur wenige Fahrminuten von der Stadt Bern entfernt. Für Menschen und Tiere in Bern biete ich sowohl Anwendungen im Studio als auch Hausbesuche an – ganz nach dem, was für Sie und Ihr Tier am angenehmsten ist.",
+      "Gümmenen liegt an der Saane, unweit der Kantonsgrenze zu Freiburg, ein Stück ausserhalb der Stadt Bern. Genau hier, an der Aufeldweg 11, 3205 Gümmenen, befindet sich mein Reiki Studio: ein ruhiger Ort abseits vom städtischen Trubel, an dem Anwendungen für Menschen und Tiere ungestört stattfinden können.",
     sections: [
       {
-        heading: "Reiki für Menschen in Bern",
-        text: "Ob nach einem stressigen Arbeitstag in der Stadt oder in einer bewegten Lebensphase: Reiki kann zur Entspannung beitragen und Körper und Geist neue Kraft schenken. Für Termine aus Bern ist sowohl ein Besuch im Studio in Gümmenen als auch ein Hausbesuch möglich."
+        heading: "Warum Gümmenen?",
+        text: "Die dörfliche, ruhige Umgebung von Gümmenen eignet sich besonders gut für Reiki-Anwendungen: kein Verkehrslärm, keine Eile, keine Hektik. Diese Ruhe wirkt sich oft schon vor Beginn der eigentlichen Anwendung entspannend aus."
       },
       {
-        heading: "Reiki für Tiere in Bern",
-        text: "Auch für Hunde, Katzen und andere Tiere aus Bern begleite ich Anwendungen achtsam und im Tempo des Tieres – bei Bedarf direkt bei Ihnen zu Hause, damit sich Ihr Tier in gewohnter Umgebung befindet."
+        heading: "Anfahrt mit Zug und Auto",
+        text: "Gümmenen ist mit dem Zug gut erreichbar: ab Bern in rund 15 Minuten, ab Kerzers in etwa 4 Minuten. Auch mit dem Auto ist das Studio unkompliziert zu finden. Details zur Anfahrt bespreche ich gerne vorab bei der Terminvereinbarung."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Gümmenen liegt südwestlich von Bern und ist von der Stadt aus gut erreichbar. Hausbesuche in Bern sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise. Alternativ ist auch eine Fernbehandlung denkbar, wenn eine Anwendung vor Ort nicht möglich ist."
+        heading: "Für Menschen und Tiere",
+        text: "Im Studio in Gümmenen finden Anwendungen sowohl für Menschen als auch für Hunde und Katzen statt. Ist ein Besuch vor Ort nicht möglich, biete ich für die nähere Umgebung auch Hausbesuche sowie schweizweit eine Fernbehandlung an."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Über Petra In-Albon", href: "/ueber-mich" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" },
+      { label: "Reiki in Bern", href: "/reiki-in/bern" },
+      { label: "Kontakt", href: "/kontakt" }
+    ]
+  },
+  {
+    slug: "bern",
+    category: "ort",
+    metaTitle: "Reiki in Bern – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki im Raum Bern: Praxis in Gümmenen, ab Bern in rund 15 Zugminuten erreichbar. Ablauf, Dauer, Preise und Hausbesuche für Menschen und Tiere.",
+    h1: "Reiki in Bern – Praxis in Gümmenen",
+    intro:
+      "Mein Reiki Studio liegt nicht in der Stadt Bern selbst, sondern im nahen Gümmenen – bewusst so, denn dort finde ich für meine Arbeit die notwendige Ruhe. Für Menschen und Tiere aus Bern ist das Studio unkompliziert erreichbar, wahlweise ist auch ein Hausbesuch möglich.",
+    sections: [
+      {
+        heading: "Reiki im Raum Bern – Praxis in Gümmenen",
+        text: "Wer aus Bern eine Reiki-Anwendung sucht, findet in Gümmenen eine ruhige Praxis ausserhalb des städtischen Alltags – nah genug für einen unkomplizierten Termin, weit genug für echte Distanz zum Alltagstrubel."
+      },
+      {
+        heading: "Anfahrt aus Bern: mit dem Zug oder dem Auto",
+        text: "Mit dem Zug ist Gümmenen ab Bern in rund 15 Minuten erreichbar. Auch die Anfahrt mit dem Auto ist unkompliziert. Details zur Anfahrt und zum genauen Ablauf bespreche ich gerne vorab bei der Terminvereinbarung."
+      },
+      {
+        heading: "Ablauf, Dauer und Preise",
+        text: "Eine Erstanwendung dauert 40 Minuten (CHF 80.-), eine Folgeanwendung 30 Minuten (CHF 60.-). Für einen Hausbesuch in Bern kommen CHF 10.- sowie Fahrkosten dazu. Die vollständige Preisübersicht finden Sie auf der Seite Ablauf und Preise."
+      },
+      {
+        heading: "Reiki für Hunde und Katzen aus Bern",
+        text: "Auch für Hunde und Katzen aus Bern biete ich Anwendungen an, die sich ganz nach dem Tempo des Tieres richten – im Studio in Gümmenen oder als Hausbesuch bei Ihnen zu Hause."
+      },
+      {
+        heading: "Petra In-Albon – Ihre Ansprechperson in der Region",
+        text: "Mehr über meinen Werdegang und meine Arbeitsweise erfahren Sie auf der Seite Über mich. Erfahrungsberichte bisheriger Kundinnen und Kunden finden Sie unter Erfahrungen."
+      }
+    ],
+    disclaimer: humanDisclaimer,
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Über Petra In-Albon", href: "/ueber-mich" },
+      { label: "Erfahrungen", href: "/erfahrungen" },
       { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
-      { label: "Reiki für Hunde", href: "/reiki-fuer-tiere/hunde" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
   {
     slug: "laupen",
     category: "ort",
-    metaTitle: "Reiki in Laupen – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Laupen – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Laupen: Mein Studio in Gümmenen liegt gleich nebenan, Hausbesuche in Laupen sind ebenfalls möglich.",
+      "Reiki für Menschen und Tiere aus Laupen: Praxis im nahen Gümmenen, historisches Städtchen mit Schloss Laupen. Auch Hausbesuche möglich.",
     h1: "Reiki in Laupen",
     intro:
-      "Das historische Städtchen Laupen liegt in direkter Nachbarschaft zu Gümmenen. Für Menschen und Tiere aus Laupen sind sowohl Anwendungen in meinem Studio als auch Hausbesuche eine unkomplizierte Option.",
+      "Das Städtchen Laupen mit seinem Schloss und der historischen Altstadt liegt nur wenige Kilometer von Gümmenen entfernt. Aus Laupen ist mein Studio dadurch besonders unkompliziert erreichbar – für einen Termin vor Ort oder, wenn gewünscht, als Hausbesuch.",
     sections: [
       {
-        heading: "Reiki für Menschen in Laupen",
-        text: "Wer eine bewusste Auszeit sucht, findet in meinem Studio in Gümmenen einen ruhigen Rückzugsort – von Laupen aus in wenigen Minuten erreichbar. Ein Hausbesuch in Laupen ist ebenso möglich."
+        heading: "Kurzer Weg aus dem historischen Laupen",
+        text: "Wer in der Nähe von Schloss Laupen oder der Altstadt wohnt, hat es zu meinem Studio in Gümmenen nicht weit. Das macht auch regelmässige Anwendungen im Alltag gut umsetzbar."
       },
       {
-        heading: "Reiki für Tiere in Laupen",
-        text: "Für Hunde, Katzen und andere Tiere aus Laupen biete ich Anwendungen an, die sich ganz nach dem Tempo Ihres Tieres richten – bei Ihnen zu Hause oder im Studio."
+        heading: "Für Menschen und Tiere",
+        text: "Ob Reiki für sich selbst oder für Hund und Katze: Anwendungen aus Laupen richte ich ganz nach den Bedürfnissen von Mensch oder Tier – im Studio oder auf Wunsch bei Ihnen zu Hause."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Aufgrund der Nähe zu Laupen ist die Anfahrt kurz. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuche und Fahrkosten",
+        text: "Ein Hausbesuch in Laupen ist gegen einen Aufpreis sowie Fahrkosten möglich. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
       { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki in Bern", href: "/reiki-in/bern" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
@@ -142,224 +183,224 @@ export const landingPages: LandingPage[] = [
   {
     slug: "murten",
     category: "ort",
-    metaTitle: "Reiki in Murten – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Murten – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Murten und Umgebung: Studio in Gümmenen oder Hausbesuch direkt in Murten.",
+      "Reiki für Menschen und Tiere aus Murten: Praxis im nahen Gümmenen, in der zweisprachigen Seeregion am Murtensee. Auch Hausbesuche möglich.",
     h1: "Reiki in Murten",
     intro:
-      "Von der Seestadt Murten aus ist mein Studio in Gümmenen gut zu erreichen. Für Menschen und Tiere aus Murten biete ich Anwendungen im Studio sowie Hausbesuche an.",
+      "Murten mit seiner mittelalterlichen Altstadt direkt am Murtensee liegt in der zweisprachigen Seeregion zwischen den Kantonen Bern und Freiburg. Von dort aus ist mein Studio in Gümmenen in angenehmer Fahrdistanz erreichbar.",
     sections: [
       {
-        heading: "Reiki für Menschen in Murten",
-        text: "Reiki kann zur Entspannung beitragen und wird von vielen als wohltuend empfunden – ob als bewusste Auszeit im Alltag oder als ergänzende Begleitung in einer stressreicheren Lebensphase."
+        heading: "Aus der Seeregion nach Gümmenen",
+        text: "Ob Sie in der Altstadt von Murten wohnen oder in der weiteren Seeregion: Die Fahrt nach Gümmenen ist unkompliziert. Details zur Anfahrt bespreche ich gerne bei der Terminvereinbarung."
       },
       {
-        heading: "Reiki für Tiere in Murten",
-        text: "Für Tiere aus Murten und dem Seebezirk sind Anwendungen im Studio ebenso möglich wie ein Hausbesuch, damit sich Ihr Tier in vertrauter Umgebung befindet."
+        heading: "Für Menschen und Tiere aus Murten",
+        text: "Reiki kann als bewusste Auszeit im Alltag dienen – für Menschen ebenso wie, achtsam und im eigenen Tempo, für Hunde und Katzen aus Murten und dem Seebezirk."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Murten liegt in angenehmer Fahrdistanz zu Gümmenen. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuch als Alternative",
+        text: "Wenn ein Termin im Studio nicht passt, ist auch ein Hausbesuch in Murten gegen Aufpreis und Fahrkosten möglich. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki in Kerzers", href: "/reiki-in/kerzers" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
   {
     slug: "kerzers",
     category: "ort",
-    metaTitle: "Reiki in Kerzers – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Kerzers – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Kerzers: Studio in Gümmenen oder Hausbesuch direkt in Kerzers.",
+      "Reiki für Menschen und Tiere aus Kerzers: Praxis in Gümmenen, mit dem Zug in rund 4 Minuten erreichbar. Auch Hausbesuche möglich.",
     h1: "Reiki in Kerzers",
     intro:
-      "Kerzers liegt im Seeland, nicht weit von meinem Studio in Gümmenen entfernt. Für Menschen und Tiere aus Kerzers biete ich Anwendungen im Studio sowie Hausbesuche an.",
+      "Kerzers im Seeland ist bekannt für das Papiliorama und liegt verkehrstechnisch günstig zu meinem Studio in Gümmenen. Mit dem Zug ist die Verbindung besonders kurz.",
     sections: [
       {
-        heading: "Reiki für Menschen in Kerzers",
-        text: "Eine Reiki-Anwendung kann zur Entspannung beitragen und Körper und Geist neue Kraft schenken – ganz gleich, ob Sie Reiki bereits kennen oder zum ersten Mal ausprobieren möchten."
+        heading: "Kurze Zugverbindung nach Gümmenen",
+        text: "Ab Kerzers erreichen Sie Gümmenen mit dem Zug in rund 4 Minuten. Auch mit dem Auto ist die Strecke unkompliziert zu fahren."
       },
       {
-        heading: "Reiki für Tiere in Kerzers",
-        text: "Für Hunde und Katzen aus Kerzers und Umgebung richtet sich eine Anwendung ganz nach dem, was Ihr Tier zulassen möchte, bei Bedarf direkt bei Ihnen zu Hause."
+        heading: "Für Menschen und Tiere aus Kerzers",
+        text: "Eine Reiki-Anwendung richtet sich ganz nach Ihnen bzw. Ihrem Tier – ob Sie Reiki bereits kennen oder zum ersten Mal ausprobieren, und ob es sich um eine Anwendung für sich selbst oder für Hund oder Katze handelt."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Kerzers ist von Gümmenen aus gut erreichbar. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuche aus Kerzers",
+        text: "Wenn ein Besuch im Studio nicht möglich ist, biete ich auch einen Hausbesuch in Kerzers gegen Aufpreis und Fahrkosten an. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
       { label: "Reiki für Hunde", href: "/reiki-fuer-tiere/hunde" },
+      { label: "Reiki in Murten", href: "/reiki-in/murten" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
   {
     slug: "muehleberg",
     category: "ort",
-    metaTitle: "Reiki in Mühleberg – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Mühleberg – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Mühleberg: Mein Studio in Gümmenen liegt gleich nebenan, Hausbesuche in Mühleberg sind ebenfalls möglich.",
+      "Reiki für Menschen und Tiere aus Mühleberg an der Aare: Praxis im direkt benachbarten Gümmenen. Auch Hausbesuche möglich.",
     h1: "Reiki in Mühleberg",
     intro:
-      "Mühleberg an der Aare liegt in unmittelbarer Nähe zu Gümmenen. Für Menschen und Tiere aus Mühleberg sind sowohl Anwendungen in meinem Studio als auch Hausbesuche eine unkomplizierte Option.",
+      "Mühleberg liegt malerisch an der Aare, nur eine kurze Strecke von meinem Studio in Gümmenen entfernt. Für Menschen und Tiere aus Mühleberg ist ein Termin dadurch besonders unkompliziert zu organisieren.",
     sections: [
       {
-        heading: "Reiki für Menschen in Mühleberg",
-        text: "Eine kurze Anfahrt genügt: Von Mühleberg aus erreichen Sie mein Studio in Gümmenen in wenigen Minuten. Ein Hausbesuch in Mühleberg ist ebenso möglich."
+        heading: "Direkte Nachbarschaft an der Aare",
+        text: "Von Mühleberg aus ist mein Studio in Gümmenen in wenigen Minuten erreichbar – ideal auch für regelmässige Anwendungen im Alltag."
       },
       {
-        heading: "Reiki für Tiere in Mühleberg",
-        text: "Für Hunde, Katzen und andere Tiere aus Mühleberg biete ich Anwendungen an, die sich ganz nach dem Tempo Ihres Tieres richten – bei Ihnen zu Hause oder im Studio."
+        heading: "Für Menschen und Tiere aus Mühleberg",
+        text: "Ob als bewusste Auszeit für sich selbst oder als achtsame Begleitung für Hund oder Katze: Eine Anwendung richtet sich ganz nach dem, was Ihnen oder Ihrem Tier guttut."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Aufgrund der Nähe zu Mühleberg ist die Anfahrt kurz. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuche in Mühleberg",
+        text: "Aufgrund der kurzen Distanz ist auch ein Hausbesuch in Mühleberg unkompliziert möglich, gegen Aufpreis und Fahrkosten. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
       { label: "Reiki in Bern", href: "/reiki-in/bern" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
   {
     slug: "fribourg",
     category: "ort",
-    metaTitle: "Reiki in Fribourg – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Fribourg – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Fribourg: Studio in Gümmenen an der Kantonsgrenze oder Hausbesuch direkt in Fribourg.",
+      "Reiki für Menschen und Tiere aus Fribourg: Praxis in Gümmenen an der Kantonsgrenze zur zweisprachigen Stadt Fribourg. Auch Hausbesuche möglich.",
     h1: "Reiki in Fribourg",
     intro:
-      "Gümmenen liegt an der Grenze der Kantone Bern und Freiburg – Fribourg ist von hier aus gut erreichbar. Für Menschen und Tiere aus Fribourg biete ich Anwendungen im Studio sowie Hausbesuche an.",
+      "Die zweisprachige Universitätsstadt Fribourg liegt nahe der Grenze der Kantone Bern und Freiburg – Gümmenen und mein Studio sind von dort aus in angenehmer Fahrdistanz erreichbar.",
     sections: [
       {
-        heading: "Reiki für Menschen in Fribourg",
-        text: "Eine Reiki-Anwendung kann zur Entspannung beitragen und Körper und Geist neue Kraft schenken – als bewusste Auszeit im Alltag oder als ergänzende Begleitung in einer stressreicheren Lebensphase."
+        heading: "Über die Kantonsgrenze nach Gümmenen",
+        text: "Ob aus der Altstadt von Fribourg oder den umliegenden Quartieren: Die Fahrt über die Kantonsgrenze nach Gümmenen ist unkompliziert und lohnt sich für eine ruhige Auszeit."
       },
       {
-        heading: "Reiki für Hunde und Katzen in Fribourg",
-        text: "Für Hunde und Katzen aus Fribourg und Umgebung richtet sich eine Anwendung ganz nach dem, was Ihr Tier zulassen möchte – im Studio oder bei Ihnen zu Hause."
+        heading: "Für Menschen und Tiere aus Fribourg",
+        text: "Reiki kann als bewusste Auszeit im Alltag oder als ergänzende Begleitung in einer stressreicheren Lebensphase dienen – ebenso für Hunde und Katzen, ganz im Tempo des Tieres."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Fribourg ist von Gümmenen aus in angenehmer Fahrdistanz erreichbar. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuch als Option",
+        text: "Ist ein Termin im Studio nicht praktikabel, ist auch ein Hausbesuch in Fribourg gegen Aufpreis und Fahrkosten möglich. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki in Köniz", href: "/reiki-in/koeniz" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
   {
     slug: "koeniz",
     category: "ort",
-    metaTitle: "Reiki in Köniz – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Köniz – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Köniz: Studio in Gümmenen oder Hausbesuch direkt in Köniz.",
+      "Reiki für Menschen und Tiere aus Köniz: Praxis in Gümmenen, gut erreichbar aus der grossen Agglomerationsgemeinde Köniz. Auch Hausbesuche möglich.",
     h1: "Reiki in Köniz",
     intro:
-      "Köniz grenzt an die Stadt Bern und liegt in guter Fahrdistanz zu meinem Studio in Gümmenen. Für Menschen und Tiere aus Köniz biete ich Anwendungen im Studio sowie Hausbesuche an.",
+      "Köniz gehört zu den grössten und bevölkerungsreichsten Gemeinden der Schweiz und grenzt direkt an die Stadt Bern. Aus den verschiedenen Ortsteilen von Köniz ist mein Studio in Gümmenen in guter Fahrdistanz erreichbar.",
     sections: [
       {
-        heading: "Reiki für Menschen in Köniz",
-        text: "Reiki kann zur Entspannung beitragen und wird von vielen als wohltuend empfunden – ob als bewusste Auszeit im Alltag oder als ergänzende Begleitung in einer bewegten Lebensphase."
+        heading: "Von den Könizer Ortsteilen nach Gümmenen",
+        text: "Ob aus Köniz-Dorf, Liebefeld oder einem der anderen Ortsteile: Die Fahrt nach Gümmenen ist unkompliziert. Bei Bedarf bespreche ich die Anfahrt gerne vorab mit Ihnen."
       },
       {
-        heading: "Reiki für Hunde und Katzen in Köniz",
-        text: "Für Hunde und Katzen aus Köniz und Umgebung biete ich Anwendungen an, die sich ganz nach dem Tempo Ihres Tieres richten – bei Ihnen zu Hause oder im Studio."
+        heading: "Für Menschen und Tiere aus Köniz",
+        text: "Reiki kann eine bewusste Auszeit im Alltag oder eine ergänzende Begleitung in einer bewegten Lebensphase sein – ebenso für Hunde und Katzen, ganz im Tempo des Tieres."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Köniz ist von Gümmenen aus gut erreichbar. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuche in Köniz",
+        text: "Ist ein Termin im Studio nicht möglich, biete ich auch einen Hausbesuch in Köniz gegen Aufpreis und Fahrkosten an. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki in Bern", href: "/reiki-in/bern" },
+      { label: "Reiki in Belp", href: "/reiki-in/belp" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
   {
     slug: "neuenegg",
     category: "ort",
-    metaTitle: "Reiki in Neuenegg – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Neuenegg – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Neuenegg: Mein Studio in Gümmenen liegt gleich nebenan, Hausbesuche in Neuenegg sind ebenfalls möglich.",
+      "Reiki für Menschen und Tiere aus Neuenegg an der Sense: Praxis im direkt benachbarten Gümmenen. Auch Hausbesuche möglich.",
     h1: "Reiki in Neuenegg",
     intro:
-      "Neuenegg liegt in unmittelbarer Nachbarschaft zu Gümmenen. Für Menschen und Tiere aus Neuenegg sind sowohl Anwendungen in meinem Studio als auch Hausbesuche eine unkomplizierte Option.",
+      "Neuenegg liegt an der Sense, in unmittelbarer Nachbarschaft zu Gümmenen. Für Menschen und Tiere aus Neuenegg ist mein Studio dadurch besonders schnell erreichbar.",
     sections: [
       {
-        heading: "Reiki für Menschen in Neuenegg",
-        text: "Von Neuenegg aus erreichen Sie mein Studio in Gümmenen in wenigen Minuten. Ein Hausbesuch in Neuenegg ist ebenso möglich, wenn Ihnen die gewohnte Umgebung wichtiger ist."
+        heading: "Nur einen Katzensprung entfernt",
+        text: "Von Neuenegg aus erreichen Sie mein Studio in Gümmenen in wenigen Minuten – praktisch für kurzfristige Termine ebenso wie für regelmässige Anwendungen."
       },
       {
-        heading: "Reiki für Hunde und Katzen in Neuenegg",
-        text: "Für Hunde und Katzen aus Neuenegg biete ich Anwendungen an, die sich ganz nach dem Tempo Ihres Tieres richten – bei Ihnen zu Hause oder im Studio."
+        heading: "Für Menschen und Tiere aus Neuenegg",
+        text: "Ob eine bewusste Auszeit für sich selbst oder eine achtsame Begleitung für Hund oder Katze: Eine Anwendung richtet sich ganz nach dem, was Ihnen oder Ihrem Tier guttut."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Aufgrund der Nähe zu Neuenegg ist die Anfahrt kurz. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuch in gewohnter Umgebung",
+        text: "Wenn Ihnen die gewohnte Umgebung wichtiger ist, ist ein Hausbesuch in Neuenegg gegen Aufpreis und Fahrkosten ebenso möglich. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki in Laupen", href: "/reiki-in/laupen" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
   {
     slug: "belp",
     category: "ort",
-    metaTitle: "Reiki in Belp – Hausbesuche für Menschen & Tiere",
+    metaTitle: "Reiki in Belp – Praxis in Gümmenen | Reiki Studio Petra In-Albon",
     metaDescription:
-      "Reiki-Anwendungen für Menschen und Tiere in Belp: Studio in Gümmenen oder Hausbesuch direkt in Belp.",
+      "Reiki für Menschen und Tiere aus Belp: Praxis in Gümmenen, südöstlich von Bern gut erreichbar. Auch Hausbesuche möglich.",
     h1: "Reiki in Belp",
     intro:
-      "Belp liegt südöstlich von Bern und ist von meinem Studio in Gümmenen aus gut erreichbar. Für Menschen und Tiere aus Belp biete ich Anwendungen im Studio sowie Hausbesuche an.",
+      "Belp am Fuss des Belpbergs, bekannt auch durch den nahen Flughafen Bern-Belp, liegt südöstlich von Bern in angenehmer Fahrdistanz zu meinem Studio in Gümmenen.",
     sections: [
       {
-        heading: "Reiki für Menschen in Belp",
-        text: "Reiki kann zur Entspannung beitragen und Körper und Geist neue Kraft schenken – ganz gleich, ob Sie Reiki bereits kennen oder zum ersten Mal ausprobieren möchten."
+        heading: "Von Belp aus nach Gümmenen",
+        text: "Die Strecke von Belp nach Gümmenen führt quer durch die Region Bern-Süd und ist unkompliziert zu fahren. Details zur Anfahrt bespreche ich gerne bei der Terminvereinbarung."
       },
       {
-        heading: "Reiki für Hunde und Katzen in Belp",
-        text: "Für Hunde und Katzen aus Belp und Umgebung richtet sich eine Anwendung ganz nach dem, was Ihr Tier zulassen möchte, bei Bedarf direkt bei Ihnen zu Hause."
+        heading: "Für Menschen und Tiere aus Belp",
+        text: "Ganz gleich, ob Sie Reiki bereits kennen oder zum ersten Mal ausprobieren möchten: Eine Anwendung richtet sich nach Ihren Bedürfnissen – ebenso für Hunde und Katzen aus Belp und Umgebung."
       },
       {
-        heading: "Anfahrt und Hausbesuche",
-        text: "Belp ist von Gümmenen aus in angenehmer Fahrdistanz erreichbar. Hausbesuche sind gegen Fahrkosten möglich, Details dazu finden Sie auf der Seite Ablauf und Preise."
+        heading: "Hausbesuche in Belp",
+        text: "Bei Bedarf ist auch ein Hausbesuch in Belp gegen Aufpreis und Fahrkosten möglich, bei Tieren etwa dann, wenn die gewohnte Umgebung wichtig ist. Details dazu finden Sie auf der Seite Ablauf und Preise."
       }
     ],
     disclaimer: humanDisclaimer,
     cta: defaultCta,
     relatedPaths: [
-      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
-      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Reiki in Köniz", href: "/reiki-in/koeniz" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
+      { label: "Reiki für Tiere", href: "/reiki-fuer-tiere" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
@@ -524,30 +565,30 @@ export const landingPages: LandingPage[] = [
   {
     slug: "kinder",
     category: "mensch-thema",
-    metaTitle: "Reiki für Kinder – Reiki Studio Petra In-Albon",
+    metaTitle: "Reiki für Kinder im Raum Bern | Reiki Studio Gümmenen",
     metaDescription:
-      "Reiki für Kinder in Gümmenen im Raum Bern: sanft, spielerisch erklärt und ganz freiwillig. Jetzt mehr erfahren.",
-    h1: "Reiki für Kinder",
+      "Reiki für Kinder in Gümmenen bei Bern: eine achtsame, kindgerechte Auszeit für Ruhe, Entspannung und Wohlbefinden. Ablauf und Möglichkeiten kennenlernen.",
+    h1: "Reiki für Kinder – achtsame Begleitung im Raum Bern",
     intro:
-      "Auch Kinder können von einer ruhigen, achtsamen Auszeit profitieren – etwa bei innerer Unruhe, in aufregenden Lebensphasen oder einfach als besondere gemeinsame Zeit. Eine Anwendung wird kindgerecht erklärt und findet ganz freiwillig statt.",
+      "Kinder erleben den Alltag oft besonders intensiv. Schule, Veränderungen, viele Eindrücke oder innere Unruhe können dazu führen, dass Ruhe und Entspannung zu kurz kommen. Reiki für Kinder bietet eine sanfte, achtsame Auszeit in geschützter Atmosphäre. In meinem Reiki Studio in Gümmenen bei Bern richte ich jede Anwendung individuell nach dem Alter, den Bedürfnissen und dem Tempo des Kindes aus.",
     benefits: [
-      "kann zur Entspannung beitragen",
-      "gibt neue Energie",
-      "unterstützt das allgemeine Wohlbefinden",
-      "wird von vielen als schlaffördernd empfunden"
+      "kann Ruhe und Entspannung unterstützen",
+      "bietet eine bewusste Auszeit vom Alltag",
+      "wird kindgerecht und ohne Druck gestaltet",
+      "das Kind entscheidet jederzeit selbst mit"
     ],
     sections: [
       {
-        heading: "Wie läuft eine Anwendung bei Kindern ab?",
-        text: "Vor der Anwendung wird kindgerecht erklärt, was passiert. Ihr Kind bleibt vollständig bekleidet und entscheidet jederzeit selbst mit, wie viel es zulassen möchte. Ein Elternteil ist herzlich willkommen, dabei zu bleiben."
+        heading: "Wann kann Reiki für Kinder eine wohltuende Begleitung sein?",
+        text: "Kinder brauchen manchmal einen Moment, in dem nichts von ihnen erwartet wird. Eine Reiki-Anwendung kann einen ruhigen Rahmen bieten, in dem das Kind entspannen und zur Ruhe kommen darf. Eltern interessieren sich beispielsweise für Reiki, wenn ihr Kind einen unruhigen Alltag erlebt, vor Veränderungen steht oder sich eine bewusste Auszeit wünscht. Dabei mache ich keine Heilversprechen. Reiki versteht sich als ergänzende Anwendung für Entspannung und Wohlbefinden und ersetzt keine ärztliche, psychologische oder therapeutische Behandlung. Typische Anlässe sind Schulstress und viele Eindrücke, innere Unruhe, Veränderungen wie Schulwechsel oder Umzug, herausfordernde Lebensphasen sowie der Wunsch nach Ruhe und Entspannung."
       },
       {
-        heading: "Für welches Alter geeignet?",
-        text: "Grundsätzlich für Kinder jeden Alters geeignet – von der Bereitschaft des Kindes hängt ab, wie die Anwendung im Detail gestaltet wird. Bei Unsicherheit sprechen Sie mich gerne im Vorgespräch darauf an."
+        heading: "Wie läuft Reiki bei Kindern ab?",
+        text: "Vor der ersten Anwendung bespreche ich mit Ihnen als Elternteil in Ruhe, was Ihrem Kind guttut und was Sie sich von der Begegnung wünschen. Auch dem Kind erkläre ich altersgerecht, was bei Reiki passiert. Die Anwendung findet vollständig bekleidet statt und wird an das Alter und die Aufmerksamkeitsspanne des Kindes angepasst. Nähe und Berührung erfolgen niemals gegen den Wunsch des Kindes. Mir ist wichtig, dass es sich sicher und wohlfühlt und jederzeit Nein sagen oder die Anwendung beenden kann."
       },
       {
-        heading: "Ablauf und Vorgespräch",
-        text: "Im kurzen Vorgespräch mit den Eltern klären wir Anlass und Erwartungen. Details zum allgemeinen Ablauf finden Sie auf der Seite Reiki für Menschen."
+        heading: "Reiki für Kinder in Gümmenen bei Bern",
+        text: "Mein Reiki Studio befindet sich in 3205 Gümmenen im Kanton Bern. Ich begleite Familien aus Gümmenen und der umliegenden Region, beispielsweise aus Mühleberg, Laupen, Neuenegg und Bern. Wenn Sie unsicher sind, ob Reiki für Ihr Kind passend sein könnte, können wir dies gerne in einem unverbindlichen Erstgespräch besprechen."
       }
     ],
     disclaimer: humanDisclaimer,
@@ -555,6 +596,7 @@ export const landingPages: LandingPage[] = [
     relatedPaths: [
       { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
       { label: "Reiki bei innerer Unruhe", href: "/reiki-fuer-menschen/innere-unruhe" },
+      { label: "Reiki in Gümmenen", href: "/reiki-in/guemmenen" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
@@ -786,6 +828,45 @@ export const landingPages: LandingPage[] = [
       { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
       { label: "Reiki bei Stress", href: "/reiki-fuer-menschen/stress" },
       { label: "Reiki bei chronischer Erschöpfung", href: "/reiki-fuer-menschen/chronische-erschoepfung" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
+    slug: "ergaenzend-zur-akupunktur",
+    category: "mensch-thema",
+    metaTitle: "Reiki als Ergänzung zur Akupunktur – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki als entspannungsfördernde Ergänzung neben Akupunktur oder anderen Methoden. Hinweis: Petra In-Albon bietet keine Akupunktur an, nur Reiki.",
+    h1: "Reiki als Ergänzung zur Akupunktur",
+    intro:
+      "Manche Menschen kombinieren bewusst mehrere komplementäre Methoden. Wer bereits Akupunktur in Anspruch nimmt, empfindet eine zusätzliche Reiki-Anwendung oft als wohltuende Ergänzung im Alltag zwischen den Terminen.",
+    benefits: [
+      "kann zur Entspannung beitragen",
+      "kann Stress reduzieren helfen",
+      "unterstützt das allgemeine Wohlbefinden",
+      "gibt neue Energie"
+    ],
+    sections: [
+      {
+        heading: "Wichtiger Hinweis",
+        text: "Petra In-Albon bietet ausschliesslich Reiki an – keine Akupunktur. Diese Seite richtet sich an Menschen, die Akupunktur bereits anderswo in Anspruch nehmen und zusätzlich eine entspannungsfördernde Reiki-Anwendung suchen."
+      },
+      {
+        heading: "Wie unterscheiden sich die beiden Methoden?",
+        text: "Akupunktur ist eine eigenständige Methode aus der Traditionellen Chinesischen Medizin und wird von entsprechend ausgebildeten Fachpersonen durchgeführt. Reiki ist eine sanfte, entspannungsfördernde Anwendung, bei der die Hände aufgelegt oder mit Abstand gehalten werden – ohne Nadeln und ohne medizinischen Anspruch."
+      },
+      {
+        heading: "Ablauf und Vorgespräch",
+        text: "Im kurzen Vorgespräch können Sie erwähnen, wenn Sie aktuell in Akupunktur-Behandlung sind, damit die Reiki-Anwendung darauf abgestimmt werden kann. Details zum allgemeinen Ablauf finden Sie auf der Seite Reiki für Menschen."
+      }
+    ],
+    disclaimer:
+      "Reiki kann zur Entspannung beitragen und wird von vielen Menschen als wohltuend empfunden. Es ist keine Akupunktur, ersetzt keine ärztliche oder TCM-Behandlung und ist als eigenständiges, ergänzendes Angebot zu verstehen.",
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki bei Stress", href: "/reiki-fuer-menschen/stress" },
+      { label: "Reiki-Behandlung: Ablauf & Begriffsklärung", href: "/reiki-behandlung" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },

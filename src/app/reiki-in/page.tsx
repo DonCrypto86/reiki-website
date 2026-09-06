@@ -7,7 +7,7 @@ import ServiceCard from "@/components/ui/ServiceCard";
 import CallToActionSection from "@/components/sections/CallToActionSection";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Reiki in der Nähe – Bern, Köniz, Fribourg und weitere Orte",
+  title: "Reiki in der Nähe – Gümmenen, Bern, Köniz und weitere Orte",
   description:
     "Reiki in der Nähe gesucht? Übersicht der Orte rund um Gümmenen im Raum Bern, in denen Hausbesuche für Menschen und Tiere möglich sind.",
   path: "/reiki-in"
