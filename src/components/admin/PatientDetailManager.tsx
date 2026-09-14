@@ -76,6 +76,10 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   const [noteDate, setNoteDate] = useState(todayIso());
   const [noteText, setNoteText] = useState("");
 
+  const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
+  const [editNoteDate, setEditNoteDate] = useState("");
+  const [editNoteText, setEditNoteText] = useState("");
+
   const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
   const [appointmentNote, setAppointmentNote] = useState("");
@@ -175,6 +179,31 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
 
   async function handleRemoveNote(noteId: string) {
     await persist({ notes: patient.notes.filter((note) => note.id !== noteId) });
+  }
+
+  function handleStartEditNote(note: SessionNote) {
+    setEditingNoteId(note.id);
+    setEditNoteDate(note.date);
+    setEditNoteText(note.text);
+  }
+
+  function handleCancelEditNote() {
+    setEditingNoteId(null);
+  }
+
+  async function handleSaveEditNote(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!editingNoteId || !editNoteText.trim()) return;
+    const ok = await persist({
+      notes: patient.notes.map((note) =>
+        note.id === editingNoteId
+          ? { ...note, date: editNoteDate || note.date, text: editNoteText.trim() }
+          : note
+      )
+    });
+    if (ok) {
+      setEditingNoteId(null);
+    }
   }
 
   async function handleAddAppointment(event: FormEvent<HTMLFormElement>) {
@@ -570,22 +599,80 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
       <section>
         <h2 className="text-lg">Behandlungsverlauf ({patient.notes.length})</h2>
         <div className="mt-4 flex flex-col gap-3">
-          {sortedNotes.map((note) => (
-            <div key={note.id} className="rounded-xl2 bg-white p-4 ring-1 ring-beige-dark/40">
-              <div className="flex items-start justify-between gap-3">
-                <p className="text-sm font-medium text-forest">{formatDate(note.date)}</p>
-                <button
-                  type="button"
-                  onClick={() => handleRemoveNote(note.id)}
-                  className="text-ink-light hover:text-terracotta-dark"
-                  aria-label="Notiz löschen"
-                >
-                  <Trash2 className="h-4 w-4" aria-hidden="true" />
-                </button>
+          {sortedNotes.map((note) =>
+            editingNoteId === note.id ? (
+              <form
+                key={note.id}
+                onSubmit={handleSaveEditNote}
+                className="flex flex-col gap-3 rounded-xl2 bg-white p-4 ring-1 ring-beige-dark/40"
+              >
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor={`edit-note-date-${note.id}`} className={labelStyles}>
+                    Datum
+                  </label>
+                  <input
+                    id={`edit-note-date-${note.id}`}
+                    type="date"
+                    value={editNoteDate}
+                    onChange={(event) => setEditNoteDate(event.target.value)}
+                    className={inputStyles}
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor={`edit-note-text-${note.id}`} className={labelStyles}>
+                    Notiz
+                  </label>
+                  <textarea
+                    id={`edit-note-text-${note.id}`}
+                    rows={3}
+                    value={editNoteText}
+                    onChange={(event) => setEditNoteText(event.target.value)}
+                    className={inputStyles}
+                  />
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <PrimaryButton type="submit" disabled={isSaving || !editNoteText.trim()}>
+                    {isSaving ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                        Wird gespeichert…
+                      </>
+                    ) : (
+                      "Speichern"
+                    )}
+                  </PrimaryButton>
+                  <SecondaryButton type="button" onClick={handleCancelEditNote} disabled={isSaving}>
+                    Abbrechen
+                  </SecondaryButton>
+                </div>
+              </form>
+            ) : (
+              <div key={note.id} className="rounded-xl2 bg-white p-4 ring-1 ring-beige-dark/40">
+                <div className="flex items-start justify-between gap-3">
+                  <p className="text-sm font-medium text-forest">{formatDate(note.date)}</p>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => handleStartEditNote(note)}
+                      className="text-ink-light hover:text-forest"
+                      aria-label="Notiz bearbeiten"
+                    >
+                      <Pencil className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleRemoveNote(note.id)}
+                      className="text-ink-light hover:text-terracotta-dark"
+                      aria-label="Notiz löschen"
+                    >
+                      <Trash2 className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                  </div>
+                </div>
+                <p className="mt-1 whitespace-pre-wrap text-ink">{note.text}</p>
               </div>
-              <p className="mt-1 whitespace-pre-wrap text-ink">{note.text}</p>
-            </div>
-          ))}
+            )
+          )}
         </div>
         <form onSubmit={handleAddNote} className="mt-4 flex flex-col gap-3">
           <div className="flex flex-wrap gap-3">
