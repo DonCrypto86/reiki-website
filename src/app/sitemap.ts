@@ -8,6 +8,7 @@ const paths = [
   "/reiki-fuer-menschen",
   "/reiki-fuer-tiere",
   "/reiki-in",
+  "/reiki-in-der-naehe",
   "/reiki-behandlung",
   "/aktuelles",
   "/ablauf-preise",

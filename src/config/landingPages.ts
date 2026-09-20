@@ -601,6 +601,49 @@ export const landingPages: LandingPage[] = [
     ]
   },
   {
+    slug: "altersheim",
+    category: "mensch-thema",
+    metaTitle: "Reiki im Altersheim & Pflegeheim – Reiki Studio Petra In-Albon",
+    metaDescription:
+      "Reiki im Altersheim und Pflegeheim im Raum Bern: ruhige, freiwillige Begleitung für Bewohnerinnen und Bewohner. Für Einrichtungen und Angehörige.",
+    h1: "Reiki im Altersheim und Pflegeheim",
+    intro:
+      "Der Alltag in einem Alters- oder Pflegeheim ist oft dicht getaktet. Reiki kann für Bewohnerinnen und Bewohner eine ruhige, freiwillige Auszeit bieten – sitzend oder liegend, ganz nach dem, was die Person an diesem Tag zulassen möchte. Ich biete solche Besuche sowohl für Einrichtungen als auch auf Wunsch einzelner Angehöriger an.",
+    benefits: [
+      "kann zur Entspannung beitragen",
+      "bietet eine ruhige, freiwillige Auszeit vom Alltag",
+      "berücksichtigt die individuelle Tagesform",
+      "Berührung ausschliesslich nach Wunsch der Person"
+    ],
+    sections: [
+      {
+        heading: "Für wen geeignet?",
+        text: "Für Bewohnerinnen und Bewohner von Alters- und Pflegeheimen, unabhängig vom Alter oder Mobilitätsgrad. Die Anwendung findet sitzend oder liegend statt und wird an die jeweilige Tagesform angepasst. Wie bei jeder Reiki-Anwendung entscheidet die Person jederzeit selbst mit, wie viel Nähe sie zulassen möchte."
+      },
+      {
+        heading: "Für Einrichtungen",
+        text: "Heimleitungen und Aktivierungsverantwortliche können einzelne Besuche oder eine regelmässige Begleitung vereinbaren. Ablauf, Häufigkeit und organisatorische Fragen bespreche ich gerne direkt mit der Einrichtung."
+      },
+      {
+        heading: "Für Angehörige",
+        text: "Auch Angehörige können eine Reiki-Anwendung für eine im Heim lebende Person anfragen. In Absprache mit der Einrichtung wird ein passender Zeitpunkt gefunden."
+      },
+      {
+        heading: "Wichtiger Hinweis",
+        text: "Reiki versteht sich als ergänzendes, entspannungsförderndes Angebot und ersetzt keine medizinische, pflegerische oder psychotherapeutische Versorgung. Es werden keine Aussagen über die Behandlung bestehender Erkrankungen gemacht."
+      }
+    ],
+    disclaimer:
+      "Reiki kann zur Entspannung beitragen und wird von vielen Menschen als wohltuend empfunden. Es ersetzt jedoch keine medizinische, pflegerische oder psychotherapeutische Versorgung und ist als ergänzendes, freiwilliges Angebot zu verstehen.",
+    cta: defaultCta,
+    relatedPaths: [
+      { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
+      { label: "Reiki als Begleitung während einer Genesungsphase", href: "/reiki-fuer-menschen/genesungsphase" },
+      { label: "Reiki für pflegende Angehörige", href: "/reiki-fuer-menschen/pflegende-angehoerige" },
+      { label: "Ablauf und Preise", href: "/ablauf-preise" }
+    ]
+  },
+  {
     slug: "genesungsphase",
     category: "mensch-thema",
     metaTitle: "Reiki als Begleitung während einer Genesungsphase – Reiki Studio Petra In-Albon",
@@ -636,6 +679,7 @@ export const landingPages: LandingPage[] = [
       { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
       { label: "Reiki bei chronischer Erschöpfung", href: "/reiki-fuer-menschen/chronische-erschoepfung" },
       { label: "Reiki für pflegende Angehörige", href: "/reiki-fuer-menschen/pflegende-angehoerige" },
+      { label: "Reiki im Altersheim und Pflegeheim", href: "/reiki-fuer-menschen/altersheim" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },
@@ -674,6 +718,7 @@ export const landingPages: LandingPage[] = [
       { label: "Reiki für Menschen", href: "/reiki-fuer-menschen" },
       { label: "Reiki bei chronischer Erschöpfung", href: "/reiki-fuer-menschen/chronische-erschoepfung" },
       { label: "Reiki bei Stress", href: "/reiki-fuer-menschen/stress" },
+      { label: "Reiki im Altersheim und Pflegeheim", href: "/reiki-fuer-menschen/altersheim" },
       { label: "Ablauf und Preise", href: "/ablauf-preise" }
     ]
   },

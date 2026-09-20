@@ -96,6 +96,11 @@ export default function ReikiInOrtIndexPage() {
                 Ablauf und Preise
               </SecondaryButton>
             </li>
+            <li>
+              <SecondaryButton href="/reiki-in-der-naehe" className="px-5 py-2 text-xs">
+                Checkliste: Reiki in der Nähe finden
+              </SecondaryButton>
+            </li>
           </ul>
         </Container>
       </section>
