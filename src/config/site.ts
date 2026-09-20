@@ -136,12 +136,14 @@ export const siteConfig = {
   },
 
   legal: {
-    /** Rechtsform / Zusatz für Impressum, z. B. "Einzelunternehmen". */
-    legalForm: "[RECHTSFORM, z. B. Einzelunternehmen]",
-    /** Handelsregistereintrag und/oder MWST-Nummer, sofern vorhanden. */
-    vatInfo: "[HANDELSREGISTER-NR. UND/ODER MWST-NR., FALLS VORHANDEN]",
-    /** Zuständige Aufsichts-/Meldebehörde, sofern zutreffend. */
-    supervisoryAuthority: "[ZUSTÄNDIGE BEHÖRDE, FALLS ZUTREFFEND]",
+    /**
+     * Rechtsform / Zusatz für Impressum. Reiki wird von Petra In-Albon als
+     * Nebentätigkeit ausgeübt: keine Firmengründung, kein Handelsregister-
+     * eintrag, keine MWST-Nummer, keine Aufsichts-/Registrierungsstelle
+     * (z. B. EMR/ASCA). Daher werden im Impressum bewusst nur die Angaben
+     * gezeigt, die tatsächlich zutreffen.
+     */
+    legalForm: "Natürliche Person (Nebentätigkeit, kein Handelsregistereintrag)",
     /** Verantwortliche Person für den Inhalt der Website. */
     contentResponsible: "Petra In-Albon"
   },
@@ -761,10 +763,7 @@ export const siteConfig = {
     successMessage:
       "Vielen Dank für Ihre Nachricht. Ich melde mich persönlich bei Ihnen zurück.",
     submitLabel: "Unverbindliche Anfrage senden"
-  },
-
-  legalPagesNotice:
-    "Diese Seite enthält Platzhaltertexte. Sie muss vor Veröffentlichung durch eine rechtlich geprüfte, an Rechtsform, Land, Hosting, Analysewerkzeuge, Formulardienst und eingesetzte Drittanbieter angepasste Fassung ersetzt werden. Dieser Hinweis stellt keine Rechtsberatung dar."
+  }
 };
 
 export type SiteConfig = typeof siteConfig;

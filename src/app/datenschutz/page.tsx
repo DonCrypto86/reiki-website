@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
-import LegalNotice from "@/components/ui/LegalNotice";
 
 export const metadata: Metadata = buildMetadata({
   title: "Datenschutz",
@@ -15,8 +14,6 @@ export default function PrivacyPage() {
     <section className="py-14 sm:py-20">
       <Container className="max-w-3xl">
         <h1>Datenschutzerklärung</h1>
-
-        <LegalNotice className="mt-6">{siteConfig.legalPagesNotice}</LegalNotice>
 
         <div className="mt-8 space-y-8 text-ink-light">
           <div>
