@@ -1,5 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
-import { buildBreadcrumbJsonLd } from "@/lib/seo";
+import { buildBreadcrumbJsonLd, buildFaqJsonLd } from "@/lib/seo";
 import type { LandingPage } from "@/config/landingPages";
 import Container from "@/components/ui/Container";
 import LegalNotice from "@/components/ui/LegalNotice";
@@ -20,6 +20,7 @@ type LandingPageContentProps = {
  */
 export default function LandingPageContent({ entry, breadcrumb }: LandingPageContentProps) {
   const breadcrumbJsonLd = buildBreadcrumbJsonLd(breadcrumb);
+  const faqJsonLd = entry.faq.length > 0 ? buildFaqJsonLd(entry.faq) : null;
 
   return (
     <>
@@ -28,6 +29,13 @@ export default function LandingPageContent({ entry, breadcrumb }: LandingPageCon
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd ? (
+        <script
+          type="application/ld+json"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      ) : null}
 
       <section className="bg-cream-light py-14 sm:py-20">
         <Container className="max-w-3xl">
@@ -72,6 +80,22 @@ export default function LandingPageContent({ entry, breadcrumb }: LandingPageCon
           })}
         </Container>
       </section>
+
+      {entry.faq.length > 0 ? (
+        <section className="py-14 sm:py-20">
+          <Container className="max-w-3xl">
+            <h2 className="text-xl">Häufige Fragen</h2>
+            <div className="mt-6 space-y-6">
+              {entry.faq.map((item) => (
+                <div key={item.question}>
+                  <h3 className="text-base font-semibold text-ink">{item.question}</h3>
+                  <p className="mt-2 text-ink-light">{item.answer}</p>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
 
       <section className="py-4 sm:py-6">
         <Container className="max-w-3xl">

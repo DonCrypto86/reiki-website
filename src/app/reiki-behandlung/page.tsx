@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
-import { buildMetadata, buildBreadcrumbJsonLd } from "@/lib/seo";
+import { buildMetadata, buildBreadcrumbJsonLd, buildFaqJsonLd } from "@/lib/seo";
 import Container from "@/components/ui/Container";
 import LegalNotice from "@/components/ui/LegalNotice";
 import SecondaryButton from "@/components/ui/SecondaryButton";
@@ -42,8 +42,41 @@ const sections = [
   {
     heading: "Für wen geeignet – und wichtige Grenzen",
     text: "Reiki eignet sich grundsätzlich für Menschen jeden Alters sowie für Hunde und Katzen. Bei akuten Beschwerden, während einer laufenden medizinischen Behandlung oder in Notfällen ersetzt Reiki jedoch keine ärztliche oder tierärztliche Abklärung – bitte halten Sie in solchen Fällen zuerst Rücksprache mit der behandelnden Fachperson."
+  },
+  {
+    heading: "Studio, Hausbesuch oder Fernbehandlung",
+    text: "Am häufigsten findet eine Anwendung im Studio in Gümmenen statt. Ist das nicht möglich, biete ich gegen Aufpreis und Fahrkosten auch einen Hausbesuch an, sowie – schweizweit und ortsunabhängig – eine Fernbehandlung. Welche Variante für Sie oder Ihr Tier passt, besprechen wir im Vorgespräch."
+  },
+  {
+    heading: "Terminvereinbarung",
+    text: "Einen Termin vereinbaren Sie unkompliziert über das Kontaktformular. Ich melde mich anschliessend persönlich bei Ihnen, um einen passenden Zeitpunkt sowie Ort der Anwendung (Studio, Hausbesuch oder Fernbehandlung) zu besprechen."
   }
 ];
+
+const faq = [
+  {
+    question: "Ist eine Reiki-Behandlung dasselbe wie eine medizinische Therapie?",
+    answer:
+      "Nein. Reiki ist eine komplementäre, entspannungsfördernde Anwendung und keine medizinische Heilbehandlung. Sie ersetzt keine ärztliche oder tierärztliche Diagnose oder Therapie."
+  },
+  {
+    question: "Muss ich mich für eine Anwendung ausziehen?",
+    answer:
+      "Nein, Sie bleiben während der gesamten Anwendung vollständig bekleidet. Es findet keine Massage und keine medizinische Untersuchung statt."
+  },
+  {
+    question: "Wie oft sollte ich eine Reiki-Anwendung in Anspruch nehmen?",
+    answer:
+      "Das ist individuell verschieden. Manche Menschen kommen einmalig, andere in regelmässigen Abständen. Nach der Erstanwendung besprechen wir gerne gemeinsam, was für Sie sinnvoll erscheint."
+  },
+  {
+    question: "Was, wenn ich während der Anwendung nichts spüre?",
+    answer:
+      "Auch das ist völlig normal. Es gibt keine feste Erwartung daran, was Sie erleben sollten – jede Erfahrung ist individuell und ebenso gültig."
+  }
+];
+
+const faqJsonLd = buildFaqJsonLd(faq);
 
 export default function ReikiBehandlungPage() {
   return (
@@ -52,6 +85,11 @@ export default function ReikiBehandlungPage() {
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
       <section className="bg-cream-light py-14 sm:py-20">
@@ -88,6 +126,20 @@ export default function ReikiBehandlungPage() {
               <p className="mt-3 text-ink-light">{block.text}</p>
             </div>
           ))}
+        </Container>
+      </section>
+
+      <section className="py-14 sm:py-20">
+        <Container className="max-w-3xl">
+          <h2 className="text-xl">Häufige Fragen</h2>
+          <div className="mt-6 space-y-6">
+            {faq.map((item) => (
+              <div key={item.question}>
+                <h3 className="text-base font-semibold text-ink">{item.question}</h3>
+                <p className="mt-2 text-ink-light">{item.answer}</p>
+              </div>
+            ))}
+          </div>
         </Container>
       </section>
 

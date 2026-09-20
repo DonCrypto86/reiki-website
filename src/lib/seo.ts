@@ -56,3 +56,23 @@ export function buildBreadcrumbJsonLd(items: { name: string; path: string }[]) {
     }))
   };
 }
+
+/**
+ * Erstellt ein FAQPage-JSON-LD-Objekt aus seiten-spezifischen Fragen/Antworten.
+ * Nur einsetzen, wenn die FAQ auch sichtbar auf der Seite dargestellt werden
+ * (kein "unsichtbares" Schema ohne entsprechenden Seiteninhalt).
+ */
+export function buildFaqJsonLd(items: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer
+      }
+    }))
+  };
+}
