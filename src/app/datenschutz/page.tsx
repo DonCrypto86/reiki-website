@@ -45,53 +45,78 @@ export default function PrivacyPage() {
             <p className="mt-2">
               Wenn Sie das Kontaktformular nutzen, werden die von Ihnen eingegebenen Daten (Name,
               E-Mail-Adresse, ggf. Telefonnummer sowie Ihre Nachricht) ausschließlich zur
-              Bearbeitung Ihrer Anfrage verwendet. Eine dauerhafte Speicherung der
-              Formulareingaben in einer Datenbank findet durch diese Website nicht statt. [
-              PLATZHALTER: Sobald ein konkreter E-Mail-Versanddienst (z. B. Resend oder ein
-              SMTP-Anbieter) eingebunden wird, muss hier die entsprechende Rechtsgrundlage,
-              Speicherdauer und ggf. der Serverstandort des Dienstleisters ergänzt werden.]
+              Bearbeitung Ihrer Anfrage verwendet. Der Versand erfolgt über den E-Mail-Dienst
+              Resend (Resend, Inc., USA), der Ihre Anfrage direkt an unser Postfach weiterleitet.
+              Eine dauerhafte Speicherung der Formulareingaben in einer eigenen Datenbank findet
+              durch diese Website nicht statt; Resend kann die Übermittlung jedoch gemäss eigener
+              Aufbewahrungsfristen protokollieren. Die Verarbeitung erfolgt auf Grundlage Ihrer
+              Einwilligung durch das Absenden des Formulars bzw. zur Bearbeitung Ihrer Anfrage.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl text-forest">4. Hosting</h2>
             <p className="mt-2">
-              [PLATZHALTER: Angaben zum Hosting-Anbieter, Serverstandort und – falls erforderlich
-              – Verweis auf einen Auftragsverarbeitungsvertrag (AVV) ergänzen.]
+              Diese Website wird bei Vercel Inc. gehostet. Beim Aufruf der Website werden
+              technisch notwendige Verbindungsdaten (z. B. IP-Adresse, Datum und Uhrzeit der
+              Anfrage) automatisch durch den Hosting-Anbieter verarbeitet, um die Website
+              zuverlässig und sicher auszuliefern. Dies erfolgt auf Grundlage unseres berechtigten
+              Interesses an einem stabilen und sicheren Betrieb der Website.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl text-forest">5. Analyse- und Marketing-Werkzeuge</h2>
             <p className="mt-2">
-              Aktuell werden keine Analyse- oder Marketing-Werkzeuge eingesetzt. [PLATZHALTER:
-              Sollten künftig Werkzeuge wie eine datenschutzfreundliche Webanalyse eingebunden
-              werden, ist diese Erklärung entsprechend zu ergänzen und ggf. ein Cookie-Banner
-              vorzusehen.]
+              Wir nutzen Vercel Web Analytics zur anonymisierten, datenschutzfreundlichen
+              Auswertung der Seitenaufrufe. Dabei werden keine Cookies gesetzt und keine
+              personenbezogenen Profile erstellt; die Daten lassen sich nicht einzelnen Personen
+              zuordnen. Darüber hinaus werden keine weiteren Analyse- oder Marketing-Werkzeuge
+              (z. B. Google Analytics, Werbe-Cookies, Social-Media-Tracking) eingesetzt.
             </p>
           </div>
 
           <div>
             <h2 className="text-xl text-forest">6. Externe Kartenlinks</h2>
             <p className="mt-2">
-              Auf der Kontaktseite verlinken wir zu einem externen Kartendienst zur
-              Routenplanung. Es wird keine Karte automatisch eingebettet oder nachgeladen; erst
-              mit einem Klick auf den Link verlassen Sie diese Website. [PLATZHALTER: Genauen
-              Kartenanbieter benennen und dessen Datenschutzhinweise verlinken.]
+              Auf der Kontaktseite verlinken wir zu Google Maps zur Routenplanung. Es wird keine
+              Karte automatisch eingebettet oder nachgeladen; erst mit einem Klick auf den Link
+              verlassen Sie diese Website und es gelten die Datenschutzhinweise von Google
+              (Google Ireland Limited bzw. Google LLC).
             </p>
           </div>
 
           <div>
-            <h2 className="text-xl text-forest">7. Ihre Rechte</h2>
+            <h2 className="text-xl text-forest">7. Patienten- und Kundenverwaltung (internes Tool)</h2>
             <p className="mt-2">
-              [PLATZHALTER: Hinweise zu Auskunft, Berichtigung, Löschung und Einschränkung der
-              Bearbeitung Ihrer Daten ergänzen. Da {siteConfig.address.city} in der Schweiz liegt,
-              richtet sich diese Erklärung in erster Linie nach dem Schweizer
-              Datenschutzgesetz (DSG). Werden auch Anfragen aus der EU bearbeitet, können
-              zusätzlich Vorgaben der DSGVO relevant sein. Bitte von juristischer Seite prüfen und
-              konkretisieren lassen, inkl. Hinweis auf das Beschwerderecht beim Eidgenössischen
-              Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) bzw. einer zuständigen
-              Aufsichtsbehörde.]
+              Für die Terminverwaltung sowie die Dokumentation von Anwendungen führen wir intern
+              ein passwortgeschütztes Verwaltungstool, das ausschliesslich von uns selbst genutzt
+              wird und nicht öffentlich zugänglich ist. Darin gespeicherte Daten (z. B. Kontakt-
+              und Adressdaten, Termine, Behandlungsverlauf) werden bei Vercel Inc. sowie über die
+              Datenbank-Integration Upstash gehostet und ausschliesslich zur Organisation der
+              Behandlungen sowie zu Dokumentationszwecken verwendet. Diese Daten werden nicht an
+              Dritte weitergegeben. Betroffene Personen können jederzeit Auskunft, Berichtigung
+              oder Löschung ihrer dort gespeicherten Daten verlangen, indem sie uns direkt
+              kontaktieren.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="text-xl text-forest">8. Ihre Rechte</h2>
+            <p className="mt-2">
+              Sie haben jederzeit das Recht, Auskunft über die von uns zu Ihrer Person
+              gespeicherten Daten zu verlangen sowie deren Berichtigung, Löschung oder
+              Einschränkung der Bearbeitung zu verlangen. Wenden Sie sich hierfür einfach per
+              E-Mail an {siteConfig.contact.email}.
+            </p>
+            <p className="mt-2">
+              Da {siteConfig.providerName} in der Schweiz ansässig ist, richtet sich diese
+              Erklärung in erster Linie nach dem Schweizer Datenschutzgesetz (DSG). Soweit auch
+              Anfragen aus der EU bearbeitet werden, können zusätzlich Vorgaben der DSGVO relevant
+              sein. Sollten Sie der Ansicht sein, dass die Bearbeitung Ihrer Daten gegen
+              Datenschutzrecht verstösst, haben Sie das Recht, eine Beschwerde bei der
+              zuständigen Aufsichtsbehörde einzureichen – in der Schweiz beim Eidgenössischen
+              Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB, www.edoeb.admin.ch).
             </p>
           </div>
         </div>
