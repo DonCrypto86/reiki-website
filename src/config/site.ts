@@ -110,7 +110,7 @@ export const siteConfig = {
   region: "Gümmenen im Raum Bern",
 
   openingHours: [
-    { day: "Montag & Dienstag", hours: "9:00 – 18:00 Uhr" },
+    { day: "Montag & Dienstag", hours: "9:00 – 19:00 Uhr" },
     { day: "Mittwoch – Freitag", hours: "nach Vereinbarung" },
     { day: "Samstag", hours: "9:00 – 12:00 Uhr" },
     { day: "Sonntag", hours: "geschlossen" }
