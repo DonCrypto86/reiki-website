@@ -123,6 +123,10 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
       }
 
       setPatient(data.patient);
+      // Hält die Serverdaten der Liste/anderer Seiten synchron, falls
+      // Petra über "Zurück zur Übersicht" navigiert oder die Detailseite
+      // erneut öffnet, bevor der Client-Cache regulär abläuft.
+      router.refresh();
       return true;
     } catch {
       setError("Es ist ein Fehler aufgetreten. Bitte versuche es erneut.");
