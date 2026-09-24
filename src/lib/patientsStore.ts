@@ -136,6 +136,106 @@ export async function deletePatient(id: string): Promise<void> {
   await writeAll(all.filter((patient) => patient.id !== id));
 }
 
+/**
+ * Atomare Listen-Operationen (Tiere/Notizen/Termine): lesen den aktuellen
+ * Stand unmittelbar vor dem Schreiben frisch vom Server, statt sich auf
+ * eine vom Client mitgeschickte, potenziell veraltete Gesamtliste zu
+ * verlassen. Verhindert, dass ein länger offener Tab (oder ein zweiter Tab)
+ * zwischenzeitliche Änderungen beim Speichern unbemerkt wieder überschreibt.
+ */
+async function mutatePatient(
+  id: string,
+  mutate: (patient: Patient) => Patient
+): Promise<Patient | null> {
+  const all = await readAll();
+  let updated: Patient | null = null;
+
+  const next = all.map((patient) => {
+    if (patient.id !== id) return patient;
+    updated = { ...mutate(patient), updatedAt: new Date().toISOString() };
+    return updated;
+  });
+
+  if (!updated) return null;
+  await writeAll(next);
+  return updated;
+}
+
+export async function addPet(id: string, pet: Omit<Pet, "id">): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    pets: [...patient.pets, { ...pet, id: randomUUID() }]
+  }));
+}
+
+export async function removePet(id: string, petId: string): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    pets: patient.pets.filter((pet) => pet.id !== petId)
+  }));
+}
+
+export async function addNote(
+  id: string,
+  note: Omit<SessionNote, "id">
+): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    notes: [{ ...note, id: randomUUID() }, ...patient.notes]
+  }));
+}
+
+export async function updateNote(
+  id: string,
+  noteId: string,
+  patch: Partial<Omit<SessionNote, "id">>
+): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    notes: patient.notes.map((note) => (note.id === noteId ? { ...note, ...patch } : note))
+  }));
+}
+
+export async function removeNote(id: string, noteId: string): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    notes: patient.notes.filter((note) => note.id !== noteId)
+  }));
+}
+
+export async function addAppointment(
+  id: string,
+  appointment: Omit<Appointment, "id">
+): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    appointments: [...patient.appointments, { ...appointment, id: randomUUID() }]
+  }));
+}
+
+export async function updateAppointment(
+  id: string,
+  appointmentId: string,
+  patch: Partial<Omit<Appointment, "id">>
+): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    appointments: patient.appointments.map((appointment) =>
+      appointment.id === appointmentId ? { ...appointment, ...patch } : appointment
+    )
+  }));
+}
+
+export async function removeAppointment(
+  id: string,
+  appointmentId: string
+): Promise<Patient | null> {
+  return mutatePatient(id, (patient) => ({
+    ...patient,
+    appointments: patient.appointments.filter((appointment) => appointment.id !== appointmentId)
+  }));
+}
+
 export type UpcomingAppointment = {
   patientId: string;
   patientName: string;

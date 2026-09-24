@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, Loader2, Trash2, Plus, Check, Undo2, Pencil } from "lucide-react";
 import PrimaryButton from "@/components/ui/PrimaryButton";
 import SecondaryButton from "@/components/ui/SecondaryButton";
-import type { Appointment, Patient, Pet, SessionNote } from "@/lib/patientsStore";
+import type { Patient, SessionNote } from "@/lib/patientsStore";
 
 type PatientDetailManagerProps = {
   initialPatient: Patient;
@@ -85,14 +85,36 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   const [appointmentNote, setAppointmentNote] = useState("");
 
   async function persist(patch: Partial<Omit<Patient, "id" | "createdAt" | "updatedAt">>) {
+    return runRequest(`/api/patienten/${patient.id}`, "PATCH", patch);
+  }
+
+  /**
+   * Führt eine Speicheraktion serverseitig atomar aus (z. B. Notiz
+   * hinzufügen/löschen, Termin ändern). Schickt bewusst nur die betroffene
+   * Einzeländerung statt einer vom Client zusammengestellten Gesamtliste,
+   * damit ein länger offener oder zweiter Tab keine zwischenzeitlichen
+   * Änderungen unbemerkt überschreiben kann – der Server liest den
+   * aktuellen Stand unmittelbar vor dem Schreiben immer frisch.
+   */
+  async function runRequest(
+    url: string,
+    method: "PATCH" | "POST" | "DELETE",
+    body?: unknown
+  ) {
     setIsSaving(true);
     setError(null);
     try {
-      const response = await fetch(`/api/patienten/${patient.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(patch)
+      const response = await fetch(url, {
+        method,
+        headers: body !== undefined ? { "Content-Type": "application/json" } : undefined,
+        body: body !== undefined ? JSON.stringify(body) : undefined
       });
+
+      if (response.status === 401) {
+        setError("Sitzung abgelaufen. Bitte neu anmelden – lade die Seite neu.");
+        return false;
+      }
+
       const data = (await response.json()) as { success: boolean; message?: string; patient?: Patient };
 
       if (!data.success || !data.patient) {
@@ -150,8 +172,10 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   async function handleAddPet(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!petName.trim()) return;
-    const newPet: Pet = { id: crypto.randomUUID(), name: petName.trim(), species: petSpecies.trim() };
-    const ok = await persist({ pets: [...patient.pets, newPet] });
+    const ok = await runRequest(`/api/patienten/${patient.id}/pets`, "POST", {
+      name: petName.trim(),
+      species: petSpecies.trim()
+    });
     if (ok) {
       setPetName("");
       setPetSpecies("");
@@ -159,18 +183,16 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   }
 
   async function handleRemovePet(petId: string) {
-    await persist({ pets: patient.pets.filter((pet) => pet.id !== petId) });
+    await runRequest(`/api/patienten/${patient.id}/pets/${petId}`, "DELETE");
   }
 
   async function handleAddNote(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!noteText.trim()) return;
-    const newNote: SessionNote = {
-      id: crypto.randomUUID(),
+    const ok = await runRequest(`/api/patienten/${patient.id}/notes`, "POST", {
       date: noteDate || todayIso(),
       text: noteText.trim()
-    };
-    const ok = await persist({ notes: [newNote, ...patient.notes] });
+    });
     if (ok) {
       setNoteText("");
       setNoteDate(todayIso());
@@ -178,7 +200,7 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   }
 
   async function handleRemoveNote(noteId: string) {
-    await persist({ notes: patient.notes.filter((note) => note.id !== noteId) });
+    await runRequest(`/api/patienten/${patient.id}/notes/${noteId}`, "DELETE");
   }
 
   function handleStartEditNote(note: SessionNote) {
@@ -194,12 +216,9 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   async function handleSaveEditNote(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!editingNoteId || !editNoteText.trim()) return;
-    const ok = await persist({
-      notes: patient.notes.map((note) =>
-        note.id === editingNoteId
-          ? { ...note, date: editNoteDate || note.date, text: editNoteText.trim() }
-          : note
-      )
+    const ok = await runRequest(`/api/patienten/${patient.id}/notes/${editingNoteId}`, "PATCH", {
+      date: editNoteDate,
+      text: editNoteText.trim()
     });
     if (ok) {
       setEditingNoteId(null);
@@ -209,14 +228,11 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   async function handleAddAppointment(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!appointmentDate) return;
-    const newAppointment: Appointment = {
-      id: crypto.randomUUID(),
+    const ok = await runRequest(`/api/patienten/${patient.id}/appointments`, "POST", {
       date: appointmentDate,
       time: appointmentTime || undefined,
-      note: appointmentNote.trim() || undefined,
-      completed: false
-    };
-    const ok = await persist({ appointments: [...patient.appointments, newAppointment] });
+      note: appointmentNote.trim() || undefined
+    });
     if (ok) {
       setAppointmentDate("");
       setAppointmentTime("");
@@ -225,19 +241,15 @@ export default function PatientDetailManager({ initialPatient }: PatientDetailMa
   }
 
   async function handleToggleAppointment(appointmentId: string) {
-    await persist({
-      appointments: patient.appointments.map((appointment) =>
-        appointment.id === appointmentId
-          ? { ...appointment, completed: !appointment.completed }
-          : appointment
-      )
+    const current = patient.appointments.find((appointment) => appointment.id === appointmentId);
+    if (!current) return;
+    await runRequest(`/api/patienten/${patient.id}/appointments/${appointmentId}`, "PATCH", {
+      completed: !current.completed
     });
   }
 
   async function handleRemoveAppointment(appointmentId: string) {
-    await persist({
-      appointments: patient.appointments.filter((appointment) => appointment.id !== appointmentId)
-    });
+    await runRequest(`/api/patienten/${patient.id}/appointments/${appointmentId}`, "DELETE");
   }
 
   async function handleDeletePatient() {
