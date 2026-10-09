@@ -42,7 +42,7 @@ export default function NewsPage() {
               className="overflow-hidden rounded-xl2 bg-beige ring-1 ring-beige-dark/60"
             >
               {post.imageSrc ? (
-                <div className="max-w-xs">
+                <div className="mx-auto max-w-xs">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={post.imageSrc}

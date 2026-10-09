@@ -33,7 +33,7 @@ export default function ContactPage() {
           <p className="mt-4 text-ink-light">{contactPage.intro}</p>
         </div>
 
-        <div className="mt-8 max-w-md overflow-hidden rounded-xl2 shadow-soft ring-1 ring-beige-dark/60">
+        <div className="mx-auto mt-8 max-w-md overflow-hidden rounded-xl2 shadow-soft ring-1 ring-beige-dark/60">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/images/weihnachts-gutschein-banner.png"
