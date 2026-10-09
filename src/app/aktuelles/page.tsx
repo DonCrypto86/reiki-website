@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 import Container from "@/components/ui/Container";
+import SecondaryButton from "@/components/ui/SecondaryButton";
 
 export const metadata: Metadata = buildMetadata({
   title: "Aktuelles",
@@ -38,13 +39,30 @@ export default function NewsPage() {
           sortedPosts.map((post) => (
             <article
               key={`${post.date}-${post.title}`}
-              className="rounded-xl2 bg-beige p-6 ring-1 ring-beige-dark/60"
+              className="overflow-hidden rounded-xl2 bg-beige ring-1 ring-beige-dark/60"
             >
-              <p className="text-sm text-ink-light">
-                <time dateTime={post.date}>{formatDate(post.date)}</time>
-              </p>
-              <h2 className="mt-1 text-xl">{post.title}</h2>
-              <p className="mt-3 text-ink-light">{post.text}</p>
+              {post.imageSrc ? (
+                <div className="max-w-xs">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={post.imageSrc}
+                    alt={post.imageAlt ?? ""}
+                    className="block h-auto w-full"
+                  />
+                </div>
+              ) : null}
+              <div className="p-6">
+                <p className="text-sm text-ink-light">
+                  <time dateTime={post.date}>{formatDate(post.date)}</time>
+                </p>
+                <h2 className="mt-1 text-xl">{post.title}</h2>
+                <p className="mt-3 text-ink-light">{post.text}</p>
+                {post.ctaHref && post.ctaLabel ? (
+                  <SecondaryButton href={post.ctaHref} className="mt-4 px-5 py-2 text-xs">
+                    {post.ctaLabel}
+                  </SecondaryButton>
+                ) : null}
+              </div>
             </article>
           ))
         )}

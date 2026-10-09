@@ -58,6 +58,12 @@ export type NewsPost = {
   date: string;
   title: string;
   text: string;
+  /** Optionales Bild (z. B. saisonale Aktion), aus public/images/. */
+  imageSrc?: string;
+  imageAlt?: string;
+  /** Optionaler Call-to-Action-Link, z. B. zur Kontaktseite. */
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
 export const siteConfig = {
@@ -677,6 +683,16 @@ export const siteConfig = {
         date: "2026-09-22",
         title: "Reiki-Behandlung für Mitarbeitende im Betagtenzentrum Laupen",
         text: "Am 22. September und 1. Oktober 2026 biete ich Reiki-Behandlungen für die Mitarbeitenden des Betagtenzentrums Laupen an."
+      },
+      {
+        date: "2026-10-08",
+        title: "Weihnachts-Geschenkgutschein für Reiki",
+        text: "„Stille Nacht, ruhige Stunde – das schönste Geschenk ist oft eine Auszeit.“ Dieses Jahr gibt es den Reiki-Geschenkgutschein wieder: für Menschen ebenso wie für Hund und Katze. Ob Erstanwendung, Fernbehandlung oder ein Gutschein über einen frei wählbaren Betrag – ich berate Sie gerne, welches Geschenk zur beschenkten Person oder zum Tier passt.",
+        imageSrc: "/images/weihnachts-gutschein-banner.png",
+        imageAlt:
+          "Weihnachtlicher Reiki-Geschenkgutschein: Schenke Wohlbefinden, Ruhe und eine besondere Auszeit für Menschen und ihre tierischen Begleiter",
+        ctaLabel: "Gutschein anfragen",
+        ctaHref: "/kontakt"
       }
     ] satisfies NewsPost[]
   },
