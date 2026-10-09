@@ -33,6 +33,17 @@ export default function ContactPage() {
           <p className="mt-4 text-ink-light">{contactPage.intro}</p>
         </div>
 
+        <div className="mt-8 overflow-hidden rounded-xl2 shadow-soft ring-1 ring-beige-dark/60">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/weihnachts-gutschein-banner.png"
+            alt="Weihnachtlicher Reiki-Geschenkgutschein: Schenke Wohlbefinden, Ruhe und eine besondere Auszeit für Menschen und ihre tierischen Begleiter"
+            width={1448}
+            height={1086}
+            className="block h-auto w-full"
+          />
+        </div>
+
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-16">
           <div className="space-y-8">
             <div className="rounded-xl2 bg-beige p-6">
