@@ -1,6 +1,6 @@
 :root {
   --reiki-popup-space: clamp(12px, 4vw, 40px);
-  --reiki-popup-max-width: 900px;
+  --reiki-popup-max-width: 620px;
 }
 
 body.reiki-popup-is-open {
@@ -29,9 +29,16 @@ body.reiki-popup-is-open {
 
 .reiki-popup__dialog {
   position: relative;
-  width: min(100%, var(--reiki-popup-max-width));
+  /* Bild ist quadratisch: Breite zusätzlich an der verfügbaren Höhe
+     deckeln, damit das gesamte Motiv inkl. Button immer ohne Scrollen
+     sichtbar ist, auch auf niedrigen/breiten Viewports. */
+  width: min(
+    100%,
+    var(--reiki-popup-max-width),
+    calc(100dvh - (2 * var(--reiki-popup-space)))
+  );
   max-height: calc(100dvh - (2 * var(--reiki-popup-space)));
-  overflow: auto;
+  overflow: hidden;
   border-radius: clamp(12px, 2vw, 22px);
   background: #5f140f;
   box-shadow: 0 24px 70px rgb(0 0 0 / 45%);
