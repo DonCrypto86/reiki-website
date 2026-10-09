@@ -1,0 +1,135 @@
+:root {
+  --reiki-popup-space: clamp(12px, 4vw, 40px);
+  --reiki-popup-max-width: 900px;
+}
+
+body.reiki-popup-is-open {
+  overflow: hidden;
+}
+
+.reiki-popup[hidden] {
+  display: none;
+}
+
+.reiki-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  padding: var(--reiki-popup-space);
+}
+
+.reiki-popup__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgb(24 10 5 / 78%);
+  backdrop-filter: blur(3px);
+}
+
+.reiki-popup__dialog {
+  position: relative;
+  width: min(100%, var(--reiki-popup-max-width));
+  max-height: calc(100dvh - (2 * var(--reiki-popup-space)));
+  overflow: auto;
+  border-radius: clamp(12px, 2vw, 22px);
+  background: #5f140f;
+  box-shadow: 0 24px 70px rgb(0 0 0 / 45%);
+  animation: reiki-popup-in 260ms ease-out both;
+}
+
+.reiki-popup__image-wrap {
+  position: relative;
+  line-height: 0;
+}
+
+.reiki-popup__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: inherit;
+}
+
+.reiki-popup__close {
+  position: absolute;
+  z-index: 3;
+  top: clamp(8px, 1.5vw, 14px);
+  right: clamp(8px, 1.5vw, 14px);
+  display: grid;
+  width: clamp(38px, 6vw, 48px);
+  aspect-ratio: 1;
+  place-items: center;
+  padding: 0 0 3px;
+  border: 2px solid rgb(255 255 255 / 85%);
+  border-radius: 50%;
+  color: #fff;
+  background: rgb(74 17 10 / 78%);
+  box-shadow: 0 4px 15px rgb(0 0 0 / 28%);
+  font: 400 clamp(28px, 4vw, 36px) / 1 Arial, sans-serif;
+  cursor: pointer;
+}
+
+.reiki-popup__close:hover {
+  background: #8e101b;
+}
+
+.reiki-popup__cta-hotspot {
+  position: absolute;
+  z-index: 2;
+  left: 25.1%;
+  top: 83.7%;
+  width: 49.5%;
+  height: 8.3%;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.reiki-popup__cta-hotspot:hover {
+  background: rgb(255 255 255 / 10%);
+}
+
+.reiki-popup__cta-hotspot:focus-visible,
+.reiki-popup__close:focus-visible {
+  outline: 4px solid #fff;
+  outline-offset: 3px;
+}
+
+.reiki-popup__visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@keyframes reiki-popup-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 520px) {
+  .reiki-popup {
+    padding: 10px;
+  }
+
+  .reiki-popup__dialog {
+    max-height: calc(100dvh - 20px);
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reiki-popup__dialog {
+    animation: none;
+  }
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 import NewsBanner from "@/components/sections/NewsBanner";
+import WeihnachtsPopup from "@/components/sections/WeihnachtsPopup";
 import HeroSection from "@/components/sections/HeroSection";
 import TrustSection from "@/components/sections/TrustSection";
 import AudienceSection from "@/components/sections/AudienceSection";
@@ -19,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
+      <WeihnachtsPopup />
       <NewsBanner />
       <HeroSection />
       <TrustSection />
