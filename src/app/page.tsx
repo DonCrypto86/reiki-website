@@ -9,6 +9,7 @@ import IntroSection from "@/components/sections/IntroSection";
 import WhatIsReikiSection from "@/components/sections/WhatIsReikiSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import GutscheinPopup from "@/components/sections/GutscheinPopup";
 
 export const metadata: Metadata = buildMetadata({
   title: `Reiki für Menschen und Tiere im Raum Bern | ${siteConfig.practiceName}`,
@@ -19,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
+      <GutscheinPopup />
       <NewsBanner />
       <HeroSection />
       <TrustSection />
