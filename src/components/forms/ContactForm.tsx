@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { Loader2, CheckCircle2, AlertCircle, Gift } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { validateContactForm, hasErrors } from "@/lib/validation";
 import type { ContactFormErrors, ContactFormValues } from "@/types";
@@ -230,20 +230,36 @@ export default function ContactForm() {
               { value: "tier", label: "Tier" },
               { value: "gutschein", label: "Gutschein verschenken" }
             ] as const
-          ).map((option) => (
-            <label key={option.value} className="flex items-center gap-2 text-ink">
-              <input
-                type="radio"
-                name="subject"
-                value={option.value}
-                checked={values.subject === option.value}
-                onChange={() => updateField("subject", option.value)}
-                aria-describedby={errors.subject ? "subject-error" : undefined}
-                className="h-5 w-5"
-              />
-              {option.label}
-            </label>
-          ))}
+          ).map((option) => {
+            const isGift = option.value === "gutschein";
+            const isSelected = values.subject === option.value;
+            return (
+              <label
+                key={option.value}
+                className={
+                  isGift
+                    ? `flex cursor-pointer items-center gap-2 rounded-full border-2 px-4 py-2 font-semibold shadow-sm transition-colors ${
+                        isSelected
+                          ? "border-[#8a4b2a] bg-[#8a4b2a] text-white"
+                          : "border-[#d9a77c] bg-[#fbe6d2] text-[#6b3a1f] hover:bg-[#f7d9bc]"
+                      }`
+                    : "flex items-center gap-2 text-ink"
+                }
+              >
+                <input
+                  type="radio"
+                  name="subject"
+                  value={option.value}
+                  checked={isSelected}
+                  onChange={() => updateField("subject", option.value)}
+                  aria-describedby={errors.subject ? "subject-error" : undefined}
+                  className={isGift ? "h-5 w-5 accent-[#8a4b2a]" : "h-5 w-5"}
+                />
+                {isGift ? <Gift className="h-5 w-5" aria-hidden="true" /> : null}
+                {option.label}
+              </label>
+            );
+          })}
         </div>
         <ErrorText id="subject-error" message={errors.subject} />
       </fieldset>
